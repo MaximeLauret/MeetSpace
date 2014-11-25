@@ -1,95 +1,71 @@
 #!/bin/bash
-#Projet Meetspace
-#Script de création
+#DNS.sh v1.0 24/11/2014
+#Script permettant d'administrer le DNS tinydns du serveur Meetspace
 
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Fonction affichage du menu 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-function afficher_Menu
+function afficher_MenuDNS
 { 
 	echo "Outils d'administration du serveur meetspace, version 0.1
 	Utilisation: meetspace [add/del] [SERVICE] [NAME]
 
 	[SERVICE]:
-	mail		ajoute/supprime un compte mail
-	share		ajoute/supprime un compte de partage OwnCloud
-	vhost		ajoute/supprime un virtualHost
-	pad		ajoute/supprime un pad"
+	dns		ajoute un champ A dans le DNS"
 }
+
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Fonction add 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function add_Mail
+function add_dns
 { 
-echo " Function add_Mail"
-}
-
-function add_Share
-{
-echo " Fuction add_Share"
-}
-
-function add_Vhost
-{
-echo " Function add_Vhost"
-}
-
-function add_Pad
-{
-echo " Function add_Pad"
-}
-
-function add_Mail
-{ 
-echo " Function add_Mail"
+	echo " Ajout de la ligne:"
+	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400"
+	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" >> data
 }
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Fonction del 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-function del_Share
-{
-echo " Fuction del_Share"
-}
 
-function del_Vhost
-{
-echo " Function del_Vhost"
+function del_dns
+{ 
+	echo " Suppression de la ligne: $NAME"
+	#echo "+"$NAME".meetspace.itinet.fr:88.177.168.133:86400"
+	#sed -i '/${NAME}/d' data
+	#grep -v $NAME data > old_data
+	grep -v "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" data > old_data
+	#sed -i '/\${NAME}/d' data
+		
+	# data
 }
-
-function del_Pad
-{
-echo " Function del_Pad"
-}
-
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Fonction main 
+#Fonction principale 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#Déclaration des variables pour les rendres global:
+TYPEDECOMMANDE=$1
+SERVICE=$2
+NAME=$3
+
 
 case $1 in
 	add)
 		case $2 in
-		mail) add_Mail;;
-		share) add_Share;;
-		vhost) add_Vhost;;
-		pad) add_Pad;;
-		*) afficher_Menu
+		dns) add_dns;;
+		*) afficher_MenuDNS
 		esac
-		
-	;;
+		;;
 
 	del) 
 		case $2 in
-		mail) del_Mail;;
-		share) del_Share;;
-		vhost) del_Vhost;;
-		pad) del_Pad;;
-		*) afficher_Menu
+		dns) del_dns;;
+		*) afficher_MenuDNS
 		esac
-	 ;;
-	*) echo " Invalide "
-esac
+	 	;;
 
+	*) afficher_MenuDNS
+esac
 

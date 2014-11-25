@@ -1,0 +1,14 @@
+
+pierrick@meetspace:~$ cat /etc/tinydns/root/data
+Zmeetspace.itinet.fr:dedibox.itinet.fr:pierrick.meetspace.itinet.fr:1:3600:3600:604800:86400:3600
+.meetspace.itinet.fr:195.154.82.81:a:259200
+.meetspace.itinet.fr:195.154.83.51:b:259200
+@meetspace.itinet.fr:88.177.168.133:mail.meetspace.itinet.fr::86400
++meetspace.itinet.fr:88.177.168.133:86400
++www.meetspace.itinet.fr:88.177.168.133:86400
++chat.meetspace.itinet.fr:88.177.168.133:86400
++share.meetspace.itinet.fr:88.177.168.133:86400
++pad.meetspace.itinet.fr:88.177.168.133:86400
+
+
+
