@@ -8,10 +8,8 @@
 
 function afficher_Menu
 { 
-	echo "Outils d'administration du serveur meetspace, version 0.1
-	Utilisation: master [add/del] [name] [password]"
-
-
+	echo "Outils d'administration du serveur meetspace
+	Utilisation: master [add/del] [project/user] [name] [password]"
 }
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -70,7 +68,7 @@ function add_Vhost
 
 function add_Dns
 { 
-	echo " Function add_Dns"
+
 }
 
 function add_PhpMyAdmin
@@ -134,7 +132,7 @@ function del_Vhost
 
 function del_Dns
 { 
-	echo " Function del_Dns"
+
 }
 
 function del_PhpMyAdmin
@@ -147,44 +145,73 @@ function del_PhpMyAdmin
 #Fonction main 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
+#Requette= " add " ou " del "
 requete=$1
-user=$2
-password=$3
 
-if [ $# = 3 ]
+#projectORuser = project ou user 
+projectORuser=$2
+user=$3
+password=$4
+
+#Si il y a bien 4 paramètre en entré
+if [ $# = 4 ]
 then
 
-	case $1 in
+	case $requete in
 		add)
-		add_Unix
-		add_MySecureShell
-		add_Quota
-		add_Sudoers
-		add_Web
-		add_Share
-		add_Pad
-		add_Mail
-		add_Vhost
-		add_Dns
-		add_PhpMyAdmin	
+		case $projectORuser in
+
+			user) 
+				add_Unix
+				add_MySecureShell
+				add_Quota
+				add_Sudoers
+				add_Share
+				add_Mail
+			;;
+
+			project) 
+				add_Web
+				add_Share #Cette fonction doit créé un rep partager entre tous les membres du projet
+				add_Pad
+				add_Mail #Cette fonction devra créé un mail avec un alias à tous les membres du projet
+				add_Vhost #La fonction Vhost devra pouvoir faire apparaitre ou disparaitre le blog en fonction du choix du chef de projet
+				add_Dns
+				add_PhpMyAdmin
+
+			;;
+
+			*) afficher_Menu
+		esac	
 		;;
-		del) 
-		del_Unix
-		del_MySecureShell
-		del_Quota
-		del_Sudoers
-		del_Web
-		del_Share
-		del_Pad
-		del_Mail
-		del_Vhost
-		del_Dns
-		del_PhpMyAdmin	
+
+		del)
+		case $projectORuser in
+			user)
+				add_Unix
+				add_MySecureShell
+				add_Quota
+				add_Sudoers
+				add_Share
+				add_Mail
+			;;
+
+			project)
+				add_Web
+				add_Share
+				add_Pad
+				add_Mail
+				add_Vhost
+				add_Dns
+				add_PhpMyAdmin
+			;;
+
+			*) afficher_Menu
+		esac
 	 	;;
+
 		*) afficher_Menu
 	esac
-
 
 else
 	afficher_Menu
