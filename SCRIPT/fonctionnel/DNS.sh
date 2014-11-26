@@ -32,11 +32,12 @@ function add_dns
 
 function del_dns
 { 
+	#Fonctionelle. Le seul problème c'est que si j'add projet1 et projet10 et que je décide de del projet1. Projet 10 disparait aussi..
 	echo " Suppression de la ligne: $NAME"
-	#echo "+"$NAME".meetspace.itinet.fr:88.177.168.133:86400"
-	#sed -i '/${NAME}/d' data
+	echo "+"$NAME".meetspace.itinet.fr:88.177.168.133:86400"
+	sed -i "/${NAME}/d" data
 	#grep -v $NAME data > old_data
-	grep -v "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" data > old_data
+	#grep -v "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" data > old_data
 	#sed -i '/\${NAME}/d' data
 		
 	# data
