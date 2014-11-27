@@ -8,9 +8,8 @@ password=toto
 	service postfix restart
 	
 #Création Maildir utilisateur
-	if [test -r /var/mail$user]
+	if [ ! -r /var/mail/$user]
 		then
-		else
 			mkdir /var/mail/$user
 			chown vmail:vmail /var/mail/$user
 			maildirmake /var/mail/$user/Maildir
