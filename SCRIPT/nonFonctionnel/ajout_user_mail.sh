@@ -1,6 +1,6 @@
 #!/bin/bash
 user=projet3
-password="$1$qpt4xvQ/$8xGJnUaEKpIsEkAWMLoia0"
+password=toto
 
 #Ajout utilisateur postfix
 	echo "$user@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
@@ -9,6 +9,7 @@ password="$1$qpt4xvQ/$8xGJnUaEKpIsEkAWMLoia0"
 	
 #Création Maildir utilisateur
 	if [test -r /var/mail$user]
+		then
 		else
 			mkdir /var/mail/$user
 			chown vmail:vmail /var/mail/$user
