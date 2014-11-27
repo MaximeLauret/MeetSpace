@@ -132,7 +132,7 @@ function del_Vhost
 
 function del_Dns
 { 
-
+	echo " Function del_Dns"
 }
 
 function del_PhpMyAdmin
