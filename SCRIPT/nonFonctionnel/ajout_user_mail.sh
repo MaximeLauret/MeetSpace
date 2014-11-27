@@ -1,9 +1,9 @@
 #!/bin/bash
-user=projet3
+user=maxime
 password=toto
 
 #Ajout utilisateur postfix
-	echo "$user@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
+	echo "$user@meetspace.itinet.fr $user/" >> /etc/postfix/mailboxmap
 	postmap /etc/postfix/mailboxmap
 	service postfix restart
 	
