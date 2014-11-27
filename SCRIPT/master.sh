@@ -19,6 +19,25 @@ function afficher_Menu
 function add_Mail
 { 
 	echo " Function add_Mail"
+
+	#Ajout utilisateur postfix
+	echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
+	postmap /etc/postfix/mailboxmap
+	service postfix restart
+	
+	#Création Maildir utilisateur
+	if [ ! -r /var/mail/$name ]
+		then
+			mkdir /var/mail/$name
+			chown vmail:vmail /var/mail/$name
+			maildirmake /var/mail/$name/Maildir
+			chown vmail:vmail /var/mail/$name/Maildir
+	fi
+
+	#Création authentication IMAP
+	userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006
+	makeuserdb
+
 }
 
 function add_Unix
@@ -68,7 +87,7 @@ function add_Vhost
 
 function add_Dns
 { 
-
+	echo " Function add_Dns"
 }
 
 function add_PhpMyAdmin
@@ -150,7 +169,7 @@ requete=$1
 
 #projectORuser = project ou user 
 projectORuser=$2
-user=$3
+name=$3
 password=$4
 
 #Si il y a bien 4 paramètre en entré
