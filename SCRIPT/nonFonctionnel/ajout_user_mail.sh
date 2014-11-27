@@ -4,7 +4,7 @@ password="$1$qpt4xvQ/$8xGJnUaEKpIsEkAWMLoia0"
 
 #Ajout utilisateur postfix
 	echo "$user@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
-	postmap mailboxmap
+	postmap /etc/postfix/mailboxmap
 	service postfix restart
 	
 #Création Maildir utilisateur
