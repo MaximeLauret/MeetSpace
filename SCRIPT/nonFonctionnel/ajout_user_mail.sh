@@ -1,5 +1,8 @@
 #!/bin/bash
 
+user=projet2
+password=tata
+
 #Ajout utilisateur postfix
 	echo "$user"+"@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
 	postmap mailboxmap
