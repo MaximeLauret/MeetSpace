@@ -3,7 +3,7 @@ user=projet3
 password="$1$qpt4xvQ/$8xGJnUaEKpIsEkAWMLoia0"
 
 #Ajout utilisateur postfix
-	echo "$user"+"@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
+	echo "$user@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
 	postmap mailboxmap
 	service postfix restart
 	
