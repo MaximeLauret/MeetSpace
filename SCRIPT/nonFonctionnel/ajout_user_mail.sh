@@ -1,40 +1,19 @@
 #!/bin/bash
 
-while :
-do
-	echo "Saisir le nom de la personne ‡ ajouter"
-	read $nom
-
-	echo "Le nom est bien : $nom ? (oui/non)"
-	read $reponse
-
-	if [$reponse = "oui" -o $reponse = "OUI"]
-		then
-			#Ajout utilisateur postfix
-			echo "$nom"+"@meetspace.itinet.fr $nom/Maildir" > /etc/postfix/mailboxmap
-			postmap mailboxmap
-			service postfix restart
-			
-			#CrÈation Maildir utilisateur
-			mkdir /var/mail/$nom
-			chown vmail:vmail /var/mail/$nom
-			maildirmake /var/mail/$nom/Maildir
-			
-			#CrÈation authentication IMAP
-			userdb "$nom@meetspace.itinet.fr"	set home=/var/mail/$nom	uid=1006	gid=1006
-			echo "Rentrer un mot de passe pour l'utilisateur"
-			userdbpw -md5 | userdb "$nom@meetspace.itinet.fr" set imappw
-			makeuserdb
-			
-		
-			echo "Utilisateur ajoutÈ"
-			
-			
-			echo "Voulez-vous ajouter une autre personne ? (oui/non)"
-			read $reponse
-			if [$reponse = "non" -o $reponse = "NON"]
-				then
-					break
-			fi
-	fi
-done
+#Ajout utilisateur postfix
+	echo "$user"+"@meetspace.itinet.fr $user/" > /etc/postfix/mailboxmap
+	postmap mailboxmap
+	service postfix restart
+	
+#Cr√©ation Maildir utilisateur
+	mkdir /var/mail/$user
+	chown vmail:vmail /var/mail/$user
+	maildirmake /var/mail/$user/Maildir
+	chown vmail:vmail /var/mail/$user/Maildir
+	
+#Cr√©ation authentication IMAP
+	userdb "$user@meetspace.itinet.fr" set home=/var/mail/$user/ mail=/var/mail/$user uid=1006 gid=1006
+	userdbpw -md5 | userdb "$user@meetspace.itinet.fr" set imappw
+	echo "$password\n"
+	echo "$password\n"
+	makeuserdb
