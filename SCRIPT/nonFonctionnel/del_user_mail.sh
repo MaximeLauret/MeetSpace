@@ -3,12 +3,12 @@
 user=maxime
 #Suppression utilisateur
 	#Retrait sur postfix
-	sed -i '/"$user"/d' /etc/postfix/mailboxmap
+	sed -i '/"$user"@meetspace.itinet.fr/d' /etc/postfix/mailboxmap
 	postmap /etc/postfix/mailboxmap
 	service postfix restart
 	
 	#Retrait sur courier-IMAP
-	sed -i '/"$user"/d' /etc/courier/userdb
+	sed -i '/"$user"@meetspace.itinet.fr/d' /etc/courier/userdb
 	makeuserdb
 
 	#Retrait du dossier mail utilisateur
