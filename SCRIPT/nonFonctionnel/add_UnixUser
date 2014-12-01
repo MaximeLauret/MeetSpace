@@ -1,0 +1,4 @@
+#!/bin/bash
+#Script d'ajout d'un utilisateur Unix sur le serveur Meetspace
+
+useradd -m -d /var/sftp/$name/ -s /bin/bash toto

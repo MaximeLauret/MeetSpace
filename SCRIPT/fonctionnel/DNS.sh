@@ -8,7 +8,7 @@
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 function afficher_MenuDNS
 { 
-	echo "Outils d'administration du serveur meetspace, version 0.1
+	echo "test de la fonction DNS
 	Utilisation: meetspace [add/del] [SERVICE] [NAME]
 
 	[SERVICE]:
@@ -36,11 +36,6 @@ function del_dns
 	echo " Suppression de la ligne: $NAME"
 	echo "+"$NAME".meetspace.itinet.fr:88.177.168.133:86400"
 	sed -i "/${NAME}/d" data
-	#grep -v $NAME data > old_data
-	#grep -v "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" data > old_data
-	#sed -i '/\${NAME}/d' data
-		
-	# data
 }
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Fonction principale 
