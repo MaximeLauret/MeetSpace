@@ -1,4 +1,11 @@
 #!/bin/bash
 #Script d'ajout d'un utilisateur Unix sur le serveur Meetspace
 
-useradd -m -d /var/sftp/$name/ -s /bin/bash toto
+
+name=toto
+password=pass
+mkpassword=`mkpasswd $password`
+echo "name = $name "
+echo "password = $password "
+echo "mkpasswd = $mkpassword "
+useradd --home /home/$name --gid meetspace_user --password $mkpassword $name
