@@ -3,12 +3,12 @@
 user=maxime
 #Suppression utilisateur
 	#Retrait sur postfix
-	sed -i '/^$user$/d' /etc/postfix/mailboxmap
+	sed -ie '/"user"/d' /etc/postfix/mailboxmap
 	postmap /etc/postfix/mailboxmap
-	service postfix restart
+	service postfix reload
 	
 	#Retrait sur courier-IMAP
-	sed -i '/^$user$/d' /etc/courier/userdb
+	sed -ie '/"user"/d' /etc/courier/userdb
 	makeuserdb
 
 	#Retrait du dossier mail utilisateur
