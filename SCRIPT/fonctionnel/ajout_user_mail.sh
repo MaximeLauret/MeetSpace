@@ -17,8 +17,8 @@ password=$2
 	fi
 #Création authentication IMAP
 	userdb "$user@meetspace.itinet.fr" set home=/var/mail/$user/ mail=/var/mail/$user uid=1006 gid=1006
-	userdbpw -md5 |userdb "$user@meetspace.itinet.fr" set imappw << HERE
-	$2
-	$2
+	userdbpw -md5 |userdb "$user@meetspace.itinet.fr" set imappw <<-HERE
+	$password
+	$password
 	HERE
 	makeuserdb
