@@ -21,9 +21,12 @@ function afficher_MenuDNS
 
 function add_dns
 { 
+	cd /etc/tinydns/root/
 	echo " Ajout de la ligne:"
 	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400"
 	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" >> data
+	make
+
 }
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -33,9 +36,12 @@ function add_dns
 function del_dns
 { 
 	#Fonctionelle. Le seul problème c'est que si j'add projet1 et projet10 et que je décide de del projet1. Projet 10 disparait aussi..
+	cd /etc/tinydns/root/
 	echo " Suppression de la ligne: $NAME"
 	echo "+"$NAME".meetspace.itinet.fr:88.177.168.133:86400"
 	sed -i "/${NAME}/d" data
+	make
+
 }
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #Fonction principale 

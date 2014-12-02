@@ -88,6 +88,11 @@ function add_Vhost
 function add_Dns
 { 
 	echo " Function add_Dns"
+	cd /etc/tinydns/root/
+	echo " Ajout de la ligne:"
+	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400"
+	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" >> data
+	make
 }
 
 function add_PhpMyAdmin
@@ -152,6 +157,12 @@ function del_Vhost
 function del_Dns
 { 
 	echo " Function del_Dns"
+	#Fonctionelle. Le seul problème c'est que si j'add projet1 et projet10 et que je décide de del projet1. Projet 10 disparait aussi..
+	cd /etc/tinydns/root/
+	echo " Suppression de la ligne: $NAME"
+	echo "+"$NAME".meetspace.itinet.fr:88.177.168.133:86400"
+	sed -i "/${NAME}/d" data
+	make
 }
 
 function del_PhpMyAdmin
@@ -164,6 +175,8 @@ function del_PhpMyAdmin
 #Fonction main 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+
+# Déclaration des variables:
 #Requette= " add " ou " del "
 requete=$1
 
@@ -186,7 +199,7 @@ then
 				add_Quota
 				add_Sudoers
 				add_Share
-				add_Mail
+				#add_Mail
 			;;
 
 			project) 
