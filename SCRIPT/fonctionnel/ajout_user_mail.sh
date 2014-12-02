@@ -16,5 +16,9 @@ password=$2
 			chown vmail:vmail /var/mail/$user/Maildir
 	fi
 #Création authentication IMAP
-	userdb "$user@meetspace.itinet.fr" set imappw=$password home=/var/mail/$user/ mail=/var/mail/$user uid=1006 gid=1006
+	userdb "$user@meetspace.itinet.fr" set home=/var/mail/$user/ mail=/var/mail/$user uid=1006 gid=1006
+	userdbpw -md5 |userdb "$user@meetspace.itinet.fr" set imappw << HERE
+	$2
+	$2
+	HERE
 	makeuserdb
