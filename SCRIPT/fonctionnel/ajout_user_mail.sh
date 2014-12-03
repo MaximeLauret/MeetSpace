@@ -1,19 +1,17 @@
 #!/bin/bash
 
-user=$1
-
+name=$1
 #Ajout utilisateur postfix
-	echo "$user@meetspace.itinet.fr $user/" >> /etc/postfix/mailboxmap
+	echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
 	postmap /etc/postfix/mailboxmap
 	service postfix restart
 	
 #Création Maildir utilisateur
-	if [ ! -r /var/mail/$user ]
+	if [ ! -r /var/mail/$name ]
 		then
-			mkdir /var/mail/$user
-			chown vmail:vmail /var/mail/$user
-			maildirmake /var/mail/$user/Maildir
-			chown vmail:vmail /var/mail/$user/Maildir
+			mkdir /var/mail/$name
+			maildirmake /var/mail/$name/Maildir
+			chown -R vmail:vmail /var/mail/$name
 	fi
 
 #Création authentication IMAP
@@ -22,5 +20,16 @@ user=$1
 	$2
 	EOF
 	)
-	userdb "$user@meetspace.itinet.fr" set imappw=$password home=/var/mail/$user/ mail=/var/mail/$user uid=1006 gid=1006 
+	userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
 	makeuserdb
+	
+#Initialisation du dossier principal de la boite mail
+telnet mail.meetspace.itinet.fr 25 <<AUTO
+mail from:<contact@meetspace.itinet.fr>
+rcpt to:<$name@meetspace.itinet.fr>
+data
+Subject: Bienvenue sur Meetspace
+L'équipe de Meetspace vous souhaite la bienvenue sur son site.
+.
+quit
+AUTO
