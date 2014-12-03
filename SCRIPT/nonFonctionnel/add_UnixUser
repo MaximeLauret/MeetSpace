@@ -5,27 +5,17 @@
 
 name=toto
 password=pass
-mkpassword=`mkpasswd $password`
-echo "name = $name "
-echo "password = $password "
-echo "mkpasswd = $mkpassword "
-useradd --home /home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
+cd /var/sftp/home/
+#Chiffrage du mdp
+mkpassword=`mkpasswd $password
+`
+#Ajout de l'utilisateur
+useradd --home /var/sftp/home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
 
+#Création du répertoire personnel de l'utilisateur
+mkdir $name
+
+#Mise en place des quotas:
 setquota -u toto 50 50 0 0 -a /var/sftp/home/$name
 setquota -u toto 50 50 0 0 -a /var/mail/$name
 
-
-#cat /etc/passwd | grep -v $name
-#sed -i -e "s/chaines1/chaine2/g" fichier 
-#echo 'Version: TAG_01' | sed 's/^Version: TAG_[0-9][0-9]/Version: TAG_02/'
-#toto:x:1008:1007::/home/toto:/bin/sh
-
-
-#echo 'vmail:x:1006:1006::/home/vmail:/bin/sh' | sed 's/^toto: /bin/sh//bin/bash/'
-
-
-
-#Mise en place de MySecureShell
-
-#Identifiez l'utilisateur dont vous voulez restreindre l'accès à son dossier. Son pseudo débute la ligne à modifier. Une fois que vous avez trouvé, remplacez /bin/bash par /bin/MySecureShell.
-#Lui dire : A la ligne commençant par $nom remplacer /bin/bash par /bin/MySecureShell

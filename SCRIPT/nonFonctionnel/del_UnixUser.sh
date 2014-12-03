@@ -3,4 +3,12 @@
 
 
 name=toto
-userdel --force --remove $name 
+
+cd /var/sftp/home
+
+#Suppression de l'utilisateur
+userdel --force $name 
+
+#Suppression de son répertoire
+rm -rf $name
+
