@@ -3,4 +3,4 @@
 
 
 name=toto
-userdel $name
+userdel --force --remove $name 
