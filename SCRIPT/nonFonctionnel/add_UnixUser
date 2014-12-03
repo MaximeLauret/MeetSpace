@@ -11,6 +11,8 @@ echo "password = $password "
 echo "mkpasswd = $mkpassword "
 useradd --home /home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
 
+setquota -u toto 50 50 0 0 -a /var/sftp/home/$name
+setquota -u toto 50 50 0 0 -a /var/mail/$name
 
 
 #cat /etc/passwd | grep -v $name
