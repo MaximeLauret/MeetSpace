@@ -10,9 +10,8 @@ name=$1
 	if [ ! -r /var/mail/$name ]
 		then
 			mkdir /var/mail/$name
-			chown vmail:vmail /var/mail/$name
 			maildirmake /var/mail/$name/Maildir
-			chown vmail:vmail /var/mail/$name/Maildir
+			chown -R vmail:vmail /var/mail/$name
 	fi
 
 #Création authentication IMAP
