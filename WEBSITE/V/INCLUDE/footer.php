@@ -1,1 +1,0 @@
-<!-- CECI EST UN SUPER FOOTER (of the dead) -->
