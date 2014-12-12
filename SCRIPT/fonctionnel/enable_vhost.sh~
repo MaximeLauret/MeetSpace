@@ -6,4 +6,4 @@
 
 
 # Creating the symbolic link
-ln -s /etc/apache2/sites-available/$name.conf /etc/apache2/sites-enabled/$name.conf
+ln -s /etc/apache2/sites-available/$name.conf /etc/apache2/sites-enabled/$name.conf;

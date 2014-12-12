@@ -7,13 +7,13 @@
 
 
 # Creating the directory host
-mkdir -p /var/sftp/$name/www
+mkdir -p /var/sftp/$project_name/www
 # According rights to the user interface
-chown -R www-data:www-data /var/sftp/$name/www
+chown -R www-data:www-data /var/sftp/$project_name/www
 # Editing the configuration file
 echo "
 <VirtualHost *:80>
-	ServerName $name.meetspace.itinet.fr
-	DocumentRoot /var/sftp/$name
+	ServerName $project_name.meetspace.itinet.fr
+	DocumentRoot /var/sftp/$project_name
 </VirtualHost>
-" > /etc/apache2/sites-available/$name.conf
+" > /etc/apache2/sites-available/$project_name.conf

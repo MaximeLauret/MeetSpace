@@ -7,6 +7,6 @@
 
 ./disable_vhost.sh								# Disabling the Vhost
 rm /etc/apache2/sites-available/$name.conf		# Deleting the .conf file
-rm -R /var/sftp/$name							# Deleting the directory
+rm -R /var/sftp/$name;							# Deleting the directory
 
 service apache2 reload							# Reloading the Apache service
