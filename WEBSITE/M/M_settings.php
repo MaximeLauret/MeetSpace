@@ -1,10 +1,9 @@
 <!--
-M_modele.php
-fichier modèle modèle
-Auteur : Kev (le 7.04.14)
-MaJ : 
-XXX (le XX.XX.XX)
+M_settings.php
+Model for the settings page
+Created by Maxime (2014-10-28)
 -->
+
 <?php
-// Pas de code Modèle
+	// Pas de code Modèle
 ?>

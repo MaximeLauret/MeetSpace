@@ -1,17 +1,21 @@
 <!--
-C_modele.php
-fichier contrôleur modèle
-Auteur : Kev (le 7.04.14)
-MaJ : 
-XXX (le XX.XX.XX)
+C_settings.php
+Controller for the settings page
+Created by Maxime (2014-10-28)
 -->
-<?php session_start(); ?>
-<!-- Modèle -->
-<?php include("M/M_settings.php"); ?>
 
 <?php
-// PAS DE CODE CONTROLEUR
+	session_start();
 ?>
 
-<!-- Vue -->
-<?php include("V/V_settings.php"); ?>
+<?php		// Including the model
+	include("M/M_settings.php");
+?>
+
+<?php		// Controller
+
+?>
+
+<?php		// Including the view
+	include("V/V_settings.php");
+?>

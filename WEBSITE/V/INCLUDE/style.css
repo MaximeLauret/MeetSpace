@@ -3,298 +3,37 @@ LAURET Maxime
 2014-04-15
 */
 
-
 html {
-	background-image: url("../IMG/background.png");
-	background-position : center;
-	background-image : width:100% ; height:100%;
-	background-attachment : fixed;
-	background-repeat : no-repeat;
-	background-size : cover;
-	color : white;
+	background-color: #fffedd;
 }
 
+body {
+	background-color: orange;
+	height: 75px;
+	margin: 0px;
+}
 
-/* MENU */
+#welcome {
+	font-size: 40px;
+	margin-top: 100px;
+	margin-left: 100px;
+}
 
-	#menu li {
-		list-style: none;
-		height: 0px;
-		padding: 0px;
-		width: 40px;
-		margin-left: -48px;
-		margin-top: 100px;
-	}
+#menu {
+	text-align: right;
+	margin-top: -75px;
+}
 
-	#menu span {
-		width: 0px;
-		left: 100px;
-		padding: 0px;
-		position: absolute;
-		overflow: hidden;
-		-webkit-transition: 0.25s;
-	}
+#tiles {
+	text-align: center;
+}
 
-	#menu a {
-		height: 100px;
-		width: 400px;
-		display: block;
-		position: relative;
-	}
-
-	#menu a:hover span {
-		width: 100px;
-		padding: 0 0px ;
-		overflow: visible;
-	}
-
-	#menu a:hover {
-		text-decoration: none;
-		-moz-box-shadow:0 0 5px #9ddff5;
-		-webkit-box-shadow:0 0 5px #9ddff5;
-		box-shadow:0 0 5px #9ddff5;
-	}
-
-
-	/* CREATE_POST */
-
-		#menu.create_post {
-			background: url ("IMG/ICONES/create_post.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.create_post:hover {
-			background-position: 0px -50px;
-		}
-
-
-	/* EDIT_POST 
-
-		#menu.edit_post {
-			background: url ("IMG/ICONES/edit_post.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.edit_post:hover {
-			background-position: -50px -50px;
-		}
-*/
-
-	/* DELETE_POST 
-
-		#menu.delete_post {
-			background: url ("IMG/ICONES/delete_post.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.delete_post:hover {
-			background-position: -100px -50px;
-		}
-*/
-
-	/* SEARCH */
-
-		#menu.search {
-			background: url ("IMG/ICONES/search.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.search:hover {
-			background-position:-150px -50px;
-		}
-
-
-	/* CREATE_BOARD */
-
-		#menu.create_board {
-			background : url ("IMG/ICONES/create_board.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.create_board:hover {
-			background-position : -200px -50px;
-		}
-
-		
-	/* EDIT_BOARD */
-	
-		#menu.edit_board {
-			background: url ("IMG/ICONES/edit_board.png");
-			background-repeat: no-repeat;
-			background-size: cover;
-		}
-	
-		#menu.edit_board:hover {
-			background-position: -250px -50px;
-		}
-
-
-	/* CONTACTS */
-
-		#menu.contacts {
-			background : url ("IMG/ICONES/contacts.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.contacts:hover {
-			background-position : -300px -50px;
-		}
-
-
-	/* SETTINGS */
-
-		#menu.settings {
-			background : url ("IMG/ICONES/settings.png");
-			background-repeat : no-repeat;
-			background-size : cover;
-		}
-
-		#menu.settings:hover {
-			background-position : -350px -50px;
-		}
-
-
-/* FAVORIS */
-
-	#fav div {
-		display: inline; 
-		padding : 0 1.5em;
-		position: relative;
-		top: -925px
-	}
-
-	#fav_0 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_1 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_2 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-		}
-
-	#fav_3 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_4 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_5 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_6 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_7 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-
-	#fav_8 {
-		position:absolute;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-	
-	/*abonnements*/
-	#fav_abo{
-		top: -650px;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-	
-	#fav_show_abo{
-		top: 0px;	
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;
-	}
-	
-	#fav_empty{
-		top: -750px;
-		left:10%;
-		bottom:100px;
-		margin:100px 0 0 -15px;		
-	}
-
-	
-/* CONTENU */
-
-	#contenu {
-		margin-left: 200px;
-		margin-top: -150px;
-	}
-	
-	#board_title {
-		color: white;
-		font-size: 50px;
-		text-align: center;
-		margin-top: -1130px;
-		margin-left: 200px;
-		margin-right: 200px;
-		background: black;
-	}
-
-	#board_actu {
-		color: white;
-		font-size: 50px;
-		text-align: center;
-		margin-top: -927px;
-		margin-left: 200px;
-		margin-right: 200px;
-		background: black;
-	}
-	/* POSTS */
-
-		.post {
-			background-color : yellow;
-			text-align : center;
-			width : 150px;
-			height : 150px;
-			
-			margin-top: 50px;
-			margin-left: 150px;
-			
-		}
-
-		#inline  {
-			display:inline;
-			
-		}
+#footer {
+	position: absolute;
+	bottom: 0;
+	background-color: orange;
+	width: 100%;
+	height: 50px;
+	font-size: 15px;
+	text-align: right;
+}

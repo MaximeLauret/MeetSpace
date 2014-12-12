@@ -15,7 +15,7 @@ function log_database () {		// Logging into the database
 	return $database;
 }
 
-function user_exists($database, $login) {		// Checking if user exists
+function valid_nickname($database, $login) {		// Checking if user exists
 	$bool_value = false;
 	$reponse = $database->query('SELECT NICKNAME FROM USERS');
 	
@@ -46,34 +46,33 @@ function tests_special_chars($string) {		// Checking if there is any special cha
 	return $flag;
 }
 
-function connect_user($database, $login, $password) {		// Connecting the user & returning any error
-	$value_for_np = pwd_ok($database, $login, $password);
-	$value_nickname = user_exists($database, $login);
+function connect_user($database, $entered_login, $entered_password) {		// Connecting the user & returning any error
+	$is_password_valid = valid_password($database, $entered_login, $entered_password);
+	$is_nickname_valid = valid_nickname($database, $entered_login);
 	
-	if($value_nickname === false) {		// If the user doesn't exist
+	if($is_nickname_valid === false) {		// If the user doesn't exist
 		return "Error : This user doesn't exist";
-	} else if($value_for_np === false) {		// If the nickname and the password doesn't match
+	} else if($is_password_valid === false) {		// If the nickname and the password doesn't match
 		return "Error : Bad combination nickname / password";
 	} else {		// If everything's fine : connecting the user
 		$req = $database->prepare('SELECT id FROM users WHERE nickname LIKE :login');
-		$req->execute(array("login" => $login));
+		$req->execute(array("login" => $entered_login));
 		$line = $req->fetch();
 		$id = $line['id'];
 		$req->closeCursor();
 		$_SESSION['user'] = $line['id'];
 		return "OK";
-	}
-	
+	}	
 }
 
-function pwd_ok($database, $pseudo, $pwd) {		// Checking if the password matches with the database
-	$req = $database->prepare("SELECT PASSWORD FROM users WHERE nickname=:pseudo");
-	$req->execute( array("pseudo" => $pseudo) );
+function valid_password($database, $entered_login, $entered_password) {		// Checking if the password matches with the database
+	$req = $database->prepare("SELECT PASSWORD FROM users WHERE nickname LIKE :login");
+	$req->execute( array("login" => $entered_login) );
 	$line = $req->fetch();
 	
 	$req->closeCursor();
 	
-	if($line["PASSWORD"] == $pwd) {
+	if (password_verify ($entered_password, PASSWORD_DEFAULT)) {
 		return true;
 	} else {
 		return false;
@@ -81,8 +80,8 @@ function pwd_ok($database, $pseudo, $pwd) {		// Checking if the password matches
 }
 
 function register_user($database, $login, $password) {		// Signing the user in
-	$value_chars = tests_max_chars($database, $login, $password);		// CHecking if there is any special character in nickname or password
-	$value_existence = user_exists($database, $login);		// Checking if user exists
+	$value_chars = tests_max_chars($database, $login, $password);		// Checking if there is any special character in nickname or password
+	$value_existence = valid_nickname($database, $login);		// Checking if user exists
 	$value_space = is_space($database, $login, $password);
 	
 	if($value_existence === true) {		// If the nickname already exists, the sign in can't be done
@@ -92,10 +91,11 @@ function register_user($database, $login, $password) {		// Signing the user in
 	} else if($value_space !== false) {
 		return "Error : No space allowed in nickname or password. <br/>";	
 	} else {
+		$password_encrypted = password_hash ($password, PASSWORD_DEFAULT). "\n";
 		$req = $database->prepare('INSERT INTO USERS(NICKNAME, PASSWORD) VALUES(:login, :password)');
 		$req->execute(array(
 			'login' => $login,
-			'password' => $password));
+			'password' => $password_encrypted));
 		return "Your profile is ready.";
 	}
 }
