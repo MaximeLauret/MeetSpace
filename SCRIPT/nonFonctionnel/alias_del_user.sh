@@ -5,13 +5,13 @@ user=$2
 
 var=`grep "$projet@meetspace.itinet.fr" /etc/postfix/virtual`
 
-sed -i "/${var}/d" /etc/postfix/virtual
-
+#sed -i "/${var}/d" /etc/postfix/virtual
+echo "$var" >> /etc/postfix/var.txt
 
 if [[ $var = *$user* ]]
 then
-	#suppression de {"$user@meetspace.itinet.fr";} dans $var
-	sed "s/\"$user@meetspace.itinet.fr\";//" $var
+	sed "/\"${projet}@meetspace.itinet.fr\";/d" /etc/postfix/var.txt
+	var=`cat /etc/postfix/var.txt`
 	echo "$var" >> /etc/postfix/virtual
 fi
 
