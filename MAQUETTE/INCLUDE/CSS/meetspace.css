@@ -1,0 +1,22 @@
+body{
+
+}
+
+.viewproject {
+  text-align: center;
+  background-color:#8AA3C8;
+  border-radius:20px;
+  
+  height:300x;
+}
+
+.addproject {
+  text-align: center;
+  background-color:#8AD4B8;
+  border-radius:20px;
+  
+  height:300x;
+}
+/* style="border:1px solid #ddd;"
+style="background-color:#8AA3C8;"
+*/
