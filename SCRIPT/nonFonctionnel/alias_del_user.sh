@@ -10,7 +10,8 @@ sed -i "/${var}/d" /etc/postfix/virtual
 
 if [[ $var = *$user* ]]
 then
-	#suppression de $user@meetspace.itinet.fr dans $var
+	#suppression de {"$user@meetspace.itinet.fr";} dans $var
+	sed "s/\"$user@meetspace.itinet.fr\";//" $var
 	echo "$var" >> /etc/postfix/virtual
 fi
 
