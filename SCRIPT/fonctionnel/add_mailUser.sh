@@ -1,6 +1,5 @@
 #!/bin/bash
 
-name=$1
 #Ajout utilisateur postfix
 	echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
 	postmap /etc/postfix/mailboxmap

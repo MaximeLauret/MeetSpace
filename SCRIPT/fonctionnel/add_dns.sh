@@ -6,8 +6,8 @@ function add_dns
 { 
 	cd /etc/tinydns/root/
 	echo " Ajout de la ligne:"
-	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400"
-	echo "+$NAME.meetspace.itinet.fr:88.177.168.133:86400" >> data
+	echo "+$name.meetspace.itinet.fr:88.177.168.133:86400"
+	echo "+$name.meetspace.itinet.fr:88.177.168.133:86400" >> data
 	make
 
 }
