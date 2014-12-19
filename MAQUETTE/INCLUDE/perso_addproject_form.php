@@ -1,5 +1,7 @@
 
-<!-- Formulaire pour ajouter un nouveau projet -->
+<!-- Formulaire pour ajouter un nouveau projet 
+		Il apparait lorsque l'on clic sur le +
+-->
 
 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-3 col-lg-offset">
 	<div  class="project" >

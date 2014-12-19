@@ -1,3 +1,4 @@
+<!-- Page ou l'on peu compléter le formulaire pour ajouter un projet -->
 <!DOCTYPE html>
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -9,12 +10,6 @@
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
     <title >Meetspace - Espace personnel</title>
         
-
-
-
-
-
-
     <!-- Bootstrap core CSS -->
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -26,7 +21,7 @@
     <script src="./espace_perso_files/ie-emulation-modes-warning.js"></script>
 
     <!-- Inclusion des iconnes -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/font-awe ome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->

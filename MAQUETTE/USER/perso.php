@@ -1,3 +1,6 @@
+<!-- Permière page sur la quel on arrive lorsque l'on se connecte 
+      On y vois la liste des projets et un + pour en rajouter un nouveau 
+-->
 <!DOCTYPE html>
 
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,13 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
     <title >Meetspace - Espace personnel</title>
-        
-
-
-
-
-
-
+      
     <!-- Bootstrap core CSS -->
     <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -45,24 +42,18 @@
 
     <div class="container">
 
-      <div class="starter-template">
         <h1>Espace personnel - Gestion des projets</h1>
-      </div>
+      
     </div><!-- /.container -->
 
 
     <div class="container">
       <div class="row">
-            <?php include("../INCLUDE/perso_viewproject.php"); ?>
-            <?php include("../INCLUDE/perso_viewproject.php"); ?>
-            <?php include("../INCLUDE/perso_viewproject.php"); ?>
-            <?php include("../INCLUDE/perso_addproject_plus.php"); ?>
-
-      <!--  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-9 col-lg-offset-1" 
-      style="background-color:green;height:200px;">
-
-      </div>-->
-      </div>
+        <?php include("../INCLUDE/perso_viewproject.php"); ?>
+        <?php include("../INCLUDE/perso_viewproject.php"); ?>
+        <?php include("../INCLUDE/perso_viewproject.php"); ?>
+        <?php include("../INCLUDE/perso_addproject_plus.php"); ?>
+      </div>  
     </div>
 
     <!-- Bootstrap core JavaScript
