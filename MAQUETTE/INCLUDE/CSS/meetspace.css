@@ -2,21 +2,9 @@ body{
 
 }
 
-.viewproject {
+.project {
   text-align: center;
-  background-color:#8AA3C8;
-  border-radius:20px;
-  
-  height:300x;
+  /*Jolie bleu - background-color:#8AA3C8;*/ 
+  background-color: #ba9c1c;
+  border-radius:40px;
 }
-
-.addproject {
-  text-align: center;
-  background-color:#8AD4B8;
-  border-radius:20px;
-  
-  height:300x;
-}
-/* style="border:1px solid #ddd;"
-style="background-color:#8AA3C8;"
-*/

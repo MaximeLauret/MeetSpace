@@ -53,13 +53,10 @@
 
     <div class="container">
       <div class="row">
-
-            <?php include("./perso_viewproject.php"); ?>
-            <?php include("./perso_viewproject.php"); ?>
-            <?php include("./perso_viewproject.php"); ?>
-            <?php include("./perso_viewproject.php"); ?>
-            <?php include("./perso_viewproject.php"); ?>
-            <?php include("./perso_addproject.php"); ?>
+            <?php include("../INCLUDE/perso_viewproject.php"); ?>
+            <?php include("../INCLUDE/perso_viewproject.php"); ?>
+            <?php include("../INCLUDE/perso_viewproject.php"); ?>
+            <?php include("../INCLUDE/perso_addproject_plus.php"); ?>
 
       <!--  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-9 col-lg-offset-1" 
       style="background-color:green;height:200px;">
