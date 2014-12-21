@@ -1,7 +1,8 @@
 #!/bin/bash
 
 function add_mailUser
-	{ 
+{ 
+
 	#Ajout utilisateur postfix
 		echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
 		postmap /etc/postfix/mailboxmap
@@ -33,5 +34,6 @@ function add_mailUser
 	L'équipe de Meetspace vous souhaite la bienvenue sur son site.
 	.
 	quit
-	AUTO
+AUTO
+
 }
