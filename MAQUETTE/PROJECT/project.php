@@ -15,7 +15,7 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-3 col-md-4 col-md-offset-1">
-                  <a class="btn btn-md btn-success" href="http://meetspace.itinet.fr:9001">   <i class="fa fa-file fa-4x"></i> Blocknote</a>
+                  <a class="btn btn-md btn-success" href="http://pad.meetspace.itinet.fr">   <i class="fa fa-file fa-4x"></i> Blocknote</a>
                   <a class="btn btn-md btn-warning" href="http://blog.meetspace.itinet.fr">   <i class="fa  fa-desktop fa-4x"></i> Blog</a>
                   
                   <div class="row">
