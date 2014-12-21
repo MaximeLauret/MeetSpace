@@ -18,15 +18,15 @@ tar -cvzf /home/pierrick/SOD/date-`date +%Y-%m-%d-%H-%M`.tar.gz "/home/" "/var/s
 echo "------------------------------------------------------";
 
 
-echo "Vérification de l'existence de l'archive";
+#echo "Vérification de l'existence de l'archive";
 # On teste si l'archive a bien été créée
-if [ -e /votre_support/backup.tar.gz ]
-then
-	echo "Votre archive a bien été créée.";
+#if [ -e /Chemin/Nom.tar.gz ]
+#then
+#	echo "Votre archive a bien été créée.";
 	#echo " Envoie au serveur "
 	#connection_ssh
-else
-	echo "Il y a eu un problème lors de la création de l'archive.";
-fi
+#else
+#	echo "Il y a eu un problème lors de la création de l'archive.";
+#fi
 
 echo "### Fin de la sauvegarde.  ###";

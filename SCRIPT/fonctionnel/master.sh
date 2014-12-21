@@ -1,130 +1,34 @@
 #!/bin/bash
-#Script d'automatisation d'utilisateur du serveur Meetspace
-#Le script prend en paramètre l'utilisateur et son mot de passe
-#DNS
-source add_dns.sh
-source del_dns.sh
-#Unix / MySecureShell / Quota
+#Script d'automatisation de la gestion du serveur Meetspace
+
+echo " Include: Start .."
+#Unix / MySecureShell / Quota - Gestion des utilisateurs
 source add_unixUser.sh
-source del_unixUser.sh
-#Mail
-source add_mailUser.sh
-source del_mailUser.sh
-#Virtualhost - Apache
-source add_vhost.sh
-source del_vhost.sh
-source disable_vhost.sh
-source enable_vhost.sh
+#source del_unixUser.sh
 
+#Mail - Gestion des utilisateurs
+#source add_mailUser.sh
+#source del_mailUser.sh
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Fonction affichage du menu 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#Mail - Gestion des alias
 
-function afficher_Menu
-{ 
-	echo "Outils d'administration du serveur meetspace
-	Utilisation: master [add/del] [project/user] [name] [password]"
-}
+#source add_projectAlias.sh
+#source add_userAlias.sh
+#source del_projectAlias.sh
+#source del_userAlias.sh
 
+#Virtualhost - Apache - Gestion des sites Web
+#source add_vhost.sh
+#source del_vhost.sh
+#source disable_vhost.sh
+#source enable_vhost.sh
 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Déclaration des variables
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
+#DNS - TinyDNS - Gestion des sites Web
+#source add_dns.sh
+#source del_dns.sh
 
+#Le menu du script master - Explique comment utiliser le script
+#source master_menu.sh
 
-# Déclaration des variables:
-#Requette= " add " ou " del "
-requete=$1
-
-#projectORuser = project ou user 
-projectORuser=$2
-
-#name= Nom d'utilisateur ou de projet
-name=$3
-
-#password= mot de passe utilisateur
-password=$4
-
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-#Fonction main 
-#------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-#Si il y a bien 4 paramètre en entré
-if [ $# = 4 ]
-then
-
-	case $requete in
-		add)
-		case $projectORuser in
-
-			user) 
-				#add_Unix
-				#add_Share
-				#add_UserMail
-			;;
-
-			project) 
-				#add_Web
-				#add_ShareBox #Cette fonction doit créé un rep partager entre tous les membres du projet
-				#add_Pad
-				#add_Mail #Cette fonction devra créé un mail avec un alias à tous les membres du projet
-				#add_Vhost #La fonction Vhost devra pouvoir faire apparaitre ou disparaitre le blog en fonction du choix du chef de projet
-				#add_Dns
-				#add_PhpMyAdmin
-
-			;;
-
-			*) afficher_Menu
-		esac	
-		;;
-
-		del)
-		case $projectORuser in
-			user)
-				#add_Unix
-				#add_Share
-				#add_Mail
-			;;
-
-			project)
-				#add_Web
-				#add_Share
-				#add_Pad
-				#add_Mail
-				#add_Vhost
-				#add_Dns
-				#add_PhpMyAdmin
-			;;
-
-			*) afficher_Menu
-		esac
-		;;
-
-		enable)
-		case $projectORuser in
-			user) echo "Impossible de désactiver/activer un utilisateur pour l'instant" ;;
-
-			project) ;;
-
-
-			*) afficher_Menu
-		esac
-		;;
-
-		disable)
-		case $projectORuser in
-			user) echo "Impossible de d'activer/désactiver un utilisateur pour l'instant";;
-
-			project)  ;;
-
-			*) afficher_Menu
-		esac
-		;;
-
-		*) afficher_Menu
-	esac
-
-else
-	afficher_Menu
-fi  
+echo " Include: .. end "
+exit

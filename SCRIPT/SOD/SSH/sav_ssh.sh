@@ -1,4 +1,5 @@
 #!/bin/bash
+# Script qui gére la connection au serveur ssh distant
 
 function connection_ssh
 {

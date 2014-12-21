@@ -6,4 +6,7 @@
 
 
 # Creating the symbolic link
-ln -s /etc/apache2/sites-available/$name.conf /etc/apache2/sites-enabled/$name.conf
+function enable_vhost
+{ 
+	ln -s /etc/apache2/sites-available/$name.conf /etc/apache2/sites-enabled/$name.conf
+}
