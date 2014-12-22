@@ -100,7 +100,6 @@ case $VAR1 in
 		add) # CREATION D'UN PROJETS
 			name=$VAR3
 			echo " main: Ajout du projet name:$name"
-			add_mailUser # Comment on lui spécifie que c'est la boite contact?
 			add_projectAlias
 			add_vhost
 			add_dns
@@ -109,7 +108,6 @@ case $VAR1 in
 		del) # SUPPRESSION D'UN PROJETS
 			name=$VAR3
 			echo " main: Suppression du projet name:$name"
-			del_mailUser
 			del_projectAlias
 			del_vhost
 			del_dns

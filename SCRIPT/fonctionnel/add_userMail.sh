@@ -18,7 +18,7 @@ function add_userMail
 
 	#Création authentication IMAP
 		password=$(userdbpw -md5 <<-EOF
-		$2
+		$2add
 		$2
 		EOF
 		)
