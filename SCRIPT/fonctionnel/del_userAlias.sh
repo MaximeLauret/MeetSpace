@@ -12,6 +12,8 @@ function add_userAlias
 		sed -i "s/\"${userName}@meetspace.itinet.fr\";//" /etc/postfix/var.txt
 		var=$(</etc/postfix/var.txt)
 		echo "$var" >> /etc/postfix/virtual
+	else
+		echo "$var" >> /etc/postfix/virtual
 	fi
 
 	postmap /etc/postfix/virtual
