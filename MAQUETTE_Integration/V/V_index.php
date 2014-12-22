@@ -42,7 +42,7 @@ Created by Maxime (2014-10-24)
 			<h3>
 				Connexion
 			</h3>	
-			<form class="form-horizontal">
+			<form class="form-horizontal" action="C_myprojects.php" method="POST">
 				<!-- PSEUDO INPUT -->
 					<input id="pseudoinput" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
 					<br/>
@@ -50,7 +50,7 @@ Created by Maxime (2014-10-24)
 					<input id="passwordinput" name="password_login_input" type="password" placeholder="Password" class="form-control input-md" required="">
 					<br/>
 				<!-- LOG IN BUTTON -->
-					<button id="submit" name="login" class="btn btn-primary btn-lg ">Connexion</button>
+					<button id="submit" name="login" class="btn btn-primary btn-lg" value="login">Connexion</button>
 			</form>
 
 			<h3>

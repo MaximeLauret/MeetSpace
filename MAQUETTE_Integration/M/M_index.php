@@ -28,28 +28,42 @@ function register_user($database, $nickname_signin_input, $mail_input, $password
 	}
 }
 
-function connect_user($database, $entered_login, $entered_password) {		// Connecting the user & returning any error
-	$req = $database->prepare('SELECT id FROM users WHERE nickname LIKE :login');
-	$req->execute(array("login" => $entered_login));
-	$line = $req->fetch();
-	$id = $line['id'];
-	$req->closeCursor();
-	$_SESSION['user'] = $line['id'];
-	return "OK";
-}
-
-function valid_password($database, $nickname_login_input, $password_login_input_encrypted) {		// Checking if the password matches with the database
-	$req = $database->prepare("SELECT PASSWORD FROM users WHERE nickname LIKE :login");
-	$req->execute( array("login" => $entered_login) );
-	$line = $req->fetch();
-
-	$req->closeCursor();
+function connect_user($database, $nickname_login_input, $password_login_input) {		// Connecting the user & returning any error
 	
-	if (password_verify ($entered_password, PASSWORD_DEFAULT)) {
-		return true;
-	} else {
-		return false;
-	}
+	// On vérifie que l'utilisateur existe dans la base de données
+		$user_exists = false;
+		$req = $database -> prepare ('SELECT NICKNAME FROM USERS WHERE NICKNAME LIKE :nickname_login_input');
+		$req -> execute (array ('nickname_login_input' => $nickname_login_input));
+		$ligne = $req -> fetch();
+		$req -> closeCursor();
+		
+		if ($user_exists === false) {
+			echo ("Cet utilisateur n'existe pas.");
+		} else if ($password_matches === false) {
+			echo ("Erreur de mot de passe.");
+		} else {
+			$req = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
+			$req -> execute (array ("nickname_login_input" => $nickname_login_input));
+			$line = $req -> fetch();
+			$id = $line["ID"];
+			$req -> closeCursor();
+			$_SESSION["USER"] = $line["ID"];
+		}
+
+	// On vérifie que le mot de passe entré correspond au mot de passe de la base de données.
+		$password_matches = false;
+		$req = $database -> prepare ("SELECT PASSWORD FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
+		$req -> execute (array ("nickname_login_input" => $nickname_login_input));
+		$ligne = $req -> fetch();
+		$req -> closeCursor();
+		
+		$password_login_input_encrypted = password_hash ($password_login_input, PASSWORD_DEFAULT). "\n";		// Password encryption
+		if ($password_login_input_encrypted === $ligne["PASSWORD"]) {
+			$password_matches = true;
+		} else {
+			// Rien
+		}
+
 }
 
 ?>
