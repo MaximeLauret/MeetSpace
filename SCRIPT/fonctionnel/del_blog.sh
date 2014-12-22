@@ -4,5 +4,5 @@
 
 function del_blog
 { 
-	rm -R /var/sftp/$name/www/dotclear
+	rm -R /var/sftp/$name/www/*
 }
