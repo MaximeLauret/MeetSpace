@@ -2,7 +2,7 @@
       On y vois la liste des projets et un + pour en rajouter un nouveau 
 -->
 
-    <?php include("../INCLUDE/header.php"); ?> <!-- Le header contient la topbar et la balise body -->
+    <?php include("../INCLUDE/header_priv.php"); ?> <!-- Le header contient la topbar et la balise body -->
 
 
 
@@ -22,4 +22,4 @@
       </div>  
     </div>
 
-	<?php include("../INCLUDE/footer.php"); ?>
+	<?php include("../INCLUDE/footer_priv.php"); ?>
