@@ -20,6 +20,6 @@ function add_userUnix
 	chgrp -R meetspace_user $name $name
 
 	#Mise en place des quotas:
-	setquota -u toto 300 300 0 0 -a /var/sftp/home/$name
-	setquota -u toto 200 200 0 0 -a /var/mail/$name
+	setquota -u $name 300 300 0 0 -a /var/sftp/home/$name
+	setquota -u $name 200 200 0 0 -a /var/mail/$name
 }
