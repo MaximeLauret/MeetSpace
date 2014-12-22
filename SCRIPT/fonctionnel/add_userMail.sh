@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function add_mailUser
+function add_userMail
 { 
 
 	#Ajout utilisateur postfix

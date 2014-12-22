@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script d'ajout d'un utilisateur Unix sur le serveur Meetspace
 
-function del_unixUser
+function del_userUnix
 { 
 	cd /var/sftp/home
 

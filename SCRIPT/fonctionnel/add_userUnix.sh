@@ -1,7 +1,7 @@
 #!/bin/bash
 #Script d'ajout d'un utilisateur Unix sur le serveur Meetspace
 
-function add_unixUser
+function add_userUnix
 { 
 	#Ajout de l'utilisateur Unix:
 	#Création du répertoire personnel de l'utilisateur

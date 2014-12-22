@@ -33,6 +33,8 @@ source del_dns.sh
 #Le menu du script master - Explique comment utiliser le script
 source master_menu.sh
 
+declare -f
+
 echo " Include: .. end "
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
