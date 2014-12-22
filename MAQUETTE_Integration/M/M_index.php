@@ -1,32 +1,23 @@
 <!--
-M_index.php
+M_home_page.php
 Model for the home page
 Created by Maxime (2014-10-24)
 -->
 
 <?php
 
-function log_meetspace_database () {		// Logging into the MeetSpace database	
+function log_database () {		// Logging into the database	
 	try {	
-	$meetspace_database = new PDO('mysql:host=localhost;dbname=MEETSPACE', 'root', '');
+	$database = new PDO('mysql:host=localhost;dbname=MEETSPACE', 'root', '');
 	} catch (Exception $e) {
 		die("Error : ".$e->getMessage());
 	}
-	return $meetspace_database;
+	return $database;
 }
 
-function log_owncloud_database () {		// Logging into the OwnCloud database	
-	try {	
-	$owncloud_database = new PDO('mysql:host=localhost;dbname=SHARE', 'root', '');
-	} catch (Exception $e) {
-		die("Error : ".$e->getMessage());
-	}
-	return $owncloud_database;
-}
-
-function valid_nickname($meetspace_database, $login) {		// Checking if user exists
+function valid_nickname($database, $login) {		// Checking if user exists
 	$bool_value = false;
-	$reponse = $meetspace_database->query('SELECT NICKNAME FROM USERS');
+	$reponse = $database->query('SELECT NICKNAME FROM USERS');
 	
 	while($data = $reponse->fetch()) {
 		if($data['NICKNAME'] === $login) {
@@ -55,17 +46,17 @@ function tests_special_chars($string) {		// Checking if there is any special cha
 	return $flag;
 }
 
-function connect_user($meetspace_database, $input_login, $input_password) {		// Connecting the user & returning any error
-	$is_password_valid = valid_password($meetspace_database, $input_login, $input_password);
-	$is_nickname_valid = valid_nickname($meetspace_database, $input_login);
+function connect_user($database, $entered_login, $entered_password) {		// Connecting the user & returning any error
+	$is_password_valid = valid_password($database, $entered_login, $entered_password);
+	$is_nickname_valid = valid_nickname($database, $entered_login);
 	
 	if($is_nickname_valid === false) {		// If the user doesn't exist
 		return "Error : This user doesn't exist";
 	} else if($is_password_valid === false) {		// If the nickname and the password doesn't match
 		return "Error : Bad combination nickname / password";
 	} else {		// If everything's fine : connecting the user
-		$req = $meetspace_database->prepare('SELECT id FROM users WHERE nickname LIKE :login');
-		$req->execute(array("login" => $input_login));
+		$req = $database->prepare('SELECT id FROM users WHERE nickname LIKE :login');
+		$req->execute(array("login" => $entered_login));
 		$line = $req->fetch();
 		$id = $line['id'];
 		$req->closeCursor();
@@ -159,18 +150,6 @@ function is_space($database, $login, $password) {		// Checking if there ain't no
 	return $bool_final_value;
 }
 
-function create_share ($owncloud_database, $login, $password) {		// Create the user's OwnCloud repository
-	
-
-		$password_encrypted = password_hash ($password, PASSWORD_DEFAULT). "\n";
-		$req = $database->prepare('INSERT INTO USERS(NICKNAME, PASSWORD) VALUES(:login, :password)');
-		$req->execute(array(
-			'login' => $login,
-			'password' => $password_encrypted));
-		return "Your profile is ready.";
-		
-		// Écrire dans table oc_storages : 
-	}
-	}
+function add_share ()
 
 ?>
