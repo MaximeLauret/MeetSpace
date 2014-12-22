@@ -3,12 +3,12 @@
 
 function add_projectAlias
 { 
-	grep -on "$name@meetspace.itinet.fr" /etc/postfix/virtual
+	grep -on "contact@$name" /etc/postfix/virtual
 	retval=$?
 
 	if [ "$retval" != 0 ]
 	then
-	       echo "$name@meetspace.itinet.fr" >> /etc/postfix/virtual
+	       echo "contact@$name" >> /etc/postfix/virtual
 	fi
 
 	postmap /etc/postfix/virtual

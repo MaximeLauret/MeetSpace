@@ -3,17 +3,17 @@
 function add_userAlias
 { 
 
-	var=`grep "$projet@meetspace.itinet.fr" /etc/postfix/virtual`
+	var=`grep "contact@$projectName" /etc/postfix/virtual`
 
 	sed -i "/${var}/d" /etc/postfix/virtual
 
-	if [[ $var != *$user* ]]
+	if [[ $var != *$userName* ]]
 	then
 		if [[ $var = *\; ]]
 		then
-		        echo "$var\"$user@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+		        echo "$var\"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
 		else
-		        echo "$var \"$user@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+		        echo "$var \"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
 		fi
 	else
 		echo "$var" >> /etc/postfix/virtual
