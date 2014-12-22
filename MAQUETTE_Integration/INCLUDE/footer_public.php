@@ -1,5 +1,14 @@
 
-
+            <!-- Pied de page -->
+            <div class="cover-container">
+                <div class="mastfoot">
+                  <div class="inner">
+                    <p> Réalisé par Pierrick VERAN à l'aide de <a href="http://getbootstrap.com/">Bootstrap</a>.</p>
+                  </div>
+                </div>
+             </div>   
+              
+            <!-- / Pied de page -->
         
 
       </div>

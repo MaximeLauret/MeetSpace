@@ -2,6 +2,7 @@
 	Formulaire d'inscription et de connection
 -->
 
+<<<<<<< HEAD
 <?php
 	include("./INCLUDE/header_public.php");
 ?>
@@ -25,6 +26,13 @@
 
       
                <div class="col-xs-12 col-sm-5 col-md-offset-2 col-md-4  " >
+=======
+    <?php include("./INCLUDE/header_public.php"); ?>
+<!-- Colone de gauche - Description -->
+
+      
+                <div class="col-xs-12 col-sm-5 col-md-4 col-md-offset-2" >
+>>>>>>> fda6701cd85ef9e28b881b5111f549562b72b0fd
                 
                 <div class="inner cover">
                  <h1 class="cover-heading">Bienvenue sur MeetSpace</h1>            
@@ -38,6 +46,7 @@
 
                 </div><!-- / Colone de gauche - Description -->
 
+<<<<<<< HEAD
                 <!--  Colone de Droite - Connection et Inscription -->
                 <div class="col-xs-12 col-sm-5 col-md-offset-1 col-md-5" >
 				<h3>Connexion</h3>
@@ -55,83 +64,57 @@
                   
                 </div>
               </div>
+=======
+<!--  Colone de Droite - Connection et Inscription -->
+                <div class="col-xs-12 col-sm-5 col-md-2 col-md-offset-2 " >
+                  <h3>Connexion</h3>
+
+  <!-- Formulaire de connexion-->
+              <form class="form-horizontal">
+              
+
+
+              <!-- Pseudo input-->
+              <input id="pseudoinput" name="pseudoinput" type="text" placeholder="pseudo" class="form-control input-md" required="">
+                
+>>>>>>> fda6701cd85ef9e28b881b5111f549562b72b0fd
 
               <!-- Password input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="passwordinput">Mot de passe</label>
-                <div class="col-md-4">
-                  <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
-                  
-                </div>
-              </div>
+              <input id="passwordinput" name="passwordinput" type="password" placeholder="password" class="form-control input-md" required="">
 
-              <!-- Button -->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="subbmit"></label>
-                <div class="col-md-4">
-                  <button id="subbmit" name="subbmit" class="btn btn-primary btn-lg ">Connexion</button>
-                </div>
-              </div>
+              <!-- Button connexion -->
+              <button id="subbmit" name="subbmit" class="btn btn-primary btn-lg ">Connexion</button>
 
-              </fieldset>
+
+              
               </form>
-            <!-- Fin formulaire de connexion -->
+  <!-- Fin formulaire de connexion -->
 
-            <!-- Formulaire d'inscription -->
+  <!-- Formulaire d'inscription -->
             <h3>Inscription</h3>
                   <form class="form-horizontal" action="#" method="POST">
-                  <fieldset>
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="pseudoinput">Votre pseudo</label>  
-                    <div class="col-md-4">
-                    <input id="pseudoinput" name="nickname_r" type="text" placeholder="" class="form-control input-md" required="">
+                                        
+                    <!-- Pseudo -->
+                    <input id="pseudoinput" name="nickname_r" type="text" placeholder="pseudo" class="form-control input-md" required="">
                       
-                    </div>
-                  </div>
+                    <!-- Mail -->
+                    <input id="pseudoinput" name="mail_r" type="text" placeholder="mail" class="form-control input-md" required="">
 
-                  <!-- Text input-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="pseudoinput">Adresse mail</label>  
-                    <div class="col-md-4">
-                    <input id="pseudoinput" name="mail_r" type="text" placeholder="" class="form-control input-md" required="">
+                    <!-- Premier mot de passe -->
+                    <input id="passwordinput" name="pwd_r1" type="password" placeholder="Mot de passe" class="form-control input-md" required="">
                       
-                    </div>
-                  </div>
+                    <!-- Validation du mot de passe -->
+                    <input id="passwordinput" name="pwd_r2" type="password" placeholder="Comfirmation du mot de passe" class="form-control input-md" required="">
 
-                  <!-- Password input 1-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="passwordinput">Mot de passe</label>
-                    <div class="col-md-4">
-                      <input id="passwordinput" name="pwd_r1" type="password" placeholder="" class="form-control input-md">
-                      
-                    </div>
-                  </div>
-                  <!-- Password input 2-->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="passwordinput">Confirmation du mot de passe</label>
-                    <div class="col-md-4">
-                      <input id="passwordinput" name="pwd_r2" type="password" placeholder="" class="form-control input-md">
-                      
-                    </div>
-                  </div>
-
-                  <!-- Button -->
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="subbmit"></label>
-                    <div class="col-md-4">
-                      <button id="subbmit" name="signin" class="btn btn-success btn-lg" value="Log in">Inscription</button>
-
-                    </div>
-                  </div>
-
-                  </fieldset>
+                  <!-- Validation -->
+                    <button id="subbmit" name="signin" class="btn btn-success btn-lg" value="Log in">Inscription</button>
                   </form>
-                <!-- Fin formulaire d'inscription -->
-                </div>
+  <!-- Fin formulaire d'inscription -->
+
                 <!-- / Colone de Droite - Connection et Inscription -->
 
               </section>
+<<<<<<< HEAD
             <!-- Pied de page -->
             <div class="cover-container">
                 <div class="mastfoot">
@@ -163,3 +146,7 @@
 =======
 <?php include("./INCLUDE/footer_public.php"); ?>
 >>>>>>> 0d4acfb5dc1bef9653e6f7689d199b4a9b663ead
+=======
+
+<?php include("./INCLUDE/footer_public.php"); ?>
+>>>>>>> fda6701cd85ef9e28b881b5111f549562b72b0fd

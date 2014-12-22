@@ -30,6 +30,10 @@ source enable_vhost.sh
 source add_dns.sh
 source del_dns.sh
 
+#Blog - Dotclear 
+source add_blog.sh
+source del_blog.sh
+
 #Le menu du script master - Explique comment utiliser le script
 source master_menu.sh
 
@@ -103,6 +107,7 @@ case $VAR1 in
 			add_projectAlias
 			add_vhost
 			add_dns
+			add_blog
 		;;
 
 		del) # SUPPRESSION D'UN PROJETS
@@ -111,6 +116,7 @@ case $VAR1 in
 			del_projectAlias
 			del_vhost
 			del_dns
+			del_blog
 		;;
 
 		vhost) # GESTION DES VHOSTS
