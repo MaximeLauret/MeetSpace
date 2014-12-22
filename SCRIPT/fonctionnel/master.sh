@@ -113,6 +113,10 @@ case $VAR1 in
 			del_dns
 		;;
 
+		*) afficher_Menu
+		esac
+		;;
+
 		vhost) # GESTION DES VHOSTS
 		name=$VAR4
 			case $VAR3 in
@@ -126,10 +130,9 @@ case $VAR1 in
 			echo " main: Désactivation du vhost name:$name"
 			disable_vhost
 			;;
-		*) afficher_Menu
-		esac
-
-		;;
+			*) afficher_Menu
+			esac
+			;;
 
 		alias) # GESTION DES ALIAS
 		projectName=$VAR4
@@ -145,11 +148,11 @@ case $VAR1 in
 			echo " main: Suppression de l'alias projectName:$projectName userName:$userName"
 			del_userAlias
 			;;
-		*) afficher_Menu
-		esac
-		;;
+			*) afficher_Menu
+			esac
+			;;
 
-		*) afficher_Menu
+	*) afficher_Menu
 	esac
 	;;
 
