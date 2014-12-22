@@ -11,8 +11,7 @@ function add_vhost
 	# According rights to the user interface
 	chown -R www-data:www-data /var/sftp/$name/www
 	# Editing the configuration file
-	echo "
-	<VirtualHost 10.8.96.3:80>
+	echo "	<VirtualHost 10.8.96.3:80>
 		ServerName $name.meetspace.itinet.fr
 		DocumentRoot /var/sftp/$name/www
 	</VirtualHost>
