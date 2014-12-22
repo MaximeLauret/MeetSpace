@@ -1,53 +1,30 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="">
+<!-- Première page sur la quel on arrive
+	Formulaire d'inscription et de connection
+-->
 
-    <title>Meetspace</title>
+<?php
+	include("./INCLUDE/header_public.php");
+?>
 
-    <!-- Bootstrap core CSS -->
-    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<div class="site-wrapper">
 
-    <!-- Custom styles for this template -->
-    <link href="http://getbootstrap.com/examples/cover/cover.css" rel="stylesheet">
+	<div class="site-wrapper-inner">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="./BOOTSTRAP/index_files/ie-emulation-modes-warning.js"></script>
+		<div class="cover-container">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="site-wrapper">
-
-      <div class="site-wrapper-inner">
-
-        <div class="cover-container">
-
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand" href="/">MeetSpace</h3>
-            </div>
-          </div>
-        </div>
-
-
-
-              <section class="row">
-                <!-- Colone de gauche - Description -->
+			<div class="masthead clearfix">
+				<div class="inner">
+				<h3 class="masthead-brand" href="/">
+					MeetSpace
+				</h3>
+			</div>
+		</div>
+	</div>
+             <section class="row">
+               <!-- Colone de gauche - Description -->
 
       
-                <div class="col-xs-12 col-sm-5 col-md-offset-2 col-md-4  " >
+               <div class="col-xs-12 col-sm-5 col-md-offset-2 col-md-4  " >
                 
                 <div class="inner cover">
                  <h1 class="cover-heading">Bienvenue sur MeetSpace</h1>            
@@ -63,19 +40,18 @@
 
                 <!--  Colone de Droite - Connection et Inscription -->
                 <div class="col-xs-12 col-sm-5 col-md-offset-1 col-md-5" >
-                  <h3>Connexion</h3>
+				<h3>Connexion</h3>
 
-                  <!-- Formulaire de connexion-->
-              <form class="form-horizontal">
-              <fieldset>
 
-              <!-- Form Name -->
+<!-- Formulaire de connexion-->
+	<form class="form-horizontal">
+	<fieldset>
 
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="pseudoinput">Votre pseudo</label>  
-                <div class="col-md-4">
-                <input id="pseudoinput" name="pseudoinput" type="text" placeholder="" class="form-control input-md" required="">
+	<!-- Text input-->
+		<div class="form-group">
+		<label class="col-md-4 control-label" for="pseudoinput">Votre pseudo</label>  
+		<div class="col-md-4">
+		<input id="pseudoinput" name="pseudoinput" type="text" placeholder="" class="form-control input-md" required="">
                   
                 </div>
               </div>
@@ -103,13 +79,13 @@
 
             <!-- Formulaire d'inscription -->
             <h3>Inscription</h3>
-                  <form class="form-horizontal">
+                  <form class="form-horizontal" action="#" method="POST">
                   <fieldset>
                   <!-- Text input-->
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="pseudoinput">Votre pseudo</label>  
                     <div class="col-md-4">
-                    <input id="pseudoinput" name="pseudoinput" type="text" placeholder="" class="form-control input-md" required="">
+                    <input id="pseudoinput" name="nickname_r" type="text" placeholder="" class="form-control input-md" required="">
                       
                     </div>
                   </div>
@@ -118,7 +94,7 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="pseudoinput">Adresse mail</label>  
                     <div class="col-md-4">
-                    <input id="pseudoinput" name="pseudoinput" type="text" placeholder="" class="form-control input-md" required="">
+                    <input id="pseudoinput" name="mail_r" type="text" placeholder="" class="form-control input-md" required="">
                       
                     </div>
                   </div>
@@ -127,15 +103,15 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="passwordinput">Mot de passe</label>
                     <div class="col-md-4">
-                      <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+                      <input id="passwordinput" name="pwd_r1" type="password" placeholder="" class="form-control input-md">
                       
                     </div>
                   </div>
                   <!-- Password input 2-->
                   <div class="form-group">
-                    <label class="col-md-4 control-label" for="passwordinput">Confirmation</label>
+                    <label class="col-md-4 control-label" for="passwordinput">Confirmation du mot de passe</label>
                     <div class="col-md-4">
-                      <input id="passwordinput" name="passwordinput" type="password" placeholder="" class="form-control input-md">
+                      <input id="passwordinput" name="pwd_r2" type="password" placeholder="" class="form-control input-md">
                       
                     </div>
                   </div>
@@ -144,7 +120,7 @@
                   <div class="form-group">
                     <label class="col-md-4 control-label" for="subbmit"></label>
                     <div class="col-md-4">
-                      <button id="subbmit" name="subbmit" class="btn btn-success btn-lg">Inscription</button>
+                      <button id="subbmit" name="signin" class="btn btn-success btn-lg" value="Log in">Inscription</button>
 
                     </div>
                   </div>
@@ -166,6 +142,7 @@
              </div>   
               
             <!-- / Pied de page -->
+<<<<<<< HEAD
 
 
       </div>
@@ -183,3 +160,6 @@
   
 
 <div id="global-zeroclipboard-html-bridge" class="global-zeroclipboard-container" title="" style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" data-original-title="Copy to clipboard">      <object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="global-zeroclipboard-flash-bridge" width="100%" height="100%">         <param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1418569482010">         <param name="allowScriptAccess" value="sameDomain">         <param name="scale" value="exactfit">         <param name="loop" value="false">         <param name="menu" value="false">         <param name="quality" value="best">         <param name="bgcolor" value="#ffffff">         <param name="wmode" value="transparent">         <param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="/assets/flash/ZeroClipboard.swf?noCache=1418569482010" loop="false" menu="false" quality="best" bgcolor="#ffffff" width="100%" height="100%" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit">                </object></div></body></html>
+=======
+<?php include("./INCLUDE/footer_public.php"); ?>
+>>>>>>> 0d4acfb5dc1bef9653e6f7689d199b4a9b663ead
