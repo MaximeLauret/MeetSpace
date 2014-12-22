@@ -1,6 +1,6 @@
 #!/bin/bash
 #Pierrick VERAN
-#Script permettant d'administrer le DNS tinydns du serveur Meetspace
+#Script permettant de supprimer le blog d'un projet
 
 function del_blog
 { 

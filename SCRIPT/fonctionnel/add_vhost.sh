@@ -12,9 +12,10 @@ function add_vhost
 	chown -R www-data:www-data /var/sftp/$name/www
 	# Editing the configuration file
 	echo "
-	<VirtualHost *:80>
+	<VirtualHost 10.8.96.3:80>
 		ServerName $name.meetspace.itinet.fr
-		DocumentRoot /var/sftp/$name
+		DocumentRoot /var/sftp/$name/www
 	</VirtualHost>
 	" > /etc/apache2/sites-available/$name.conf
+	service apache2 reload
 }

@@ -5,4 +5,5 @@
 function add_blog
 {
 	cp -R /var/sftp/dotclear_install/dotclear/* /var/sftp/$name/www/
+	chown -R www-data:www-data /var/sftp/$name
 }
