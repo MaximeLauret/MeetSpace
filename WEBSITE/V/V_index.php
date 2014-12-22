@@ -26,6 +26,16 @@ Created by Maxime (2014-10-24)
 	</head>
 
 	<body>
+		
+		<div class="site-wrapper">
+			<div class="site-wrapper-inner">
+				<div class="cover-container">
+					<div class="masthead clearfix">
+						<div class="inner">
+							<h3 class="masthead-brand" href="/">MeetSpace</h3>
+						</div>
+					</div>
+				</div>
 	
 		<?php
 			include ("V/INCLUDE/entete.php");

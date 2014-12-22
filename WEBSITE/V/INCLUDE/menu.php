@@ -24,5 +24,11 @@ Created by Maxime (2014-10-11)
 		<img src = "V/IMG/profile.png" id = "profile"/>
 
 	</a>
+	
+	<a href = "index.php">
+	
+		<img src = "V/IMG/logout.png" id "logout"/>
+	
+	</a>
 		
 </div>
