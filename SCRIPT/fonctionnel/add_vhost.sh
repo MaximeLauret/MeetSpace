@@ -16,5 +16,5 @@ function add_vhost
 		DocumentRoot /var/sftp/$name/www
 	</VirtualHost>
 	" > /etc/apache2/sites-available/$name.conf
-	service apache2 reload
+	service apache2 reload							# Reloading the Apache service
 }

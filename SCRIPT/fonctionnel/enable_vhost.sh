@@ -9,4 +9,5 @@
 function enable_vhost
 { 
 	ln -s /etc/apache2/sites-available/$name.conf /etc/apache2/sites-enabled/$name.conf
+	service apache2 reload							# Reloading the Apache service
 }
