@@ -132,16 +132,17 @@ case $VAR1 in
 		;;
 
 		alias) # GESTION DES ALIAS
-		name=$VAR4
+		projectName=$VAR4
+		userName=$VAR5
 			case $VAR3 in
 
 			add) # CREATION D'UN ALIAS
-			echo " main: Création de l'alias name:$name"
+			echo " main: Création de l'alias projectName:$projectName userName:$userName"
 			add_userAlias
 			;;
 
 			del) # SUPPRESSION D'UN ALIAS
-			echo " main: Suppression de l'alias name:$name"
+			echo " main: Suppression de l'alias projectName:$projectName userName:$userName"
 			del_userAlias
 			;;
 		*) afficher_Menu

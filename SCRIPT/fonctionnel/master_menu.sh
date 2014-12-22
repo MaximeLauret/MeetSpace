@@ -23,6 +23,9 @@ function afficher_Menu
 	Gestion des alias de la boite contact de projet:
 	master project alias add [name]
 	master project alias del [name]
+
+	master project alias add [projectName] [userName]
+	master project alias del [projectName] [userName]
 	"
 
 
