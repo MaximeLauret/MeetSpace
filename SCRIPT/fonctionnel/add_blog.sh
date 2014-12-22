@@ -6,6 +6,6 @@ function add_blog
 { 
 	cd /var/sftp/$name/
 	wget http://download.dotclear.org/latest.tar.gz
-	tar -xzvf latest.tar.gz
+	tar -xzvf latest.tar.gz /var/sftp/$name/www
 	rm latest.tar.gz
 }
