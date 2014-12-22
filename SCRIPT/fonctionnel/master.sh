@@ -89,8 +89,8 @@ case $VAR1 in
 		;;
 
 		*) afficher_Menu
-	esac	
-	;;
+		esac	
+		;;
 
 	project)	 # GESTION DES PROJETS
 	case $VAR2 in
@@ -111,10 +111,6 @@ case $VAR1 in
 			del_projectAlias
 			del_vhost
 			del_dns
-		;;
-
-		*) afficher_Menu
-		esac
 		;;
 
 		vhost) # GESTION DES VHOSTS
@@ -152,26 +148,9 @@ case $VAR1 in
 			esac
 			;;
 
+		*) afficher_Menu
+		esac
+		;;
 	*) afficher_Menu
-	esac
-	;;
-
 esac
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 exit
