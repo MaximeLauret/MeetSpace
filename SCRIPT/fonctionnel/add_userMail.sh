@@ -18,8 +18,8 @@ function add_userMail
 
 	#Création authentication IMAP
 		password=$(userdbpw -md5 <<-EOF
-		$2add
-		$2
+		$password
+		$password
 		EOF
 		)
 		userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
