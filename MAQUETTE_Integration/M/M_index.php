@@ -6,29 +6,30 @@ Created by Maxime (2014-10-24)
 
 <?php
 
-function log_database () {		// Logging into the database	
+function log_database () {		// CONNEXION À LA BASE DE DONNÉES	
 	try {	
-		$database = new PDO('mysql:host=localhost;dbname=meetspace_bdd', 'meetspace_bdd', 'meetspace_bdd');
+		$database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
 	} catch (Exception $e) {
 		die("Error : ".$e->getMessage());
 	}
 	return $database;
 }
 
-function register_user($database, $nickname_signin_input, $mail_input, $password_signin_input, $password_confirmation_input) {		// Signing the user in
-	if ($password_signin_input === $password_confirmation_input) {
-		$password_signin_input_encrypted = password_hash ($password_signin_input, PASSWORD_DEFAULT). "\n";		// Password encryption
+function register_user($database, $nickname_signin_input, $mail_input, $password_signin_input, $password_confirmation_input) {		// INSCRIPTION
+	if ($password_signin_input === $password_confirmation_input) {		// ON VÉRIFIE SI LE MOT DE PASSE ET LA CONFIRMATION CORRESPONDENT
+		$password_signin_input_encrypted = password_hash ($password_signin_input, PASSWORD_DEFAULT). "\n";		// CHIFFREMENT DU MOT DE PASSE
 		$req = $database->prepare('INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)');
 		$req->execute(array(
 		'nickname_signin_input' => $nickname_signin_input,
 		'password_signin_input' => $password_signin_input_encrypted,
 		'mail_input' => $mail_input));
+		echo ("Votre compte a bien été créé.");
 	} else {
 		echo ("Votre inscription a échoué.  Veuillez réessayer ou contactez votre administrateur système.");
 	}
 }
 
-function connect_user($database, $nickname_login_input, $password_login_input) {		// Connecting the user & returning any error
+function connect_user($database, $nickname_login_input, $password_login_input) {		// CONNEXION
 	
 	// On vérifie que l'utilisateur existe dans la base de données
 		$user_exists = false;

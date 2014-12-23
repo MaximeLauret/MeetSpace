@@ -19,7 +19,7 @@ Created by Max (2014-12-23)
 
 		<?php
 		
-			echo ("Hello".$_SESSION["user"]);
+			echo ("Hello".$_SESSION["NICKNAME"]);
 		
 		?>
 
