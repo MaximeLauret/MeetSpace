@@ -7,5 +7,6 @@
 
 function disable_vhost
 { 
-	rm /etc/apache2/sites-enabled/$name.conf		# Deleting the symbolic link	
+	rm /etc/apache2/sites-enabled/$name.conf		# Deleting the symbolic link
+	service apache2 reload							# Reloading the Apache service
 }
