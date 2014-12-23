@@ -8,7 +8,7 @@ Created by Maxime (2014-10-24)
 
 function log_database () {		// Logging into the database	
 	try {	
-		$database = new PDO('mysql:host=localhost;dbname=MEETSPACE', 'root', '');
+		$database = new PDO('mysql:host=localhost;dbname=meetspace_bdd', 'meetspace_bdd', 'meetspace_bdd');
 	} catch (Exception $e) {
 		die("Error : ".$e->getMessage());
 	}
