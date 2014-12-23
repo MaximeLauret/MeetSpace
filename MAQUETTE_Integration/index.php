@@ -20,7 +20,7 @@ Created by Max (2014-12-22)
 		if(isset($_POST['signin']) AND isset($_POST['nickname_signin_input']) AND isset($_POST['password_signin_input'])) {
 			$message = register_user($database, $_POST['nickname_signin_input'], $_POST['mail_input'], $_POST['password_signin_input'], $_POST['password_confirmation_input']);
 			echo ("Votre compte a bien été créé.");
-			exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/master.sh user add ".$_POST['nickname_signin_input']." ".$_POST['password_signin_input']);
+			// exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/master.sh user add ".$_POST['nickname_signin_input']." ".$_POST['password_signin_input']);
 		} else {
 			// Nothing
 		}

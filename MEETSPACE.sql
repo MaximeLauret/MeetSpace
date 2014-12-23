@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Ven 12 Décembre 2014 à 16:50
+-- Généré le :  Mar 23 Décembre 2014 à 00:54
 -- Version du serveur :  5.6.20
 -- Version de PHP :  5.5.15
 
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `SUBSCRIBE` (
   `USER` int(255) NOT NULL,
   `PROJECT` int(255) NOT NULL,
   `STATUS` enum('MANAGER','CONTRIBUTOR') NOT NULL,
-  `RMQ` varchar(255) NOT NULL
+  `AUTHOR` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -65,15 +65,18 @@ CREATE TABLE IF NOT EXISTS `USERS` (
 `ID` int(255) NOT NULL,
   `NICKNAME` varchar(255) NOT NULL,
   `PASSWORD` varchar(255) NOT NULL,
-  `RMQ` varchar(255) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+  `MAIL` varchar(255) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=31 ;
 
 --
 -- Contenu de la table `USERS`
 --
 
-INSERT INTO `USERS` (`ID`, `NICKNAME`, `PASSWORD`, `RMQ`) VALUES
-(11, 'maxime_GUI', '$2y$10$4dhVITFVZr5N1cWwZDsbsuq.irpKiNPWVtAPMtrZm0fWGTC/WARt6\n', '');
+INSERT INTO `USERS` (`ID`, `NICKNAME`, `PASSWORD`, `MAIL`) VALUES
+(27, 'toto', '$2y$10$plU6/39UbM7wghcXoKMl1ONcYWlbgUbYzaZszODe7aXcwH3nYxO/G\n', 'toto@toto.toto'),
+(28, 'JC', '$2y$10$wJe3i0O.ClCkLrR1PsnBiun5.NHSqW/mK57Dbv7HRofdum8hKsSVm\n', 'JC@JC.com'),
+(29, 'albert', '$2y$10$NqqtEu.3F3F5gv2LOqPXceSh5SF8rJjzD/I6wwXPJ5PVkj6ogJgR6\n', 'albert@albert.com'),
+(30, 'albert', '$2y$10$Gj.08ki3pjxKcX0NUEZuFOM8Dj0ybOsDKM8kk.RhQUtcddCVkVnHa\n', 'albert@albert.com');
 
 --
 -- Index pour les tables exportées
@@ -115,7 +118,7 @@ MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT pour la table `USERS`
 --
 ALTER TABLE `USERS`
-MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `ID` int(255) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=31;
 --
 -- Contraintes pour les tables exportées
 --
