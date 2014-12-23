@@ -6,7 +6,7 @@
 
 function del_vhost
 { 
-	disable_vhost								# Disabling the Vhost
+	disable_vhost									# Disabling the Vhost
 	rm /etc/apache2/sites-available/$name.conf		# Deleting the .conf file
 	rm -R /var/sftp/$name							# Deleting the directory
 
