@@ -1,8 +1,6 @@
 #!/bin/bash
 #Script d'ajout d'un utilisateur Unix sur le serveur Meetspace
 
-function del_userUnix
-{ 
 	cd /var/sftp/home
 
 	#Suppression de l'utilisateur
@@ -10,4 +8,3 @@ function del_userUnix
 
 	#Suppression de son répertoire
 	rm -rf $name
-}

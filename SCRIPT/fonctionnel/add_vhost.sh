@@ -3,9 +3,7 @@
 # add_vhost.sh
 # Create a new VHost
 # Created by Maxime LAURET (2014-11-26)
-
-function add_vhost
-{ 
+ 
 	# Creating the directory host
 	mkdir -p /var/sftp/$name/www
 	# According rights to the user interface
@@ -17,4 +15,3 @@ function add_vhost
 	</VirtualHost>
 	" > /etc/apache2/sites-available/$name.conf
 	service apache2 reload							# Reloading the Apache service
-}

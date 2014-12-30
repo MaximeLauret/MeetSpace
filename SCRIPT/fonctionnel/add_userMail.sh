@@ -1,7 +1,5 @@
 #!/bin/bash
-
-function add_userMail
-{ 
+ 
 
 	#Ajout utilisateur postfix
 		echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
@@ -35,5 +33,3 @@ function add_userMail
 	.
 	quit
 AUTO
-
-}

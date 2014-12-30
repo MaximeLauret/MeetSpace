@@ -1,7 +1,5 @@
 #!/bin/bash
 
-function add_userAlias
-{ 
 	var=`grep "contact@$projectName" /etc/postfix/virtual`
 
 	sed -i "/${var}/d" /etc/postfix/virtual
@@ -18,4 +16,3 @@ function add_userAlias
 
 	postmap /etc/postfix/virtual
 	service postfix restart
-}
