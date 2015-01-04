@@ -1,20 +1,20 @@
 #!/bin/bash
 
-var=`grep "contact@$projectName" /etc/postfix/virtual`
+var=`/bin/grep "contact@$projectName" /etc/postfix/virtual`
 
-sed -i "/${var}/d" /etc/postfix/virtual
+/bin/sed -i "/${var}/d" /etc/postfix/virtual
 
 if [[ $var != *$userName* ]]
 then
 	if [[ $var = *\; ]]
 	then
-			echo "$var\"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+			/bin/echo "$var\"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
 	else
-			echo "$var \"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+			/bin/echo "$var \"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
 	fi
 else
-	echo "$var" >> /etc/postfix/virtual
+	/bin/echo "$var" >> /etc/postfix/virtual
 fi
 
 postmap /etc/postfix/virtual
-service postfix restart
+/usr/bin/service postfix restart
