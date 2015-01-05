@@ -1,6 +1,11 @@
 #!/bin/bash
+# GUEZOU Guillaume - Gestion du mail(postfix)
 #Suppression utilisateur
 
+#Variable
+name=$1
+
+#Script
 #Retrait sur postfix
 /bin/sed -i "/${name}/d" /etc/postfix/mailboxmap
 /usr/sbin/postmap /etc/postfix/mailboxmap

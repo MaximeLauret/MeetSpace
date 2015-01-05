@@ -1,6 +1,9 @@
 #!/bin/bash
+# GUEZOU Guillaume - Gestion du chat(prosody)
+#Variable
+name=$1
 
-#Variables : Nom
+#Script
 
 if [ -e /var/lib/prosody/meetspace%2eitinet%2efr/accounts/$name.dat ]
 then

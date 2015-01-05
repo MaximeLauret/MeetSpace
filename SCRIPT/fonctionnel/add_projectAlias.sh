@@ -1,5 +1,9 @@
 #!/bin/bash
+# GUEZOU Guillaume - Gestion des alias
+#Variable
+name=$1
 
+#Script
 /bin/grep -on "contact@$name" /etc/postfix/virtual
 retval=$?
 

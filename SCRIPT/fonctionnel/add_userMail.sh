@@ -1,5 +1,10 @@
 #!/bin/bash
+# GUEZOU Guillaume - Gestion du mail (postfix)
+#Variable
+name=$1
+password=$2
 
+#Script
 
 #Ajout utilisateur postfix
 	/bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap

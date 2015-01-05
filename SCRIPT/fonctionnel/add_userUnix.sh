@@ -1,9 +1,15 @@
 #!/bin/bash
 #Script d'ajout d'un utilisateur Unix sur le serveur Meetspace
-
+#Pierrick VERAN
 #Ajout de l'utilisateur Unix:
-#Création du répertoire personnel de l'utilisateur
 
+#Variables
+name=$1
+password=$2
+
+#Script
+
+#Création du répertoire personnel de l'utilisateur
 /bin/mkdir /var/sftp/home/$name
 
 #Chiffrage du mdp

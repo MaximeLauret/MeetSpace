@@ -77,21 +77,23 @@ echo " VAR6: $VAR6"
 
 case $VAR1 in
 	user)
+
 	#Initialisation des variables utilisateur
 	name=$VAR3
 	password=$VAR4
 	case $VAR2 in	 # GESTION DES UTILISATEURS
 
 		add)  # CREATION D'UN UTILISATEUR
+
 			echo " main: Ajout d'un nouvel utilisateur name:$name password:$password"
-			add_userUnix
-			add_userMail
+			add_userUnix $name $password
+			add_userMail $name $password
 		;;
 
 		del)   # SUPPRESSION D'UN UTILISATEUR
 			echo " main: Suppression de l'utilisateur name:$VAR3"
-			del_userUnix
-			del_userMail
+			del_userUnix $name
+			del_userMail $name
 		;;
 
 		*) afficher_Menu
@@ -104,19 +106,19 @@ case $VAR1 in
 		add) # CREATION D'UN PROJETS
 			name=$VAR3
 			echo " main: Ajout du projet name:$name"
-			add_projectAlias
-			add_vhost
-			add_dns
-			add_blog
+			add_projectAlias $name
+			add_vhost $name
+			add_dns $name
+			add_blog $name
 		;;
 
 		del) # SUPPRESSION D'UN PROJETS
 			name=$VAR3
 			echo " main: Suppression du projet name:$name"
-			del_projectAlias
-			del_vhost
-			del_dns
-			del_blog
+			del_projectAlias $name
+			del_vhost $name
+			del_dns $name
+			del_blog $name
 		;;
 
 		vhost) # GESTION DES VHOSTS
@@ -125,12 +127,12 @@ case $VAR1 in
 
 			enable) # ACTIVATION D'UN VHOST
 			echo " main: Activation du vhost name:$name"
-			enable_vhost
+			enable_vhost $name
 			;;
 
 			disable) # DÉSACTIVATION D'UN VHOST
 			echo " main: Désactivation du vhost name:$name"
-			disable_vhost
+			disable_vhost $name
 			;;
 			*) afficher_Menu
 			esac
@@ -143,12 +145,12 @@ case $VAR1 in
 
 			add) # CREATION D'UN ALIAS
 			echo " main: Création de l'alias projectName:$projectName userName:$userName"
-			add_userAlias
+			add_userAlias $userName $projectName
 			;;
 
 			del) # SUPPRESSION D'UN ALIAS
 			echo " main: Suppression de l'alias projectName:$projectName userName:$userName"
-			del_userAlias
+			del_userAlias $userName $projectName
 			;;
 			*) afficher_Menu
 			esac

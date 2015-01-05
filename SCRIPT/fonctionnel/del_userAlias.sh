@@ -1,5 +1,9 @@
 #!/bin/bash
-
+# GUEZOU Guillaume - Gestion des alias
+#Variable
+userName=$1
+projectName=$2
+#Script
 var=`/bin/grep "contact@$projectName" /etc/postfix/virtual`
 
 /bin/sed -i "/${var}/d" /etc/postfix/virtual

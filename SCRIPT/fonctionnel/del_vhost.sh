@@ -4,6 +4,10 @@
 # Delete a VHost
 # Created by Maxime LAURET (2014-12-01)
 
+#Variable
+name=$1
+
+#Script
 /bin/rm /etc/apache2/sites-available/$name.conf		# Deleting the .conf file
 /bin/rm -R /var/sftp/$name							# Deleting the directory
 

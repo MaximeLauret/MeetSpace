@@ -4,6 +4,9 @@
 # Create a new VHost
 # Created by Maxime LAURET (2014-11-26)
 
+#Variables
+name=$1
+
 # Creating the directory host
 /bin/mkdir -p /var/sftp/$name/www
 # According rights to the user interface

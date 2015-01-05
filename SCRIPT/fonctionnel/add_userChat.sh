@@ -1,6 +1,10 @@
 #!/bin/bash
+# GUEZOU Guillaume - Gestion du chat (prosody)
+#Variable
+name=$1
+password=$2
 
-#Variables : Nom et Password utilisateur
+#Script
 
 if [ ! -e /var/lib/prosody/meetspace%2eitinet%2efr/accounts/$name ]
 then
