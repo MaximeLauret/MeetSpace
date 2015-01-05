@@ -6,21 +6,28 @@ projectName=$2
 
 #Script
 
-var=`/bin/grep "contact@$projectName" /etc/postfix/virtual`
+if (($#=="2"));then
+	
+	var=`/bin/grep "contact@$projectName" /etc/postfix/virtual`
 
-/bin/sed -i "/${var}/d" /etc/postfix/virtual
+	/bin/sed -i "/${var}/d" /etc/postfix/virtual
 
-if [[ $var != *$userName* ]]
-then
-	if [[ $var = *\; ]]
+	if [[ $var != *$userName* ]]
 	then
-			/bin/echo "$var\"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+		if [[ $var = *\; ]]
+		then
+				/bin/echo "$var\"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+		else
+				/bin/echo "$var \"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+		fi
 	else
-			/bin/echo "$var \"$userName@meetspace.itinet.fr\";" >> /etc/postfix/virtual
+		/bin/echo "$var" >> /etc/postfix/virtual
 	fi
+
+	/usr/sbin/postmap  /etc/postfix/virtual
+	/usr/bin/service postfix restart
 else
-	/bin/echo "$var" >> /etc/postfix/virtual
+	echo " add_userAlias: Nombre de paramètres invalide "
 fi
 
-/usr/sbin/postmap  /etc/postfix/virtual
-/usr/bin/service postfix restart
+

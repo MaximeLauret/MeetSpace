@@ -4,19 +4,23 @@
 userName=$1
 projectName=$2
 #Script
-var=`/bin/grep "contact@$projectName" /etc/postfix/virtual`
+if (($#=="2"));then
+	var=`/bin/grep "contact@$projectName" /etc/postfix/virtual`
 
-/bin/sed -i "/${var}/d" /etc/postfix/virtual
-/bin/echo "$var" > /etc/postfix/var.txt
+	/bin/sed -i "/${var}/d" /etc/postfix/virtual
+	/bin/echo "$var" > /etc/postfix/var.txt
 
-if [[ $var = *$userName* ]]
-then
-	/bin/sed -i "s/\"${userName}@meetspace.itinet.fr\";//" /etc/postfix/var.txt
-	var=$(</etc/postfix/var.txt)
-	/bin//bin/echo "$var" >> /etc/postfix/virtual
+	if [[ $var = *$userName* ]]
+	then
+		/bin/sed -i "s/\"${userName}@meetspace.itinet.fr\";//" /etc/postfix/var.txt
+		var=$(</etc/postfix/var.txt)
+		/bin//bin/echo "$var" >> /etc/postfix/virtual
+	else
+		/bin/echo "$var" >> /etc/postfix/virtual
+	fi
+
+	/usr/sbin/postmap /etc/postfix/virtual
+	/usr/bin/service postfix restart
 else
-	/bin/echo "$var" >> /etc/postfix/virtual
+	echo " del_userAlias: Nombre de paramètres invalide "
 fi
-
-/usr/sbin/postmap /etc/postfix/virtual
-/usr/bin/service postfix restart

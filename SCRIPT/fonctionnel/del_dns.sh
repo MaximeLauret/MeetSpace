@@ -17,8 +17,7 @@ if (($#=="1"));then
 	/bin/sed -i "/${name}/d" /etc/tinydns/root/data
 	/usr/bin/make -C /etc/tinydns/root/
 else
-echo " Nombre de paramêtre invalide "
-
+	echo " del_dns: Nombre de paramètres invalide "
 fi
 
 

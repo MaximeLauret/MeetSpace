@@ -12,7 +12,6 @@ if (($#=="1"));then
 	/usr/bin/make -C /etc/tinydns/root/
 
 else
-echo " add_dns:Nombre de paramêtre invalide "
-
+	echo " add_dns: Nombre de paramètres invalide "
 fi
 

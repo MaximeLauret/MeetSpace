@@ -5,6 +5,12 @@
 #Variable
 name=$1
 
-#Script
-/bin/cp -R /var/sftp/dotclear_install/dotclear/* /var/sftp/$name/www/
-/bin/chown -R www-data:www-data /var/sftp/$name
+if (($#=="1"));then
+	#Script
+	/bin/cp -R /var/sftp/dotclear_install/dotclear/* /var/sftp/$name/www/
+	/bin/chown -R www-data:www-data /var/sftp/$name
+else
+	echo " add_blogNombre: de paramètres invalide "
+fi
+
+

@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 # disable_vhost.sh
 # Disable a VHost
 # Created by Maxime LAURET (2014-12-01)
@@ -10,5 +9,10 @@
 name=$1
 
 #Script
-/bin/rm /etc/apache2/sites-enabled/$name.conf		# Deleting the symbolic link
-/usr/bin/service apache2 reload							# Reloading the Apache service
+
+if (($#=="1"));then
+	/bin/rm /etc/apache2/sites-enabled/$name.conf		# Deleting the symbolic link
+	/usr/bin/service apache2 reload				# Reloading the Apache service
+else
+	echo " disable_vhost: Nombre de paramètres invalide "
+fi

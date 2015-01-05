@@ -5,4 +5,9 @@
 name=$1
 
 #Script
-/bin/rm -R /var/sftp/$name/www/*
+
+if (($#=="1"));then
+	/bin/rm -R /var/sftp/$name/www/*
+else
+	echo " del_blog: Nombre de paramètres invalide "
+fi
