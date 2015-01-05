@@ -94,7 +94,8 @@ case $VAR1 in
 			;;
 
 			*) afficher_Menu;;
-			esac
+		esac
+	;;
 
 	project)	 # GESTION DES PROJETS
 		case $VAR2 in
@@ -130,14 +131,13 @@ case $VAR1 in
 					;;
 					
 					*) afficher_Menu;;
-					esac
+				esac
 			;;
 
 			alias) # GESTION DES ALIAS
 				projectName=$VAR4
 				userName=$VAR5
-					case $VAR3 in
-
+				case $VAR3 in
 					add) # CREATION D'UN ALIAS
 						echo " main: Création de l'alias projectName:$projectName userName:$userName"
 						add_userAlias $userName $projectName
@@ -147,9 +147,13 @@ case $VAR1 in
 						del_userAlias $userName $projectName
 					;;
 					*) afficher_Menu;;
-					esac
+				esac
+			;;
+	
 			*) afficher_Menu;;
-			esac
+		esac
+	;;
+		
 	*) afficher_Menu;;
 	esac
 exit
