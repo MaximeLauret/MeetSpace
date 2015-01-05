@@ -2,7 +2,7 @@
 
 #Variables : Nom
 
-if [ -e /var/lib/prosody/meetspace%2eitinet%2efr/accounts/$name ]
+if [ -e /var/lib/prosody/meetspace%2eitinet%2efr/accounts/$name.dat ]
 then
 	/usr/bin/prosodyctl deluser $name@meetspace.itinet.fr
 	/usr/bin/prosodyctl restart
