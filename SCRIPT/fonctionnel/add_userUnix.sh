@@ -18,5 +18,5 @@ mkpassword=`/usr/bin/mkpasswd $password`
 /bin/chgrp -R meetspace_user $name /var/sftp/home/$name
 
 #Mise en place des quotas:
-setquota -u $name 300 300 0 0 -a /var/sftp/home/$name
-setquota -u $name 200 200 0 0 -a /var/mail/$name
+/usr/sbin/setquota -u $name 300 300 0 0 -a /var/sftp/home/$name
+/usr/sbin/setquota -u $name 200 200 0 0 -a /var/mail/$name

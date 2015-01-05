@@ -11,8 +11,8 @@ then
 	var=$(</etc/postfix/var.txt)
 	/bin//bin/echo "$var" >> /etc/postfix/virtual
 else
-	echo "$var" >> /etc/postfix/virtual
+	/bin/echo "$var" >> /etc/postfix/virtual
 fi
 
-postmap /etc/postfix/virtual
+/usr/sbin/postmap /etc/postfix/virtual
 /usr/bin/service postfix restart

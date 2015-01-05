@@ -8,5 +8,5 @@ then
 	   /bin/echo "contact@$name" >> /etc/postfix/virtual
 fi
 
-postmap /etc/postfix/virtual
+/usr/sbin/postmap  /etc/postfix/virtual
 /usr/bin/service postfix restart
