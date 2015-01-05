@@ -11,5 +11,5 @@ name=$1
 /bin/echo " Suppression de la ligne: $name"
 /bin/echo "+"$name".meetspace.itinet.fr:88.177.168.133:86400"
 /bin/sed -i "/${name}/d" /etc/tinydns/root/data
-/usr/bin/make /etc/tinydns/root/
+/usr/bin/make -C /etc/tinydns/root/
 
