@@ -6,36 +6,36 @@
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 echo " Include: Start .."
 #Unix / MySecureShell / Quota - Gestion des utilisateurs
-function add_userUnix{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh}
-function del_userUnix{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userUnix.sh}
+function add_userUnix{source ./add_userUnix.sh}
+function del_userUnix{source ./del_userUnix.sh}
 
 #Mail - Gestion des utilisateurs
-function add_userMail{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh}
-function del_userMail{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userMail.sh}
+function add_userMail{source ./add_userMail.sh}
+function del_userMail{source ./del_userMail.sh}
 
 #Mail - Gestion des alias
 
-function add_projectAlias{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_projectAlias.sh}
-function add_userAlias{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh}
-function del_projectAlias{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_projectAlias.sh}
-function del_userAlias{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userAlias.sh}
+function add_projectAlias{source ./add_projectAlias.sh}
+function add_userAlias{source ./add_userAlias.sh}
+function del_projectAlias{source ./del_projectAlias.sh}
+function del_userAlias{source ./del_userAlias.sh}
 
 #Virtualhost - Apache - Gestion des sites Web
-function add_vhost{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_vhost.sh}
-function del_vhost{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_vhost.sh}
-function disable_vhost{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/disable_vhost.sh}
-function enable_vhost{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/enable_vhost.sh}
+function add_vhost{source ./add_vhost.sh}
+function del_vhost{source ./del_vhost.sh}
+function disable_vhost{source ./disable_vhost.sh}
+function enable_vhost{source ./enable_vhost.sh}
 
 #DNS - TinyDNS - Gestion des sites Web
-function add_dns{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_dns.sh}
-function del_dns{source /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_dns.sh}
+function add_dns{source ./add_dns.sh}
+function del_dns{source ./del_dns.sh}
 
 #Blog - Dotclear 
-function add_blog{/home/GIT_REPOSITORY/SCRIPT/fonctionnel/source add_blog.sh}
-function del_blog{/home/GIT_REPOSITORY/SCRIPT/fonctionnel/source del_blog.sh}
+function add_blog{source ./source add_blog.sh}
+function del_blog{source ./source del_blog.sh}
 
 #Le menu du script master - Explique comment utiliser le script
-function master_menu{/home/GIT_REPOSITORY/SCRIPT/fonctionnel/source master_menu.sh}
+function master_menu{source ./source master_menu.sh}
 
 declare -F
 
