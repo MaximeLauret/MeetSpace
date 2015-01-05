@@ -75,85 +75,85 @@ echo " VAR6: $VAR6"
 
 
 
-case $VAR1 in
-	user)
-		#Initialisation des variables utilisateur
-		name=$VAR3
-		password=$VAR4
-		case $VAR2 in	 # GESTION DES UTILISATEURS
-			add)  # CREATION D'UN UTILISATEUR
-				echo " main: Ajout d'un nouvel utilisateur name:$name password:$password"
-				add_userUnix $name $password
-				add_userMail $name $password
-			;;
+	case $VAR1 in
+		user)
+			#Initialisation des variables utilisateur
+			name=$VAR3
+			password=$VAR4
+			case $VAR2 in	 # GESTION DES UTILISATEURS
+				add)  # CREATION D'UN UTILISATEUR
+					echo " main: Ajout d'un nouvel utilisateur name:$name password:$password"
+					add_userUnix $name $password
+					add_userMail $name $password
+				;;
 
-			del)   # SUPPRESSION D'UN UTILISATEUR
-				echo " main: Suppression de l'utilisateur name:$VAR3"
-				del_userUnix $name
-				del_userMail $name
-			;;
+				del)   # SUPPRESSION D'UN UTILISATEUR
+					echo " main: Suppression de l'utilisateur name:$VAR3"
+					del_userUnix $name
+					del_userMail $name
+				;;
 
-			*) afficher_Menu;;
-		esac
-	;;
+				*) afficher_Menu ;;
+			esac
+		;;
 
-	project)	 # GESTION DES PROJETS
-		case $VAR2 in
-			add) # CREATION D'UN PROJETS
-				name=$VAR3
-				echo " main: Ajout du projet name:$name"
-				add_projectAlias $name
-				add_vhost $name
-				add_dns $name
-				add_blog $name
-			;;
+		project)	 # GESTION DES PROJETS
+			case $VAR2 in
+				add) # CREATION D'UN PROJETS
+					name=$VAR3
+					echo " main: Ajout du projet name:$name"
+					add_projectAlias $name
+					add_vhost $name
+					add_dns $name
+					add_blog $name
+				;;
 
-			del) # SUPPRESSION D'UN PROJETS
-				name=$VAR3
-				echo " main: Suppression du projet name:$name"
-				del_projectAlias $name
-				del_vhost $name
-				del_dns $name
-				del_blog $name
-			;;
+				del) # SUPPRESSION D'UN PROJETS
+					name=$VAR3
+					echo " main: Suppression du projet name:$name"
+					del_projectAlias $name
+					del_vhost $name
+					del_dns $name
+					del_blog $name
+				;;
 
-			vhost) # GESTION DES VHOSTS
-				name=$VAR4
-				case $VAR3 in
-					enable) # ACTIVATION D'UN VHOST
-						echo " main: Activation du vhost name:$name"
-						enable_vhost $name
-					;;
+				vhost) # GESTION DES VHOSTS
+					name=$VAR4
+					case $VAR3 in
+						enable) # ACTIVATION D'UN VHOST
+							echo " main: Activation du vhost name:$name"
+							enable_vhost $name
+						;;
 
-					disable) # DÉSACTIVATION D'UN VHOST
-						echo " main: Désactivation du vhost name:$name"
-						disable_vhost $name
-					;;
-					
-					*) afficher_Menu;;
-				esac
-			;;
+						disable) # DÉSACTIVATION D'UN VHOST
+							echo " main: Désactivation du vhost name:$name"
+							disable_vhost $name
+						;;
+						
+						*) afficher_Menu ;;
+					esac
+				;;
 
-			alias) # GESTION DES ALIAS
-				projectName=$VAR4
-				userName=$VAR5
-				case $VAR3 in
-					add) # CREATION D'UN ALIAS
-						echo " main: Création de l'alias projectName:$projectName userName:$userName"
-						add_userAlias $userName $projectName
-					;;
-					del) # SUPPRESSION D'UN ALIAS
-						echo " main: Suppression de l'alias projectName:$projectName userName:$userName"
-						del_userAlias $userName $projectName
-					;;
-					*) afficher_Menu;;
-				esac
-			;;
-	
-			*) afficher_Menu;;
-		esac
-	;;
+				alias) # GESTION DES ALIAS
+					projectName=$VAR4
+					userName=$VAR5
+					case $VAR3 in
+						add) # CREATION D'UN ALIAS
+							echo " main: Création de l'alias projectName:$projectName userName:$userName"
+							add_userAlias $userName $projectName
+						;;
+						del) # SUPPRESSION D'UN ALIAS
+							echo " main: Suppression de l'alias projectName:$projectName userName:$userName"
+							del_userAlias $userName $projectName
+						;;
+						*) afficher_Menu ;;
+					esac
+				;;
 		
-	*) afficher_Menu;;
+				*) afficher_Menu ;;
+			esac
+		;;
+			
+		*) afficher_Menu ;;
 	esac
 exit
