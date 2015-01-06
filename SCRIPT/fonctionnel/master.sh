@@ -38,7 +38,7 @@ function del_blog() { eval "source del_blog.sh"; }
 #Le menu du script master - Explique comment utiliser le script
 function master_menu() { eval "source master_menu.sh"; }
 
-declare -F
+#declare -F #Permet de lister les fonctions ajouté dans le script.
 
 echo " Include: .. end "
 
@@ -50,26 +50,26 @@ echo " Include: .. end "
 
 #
 VAR1=$1
-echo " VAR1: $VAR1"
+#echo " VAR1: $VAR1"
 #
 VAR2=$2
-echo " VAR2: $VAR2"
+#echo " VAR2: $VAR2"
 
 # 
 VAR3=$3
-echo " VAR3: $VAR3"
+#echo " VAR3: $VAR3"
 
 # 
 VAR4=$4
-echo " VAR4: $VAR4"
+#echo " VAR4: $VAR4"
 
 #
 VAR5=$5
-echo " VAR5: $VAR5"
+#echo " VAR5: $VAR5"
 
 #
 VAR6=$6
-echo " VAR6: $VAR6"
+#echo " VAR6: $VAR6"
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #											Main
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
