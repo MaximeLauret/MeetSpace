@@ -12,7 +12,7 @@ name=$1
 if (($#=="1"));then
 	/bin/rm /etc/apache2/sites-available/$name.conf		# Deleting the .conf file
 	/bin/rm -R /var/sftp/$name				# Deleting the directory
-	/usr/bin/service apache2 reload				# Reloading the Apache service
+	/usr/sbin/service apache2 reload				# Reloading the Apache service
 else
 	echo " del_vhost: Nombre de paramètres invalide "
 fi

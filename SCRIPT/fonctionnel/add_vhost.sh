@@ -20,7 +20,7 @@ if (($#=="1"));then
 		DocumentRoot /var/sftp/$name/www
 	</VirtualHost>
 	" > /etc/apache2/sites-available/$name.conf
-	/usr/bin/service apache2 reload		# Reloading the Apache service
+	/usr/sbin/service apache2 reload		# Reloading the Apache service
 else
 	echo " ad_vhost: Nombre de paramètres invalide "
 fi

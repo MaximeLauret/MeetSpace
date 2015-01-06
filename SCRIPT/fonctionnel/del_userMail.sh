@@ -10,7 +10,7 @@ if (($#=="1"));then
 	#Retrait sur postfix
 	/bin/sed -i "/${name}/d" /etc/postfix/mailboxmap
 	/usr/sbin/postmap /etc/postfix/mailboxmap
-	/usr/bin/service postfix reload
+	/usr/sbin/service postfix reload
 
 	#Retrait sur courier-IMAP
 	/bin/sed -i "/${name}/d" /etc/courier/userdb

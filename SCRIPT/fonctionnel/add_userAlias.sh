@@ -25,7 +25,7 @@ if (($#=="2"));then
 	fi
 
 	/usr/sbin/postmap  /etc/postfix/virtual
-	/usr/bin/service postfix restart
+	/usr/sbin/service postfix restart
 else
 	echo " add_userAlias: Nombre de paramètres invalide "
 fi

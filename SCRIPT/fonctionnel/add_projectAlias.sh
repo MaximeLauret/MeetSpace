@@ -14,7 +14,7 @@ if (($#=="1"));then
 	fi
 
 	/usr/sbin/postmap  /etc/postfix/virtual
-	/usr/bin/service postfix restart
+	/usr/sbin/service postfix restart
 else
 	echo " add_projectAlias: Nombre de paramètres invalide "
 fi

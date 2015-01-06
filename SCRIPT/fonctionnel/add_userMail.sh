@@ -10,7 +10,7 @@ if (($#=="2"));then
 		#Ajout utilisateur postfix
 		/bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
 		/usr/sbin/postmap  /etc/postfix/mailboxmap
-		/usr/bin/service postfix restart
+		/usr/sbin/service postfix restart
 
 	#Création Maildir utilisateur
 		if [ ! -r /var/mail/$name ]
