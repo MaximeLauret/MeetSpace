@@ -23,7 +23,7 @@ if (($#=="2"));then
 
 	#Mise en place de ses droits sur son /home
 	/bin/chown -R $name /var/sftp/home/$name
-	/bin/chgrp -R meetspace_user $name /var/sftp/home/$name
+	/bin/chgrp -R meetspace_user /var/sftp/home/$name
 
 	#Mise en place des quotas:
 	/usr/sbin/setquota -u $name 300 300 0 0 -a /var/sftp/home/$name

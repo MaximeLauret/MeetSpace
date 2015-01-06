@@ -30,7 +30,7 @@ if (($#=="2"));then
 		/usr/sbin/makeuserdb 
 
 	#Initialisation du dossier principal de la boite mail
-	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<AUTO
+	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<-AUTO
 	mail from:<contact@meetspace.itinet.fr>
 	rcpt to:<$name@meetspace.itinet.fr>
 	data
