@@ -13,6 +13,10 @@ function del_userUnix { eval "source del_userUnix.sh"; }
 function add_userMail { eval "source add_userMail.sh"; }
 function del_userMail { eval "source del_userMail.sh"; }
 
+#Tchat - Gestion des utilisateurs
+function add_userChat { eval "source add_userChat.sh"; }
+function del_userChat { eval "source del_userChat.sh"; }
+
 #Mail - Gestion des alias
 
 function add_projectAlias() { eval "source add_projectAlias.sh"; }
@@ -85,12 +89,14 @@ VAR6=$6
 					echo " main: Ajout d'un nouvel utilisateur name:$name password:$password"
 					add_userUnix $name $password
 					add_userMail $name $password
+					add_userChat $name $password
 				;;
 
 				del)   # SUPPRESSION D'UN UTILISATEUR
 					echo " main: Suppression de l'utilisateur name:$VAR3"
 					del_userUnix $name
 					del_userMail $name
+					del_userChat $name
 				;;
 
 				*) master_menu ;;
