@@ -135,7 +135,7 @@ echo " VAR6: $VAR6"
 					esac
 				;;
 
-				alias) # GESTION DES ALIAS
+				alias) # GESTION DES ALIAS SUR LES UTILISATEURS DU PROJET
 					projectName=$VAR4
 					userName=$VAR5
 					case $VAR3 in
