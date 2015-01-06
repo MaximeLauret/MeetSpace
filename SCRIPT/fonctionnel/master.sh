@@ -4,7 +4,7 @@
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #								Inclusion des diffèrentes fonction du script
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-echo " Include: Start .."
+#echo " Include: Start .."
 #Unix / MySecureShell / Quota - Gestion des utilisateurs
 function add_userUnix { eval "source add_userUnix.sh"; }
 function del_userUnix { eval "source del_userUnix.sh"; }
@@ -39,7 +39,7 @@ function master_menu() { eval "source master_menu.sh"; }
 
 #declare -F #Permet de lister les fonctions ajouté dans le script.
 
-echo " Include: .. end "
+#echo " Include: .. end "
 
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
 #										Déclaration des variables
