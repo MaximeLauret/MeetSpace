@@ -12,7 +12,7 @@ name=$1
 
 if (($#=="1"));then
 	/bin/rm /etc/apache2/sites-enabled/$name.conf		# Deleting the symbolic link
-	/usr/bin/service apache2 reload				# Reloading the Apache service
+	/usr/sbin/service apache2 reload				# Reloading the Apache service
 else
 	echo " disable_vhost: Nombre de paramètres invalide "
 fi
