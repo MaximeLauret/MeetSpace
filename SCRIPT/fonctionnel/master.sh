@@ -7,7 +7,6 @@
 echo " Include: Start .."
 #Unix / MySecureShell / Quota - Gestion des utilisateurs
 function add_userUnix { eval "source add_userUnix.sh"; }
-echo "1"
 function del_userUnix { eval "source del_userUnix.sh"; }
 
 #Mail - Gestion des utilisateurs
