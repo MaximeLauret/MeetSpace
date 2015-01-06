@@ -14,7 +14,7 @@ if (($#=="2"));then
 	then
 		/bin/sed -i "s/\"${userName}@meetspace.itinet.fr\";//" /etc/postfix/var.txt
 		var=$(</etc/postfix/var.txt)
-		/bin//bin/echo "$var" >> /etc/postfix/virtual
+		/bin/echo "$var" >> /etc/postfix/virtual
 	else
 		/bin/echo "$var" >> /etc/postfix/virtual
 	fi
