@@ -11,32 +11,32 @@ echo "1"
 function del_userUnix { echo eval "source del_userUnix.sh"; }
 
 #Mail - Gestion des utilisateurs
-function add_userMail { eval "source add_userMail.sh"; }
-function del_userMail { eval "source del_userMail.sh"; }
+function add_userMail { echo eval "source add_userMail.sh"; }
+function del_userMail { echo eval "source del_userMail.sh"; }
 
 #Mail - Gestion des alias
 
-function add_projectAlias() { eval "source add_projectAlias.sh"; }
-function add_userAlias() { eval "source add_userAlias.sh"; }
-function del_projectAlias() { eval "source del_projectAlias.sh"; }
-function del_userAlias() { eval "source del_userAlias.sh"; }
+function add_projectAlias() { echo eval "source add_projectAlias.sh"; }
+function add_userAlias() { echo eval "source add_userAlias.sh"; }
+function del_projectAlias() { echo eval "source del_projectAlias.sh"; }
+function del_userAlias() { echo eval "source del_userAlias.sh"; }
 
 #Virtualhost - Apache - Gestion des sites Web
-function add_vhost() { eval "source add_vhost.sh"; }
-function del_vhost() { eval "source del_vhost.sh"; }
-function disable_vhost() { eval "source disable_vhost.sh"; }
-function enable_vhost() { eval "source enable_vhost.sh"; }
+function add_vhost() { echo eval "source add_vhost.sh"; }
+function del_vhost() { echo eval "source del_vhost.sh"; }
+function disable_vhost() { echo eval "source disable_vhost.sh"; }
+function enable_vhost() { echo eval "source enable_vhost.sh"; }
 
 #DNS - TinyDNS - Gestion des sites Web
-function add_dns() { eval "source add_dns.sh"; }
-function del_dns() { eval "source del_dns.sh"; }
+function add_dns() { echo eval "source add_dns.sh"; }
+function del_dns() { echo eval "source del_dns.sh"; }
 
 #Blog - Dotclear 
-function add_blog() { eval "source add_blog.sh"; }
-function del_blog() { eval "source del_blog.sh"; }
+function add_blog() { echo eval "source add_blog.sh"; }
+function del_blog() { echo eval "source del_blog.sh"; }
 
 #Le menu du script master - Explique comment utiliser le script
-function master_menu() { eval "source master_menu.sh"; }
+function master_menu() { echo eval "source master_menu.sh"; }
 
 #declare -F #Permet de lister les fonctions ajouté dans le script.
 
