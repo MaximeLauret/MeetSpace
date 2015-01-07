@@ -17,9 +17,9 @@ function log_database () {		// CONNEXION À LA BASE DE DONNÉES
 
 function register_user($database, $nickname_signin_input, $mail_input, $password_signin_input, $password_confirmation_input) {		// INSCRIPTION
 
-		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input');
-		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input ');
-		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input');
+		exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input');
+		exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input ');
+		exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input');
 		
 		echo ("Votre compte a bien été créé.");
 	} else {
