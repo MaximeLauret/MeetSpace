@@ -18,7 +18,7 @@ echo " 		Ajout d'un projet"
 
 echo " 		Ajout d'un utilisateur à l'alias d'un projet"
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-./master.sh project alias add $userName $projectName
+./master.sh project alias add $projectName $userName
 
 
 echo "		Activation du vhost du projet:"
@@ -35,7 +35,7 @@ echo " del start .."
 
 echo " 		Suppresion d'un utilisateur à l'alias d'un projet"
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
-./master.sh project alias del $userName $projectName
+./master.sh project alias del $projectName $userName
 
 echo "		Désactivation du vhost du projet:"
 #------------------------------------------------------------------------------------------------------------------------------------------------------------
