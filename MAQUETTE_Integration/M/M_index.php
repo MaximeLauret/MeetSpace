@@ -23,9 +23,10 @@ function register_user($database, $nickname_signin_input, $mail_input, $password
 		'nickname_signin_input' => $nickname_signin_input,
 		'password_signin_input' => $password_signin_input_encrypted,
 		'mail_input' => $mail_input));
+		exec ("/home/maxime/./test.sh");
 		echo ("Votre compte a bien été créé.");
 	} else {
-		echo ("Votre inscription a échoué.  Veuillez réessayer ou contactez votre administrateur système.");
+		echo ("Votre inscription a échoué.  Veuillez réessayer ou contacter votre administrateur système.");
 	}
 }
 
@@ -55,14 +56,15 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		$password_matches = false;
 		$req = $database -> prepare ("SELECT PASSWORD FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
 		$req -> execute (array ("nickname_login_input" => $nickname_login_input));
-		$ligne = $req -> fetch();
+		$line = $req -> fetch();
+		$password_database = $line["PASSWORD"];
 		$req -> closeCursor();
 		
-		$password_login_input_encrypted = password_hash ($password_login_input, PASSWORD_DEFAULT). "\n";		// Password encryption
-		if ($password_login_input_encrypted === $ligne["PASSWORD"]) {
+		if (password_verify ($password_login_input_encrypted, $line["PASSWORD"])) {
+			echo "Le mot de passe est valide";
 			$password_matches = true;
 		} else {
-			// Rien
+			echo "Le mot de passe est invalide";
 		}
 
 }
