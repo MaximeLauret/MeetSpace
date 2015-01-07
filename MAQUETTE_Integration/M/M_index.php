@@ -16,14 +16,7 @@ function log_database () {		// CONNEXION À LA BASE DE DONNÉES
 }
 
 function register_user($database, $nickname_signin_input, $mail_input, $password_signin_input, $password_confirmation_input) {		// INSCRIPTION
-	if ($password_signin_input === $password_confirmation_input) {		// ON VÉRIFIE SI LE MOT DE PASSE ET LA CONFIRMATION CORRESPONDENT
-		$password_signin_input_encrypted = password_hash ($password_signin_input, PASSWORD_DEFAULT). "\n";		// CHIFFREMENT DU MOT DE PASSE
-		$req = $database->prepare('INSERT INTO `USERS` (`NICKNAME`, `PASSWORD`, `MAIL`) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)');
-		$req->execute(array(
-		'nickname_signin_input' => $nickname_signin_input,
-		'password_signin_input' => $password_signin_input_encrypted,
-		'mail_input' => $mail_input));
-		
+
 		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input');
 		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input ');
 		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input');
