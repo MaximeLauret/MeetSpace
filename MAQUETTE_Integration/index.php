@@ -9,7 +9,7 @@ Created by Max (2014-12-22)
 ?>
 	
 <?php
-	include ("M/M_index.php");
+	include ("./M/M_index.php");
 ?>
 	
 <?php
@@ -19,14 +19,13 @@ Created by Max (2014-12-22)
 	// INSCRIPTION
 		if(isset($_POST['signin']) AND isset($_POST['nickname_signin_input']) AND isset($_POST['password_signin_input'])) {
 			$message = register_user($database, $_POST['nickname_signin_input'], $_POST['mail_input'], $_POST['password_signin_input'], $_POST['password_confirmation_input']);
-			// exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/master.sh user add ".$_POST['nickname_signin_input']." ".$_POST['password_signin_input']);
 		} else {
 			// Nothing
 		}
 	
 	// CONNEXION
 		if(isset($_POST['login']) AND isset($_POST['nickname_login_input']) AND isset($_POST['password_login_input_encrypted'])) {
-			$message = connect_user($bdd, $_POST['nickname_c'], $_POST['pwd_c']);
+			$message = connect_user($database, $_POST['nickname_login_input'], $_POST['password_login_input_encrypted']);
 		} else {
 			// RIEN
 		}
@@ -34,5 +33,5 @@ Created by Max (2014-12-22)
 ?>
 	
 <?php
-	include ("V/V_index.php");
+	include ("./V/V_index.php");
 ?>

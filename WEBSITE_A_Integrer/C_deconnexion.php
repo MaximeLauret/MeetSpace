@@ -1,10 +1,9 @@
 <!--
-C_modele.php
-fichier contrôleur modèle
-Auteur : Kev (le 7.04.14)
-MaJ : 
-XXX (le XX.XX.XX)
+C_logout.php
+Controller for the log out function
+Created by Max (2015-01-07)
 -->
+
 <?php session_start(); ?>
 
 <!-- Modèle -->

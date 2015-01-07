@@ -9,7 +9,7 @@ Created by Max (2014-12-22)
 ?>
 	
 <?php
-	include ("M/M_myprojects.php");
+	include ("./M/M_myprojects.php");
 ?>
 
 <?php
@@ -19,5 +19,5 @@ Created by Max (2014-12-22)
 ?>
 	
 <?php
-	include ("V/V_myprojects.php");
+	include ("./V/V_myprojects.php");
 ?>

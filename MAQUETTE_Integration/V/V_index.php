@@ -44,10 +44,10 @@ Created by Maxime (2014-10-24)
 			</h3>	
 			<form class="form-horizontal" action="C_myprojects.php" method="POST">
 				<!-- PSEUDO INPUT -->
-					<input id="pseudoinput" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
+					<input id="nickname_login_input" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
 					<br/>
 				<!-- PASSWORD INPUT -->
-					<input id="passwordinput" name="password_login_input" type="password" placeholder="Password" class="form-control input-md" required="">
+					<input id="password_login_input" name="password_login_input" type="password" placeholder="Password" class="form-control input-md" required="">
 					<br/>
 				<!-- LOG IN BUTTON -->
 					<button id="submit" name="login" class="btn btn-primary btn-lg" value="login">Connexion</button>
