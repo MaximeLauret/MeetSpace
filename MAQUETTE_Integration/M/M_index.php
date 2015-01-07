@@ -23,7 +23,6 @@ function register_user($database, $nickname_signin_input, $mail_input, $password
 		'nickname_signin_input' => $nickname_signin_input,
 		'password_signin_input' => $password_signin_input_encrypted,
 		'mail_input' => $mail_input));
-		exec ("/home/maxime/./test.sh");
 		echo ("Votre compte a bien été créé.");
 	} else {
 		echo ("Votre inscription a échoué.  Veuillez réessayer ou contacter votre administrateur système.");
@@ -38,19 +37,6 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		$req -> execute (array ('nickname_login_input' => $nickname_login_input));
 		$ligne = $req -> fetch();
 		$req -> closeCursor();
-		
-		if ($user_exists === false) {
-			echo ("Cet utilisateur n'existe pas.");
-		} else if ($password_matches === false) {
-			echo ("Erreur de mot de passe.");
-		} else {
-			$req = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
-			$req -> execute (array ("nickname_login_input" => $nickname_login_input));
-			$line = $req -> fetch();
-			$id = $line["ID"];
-			$req -> closeCursor();
-			$_SESSION["USER"] = $line["ID"];
-		}
 
 	// On vérifie que le mot de passe entré correspond au mot de passe de la base de données.
 		$password_matches = false;
@@ -60,12 +46,34 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		$password_database = $line["PASSWORD"];
 		$req -> closeCursor();
 		
-		if (password_verify ($password_login_input_encrypted, $line["PASSWORD"])) {
+		if (password_verify ($password_login_input, $password_database)) {
 			echo "Le mot de passe est valide";
 			$password_matches = true;
 		} else {
 			echo "Le mot de passe est invalide";
 		}
+		
+		if ($ligne == false) {
+			echo ("Cet utilisateur n'existe pas.");
+		} else if ($password_matches == false) {
+			echo ("Erreur de mot de passe.");
+		} else {
+			$req = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
+			$req -> execute (array ("nickname_login_input" => $nickname_login_input));
+			$line = $req -> fetch();
+			$id = $line["ID"];
+			$req -> closeCursor();
+			$_SESSION["USER"] = $id;
+			echo("OK !!!");
+		}
+		
+		/*
+		while($line = $req->fetch() ) {
+			echo($line['PSEUDO'].$line['PWD']."\n")
+		}
+		* */
+		
+		
 
 }
 

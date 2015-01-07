@@ -24,10 +24,11 @@ Created by Max (2014-12-22)
 		}
 	
 	// CONNEXION
-		if(isset($_POST['login']) AND isset($_POST['nickname_login_input']) AND isset($_POST['password_login_input_encrypted'])) {
-			$message = connect_user($database, $_POST['nickname_login_input'], $_POST['password_login_input_encrypted']);
+		if(isset($_POST['login']) AND isset($_POST['nickname_login_input']) AND isset($_POST['password_login_input'])) {
+			$message = connect_user($database, $_POST['nickname_login_input'], $_POST['password_login_input']);
 		} else {
-			// RIEN
+			// Non
+			echo "TEST";
 		}
 
 ?>

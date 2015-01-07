@@ -9,78 +9,54 @@ Created by Maxime (2015-01-07)
 
 	function log_database () {		// Logging into the database	
 		try {	
-		$database = new PDO('mysql:host=localhost;dbname=MEETSPACE', 'root', '');
+		$database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
 		} catch (Exception $e) {
 			die("Error : ".$e->getMessage());
 		}
 		return $database;
 	}
 	
-	/* Pour chaque fonction programmée ici, on retournera un tableau contenant des ID (ID d'utilisateur, post, tableau). 
-	Ils seront traités ensuite ulterieurement puis affichés dans la vue. */
+	/*
+		Pour chaque fonction de recherche, on retourne un tableau contenant les ID (ID de l'user ou ID du projet).
+		Ils seront traités dans le Controller puis les résultats seront affichés dans la View.
+	*/
 	
-	/* function search_by_member($database, $string) {		// Search by member
-		$tab = array();
+	function search_user ($database, $string) {		// Searching for an user
+		$users_results = array();
 		$i=0;
-		$request = $database->prepare("SELECT ID, nickname
-										FROM USERS 
-										WHERE NICKNAME LIKE :member_id");
+		$request = $database -> prepare("SELECT ID, NICKNAME FROM USERS WHERE NICKNAME LIKE :member_searched");
 		
-		$request->execute(array("member_id" => "%".$string."%"));
+		$request->execute(array("member_searched" => "%".$string."%"));
 		
 		while($data = $request->fetch()) {
-			$tab[$i]['id'] = $data['ID'];
-			$tab[$i]['result'] = $data['nickname'];
-			$tab[$i]["ligne"] = "<a href='PAS ENCORE DE LIEN'>Ajouter aux contacts</a>";		// La ligne de code associé à cette recherche
+			$users_results[$i]['id'] = $data['ID'];
+			$users_results[$i]['result'] = $data['NICKNAME'];
+			$users_results[$i]["ligne"] = "<a href='./../C_profile.php'> Voir le profil </a>";
 			$i++;
 		}
 		
 		$request->closeCursor();
-		return $tab;
+		return $array;
 		
 	}
-	
-	// recherche par post
-	function search_by_post($database, $string) {
-		$tab = array();
-		$i=0;
-		$request = $database->prepare('SELECT ID, post_name 
-								FROM posts 
-								WHERE post_name LIKE :id_message');
-								
-		$request->execute(array("id_message" => '%'.$string.'%'));
-		
-		while($data = $request->fetch()) {
-			$tab[$i]['id'] = $data['ID'];
-			$tab[$i]['result'] = $data['post_name'];
-			$tab[$i]["ligne"] = "<a href='C_lecture-post.php?id=".$data["ID"].''."'>Lire</a>";		// Lien pour lire le post
-			$i++;
-		}
-		SELECT * FR
-		$request->closeCursor();
-		return $tab;
-	} */
 
-	function search_by_project($database, $string) {		// Search by project
-		$tab = array();
+	function search_project ($database, $string) {		// Searching for a project
+		$array = array();
 		$i=0;
 		
-		$request = $database->prepare('SELECT ID, project_name 
-								FROM projects 
-								WHERE project_name LIKE :id_project');
+		$request = $database->prepare('SELECT ID, NAME FROM PROJECTS WHERE NAME LIKE :name_searched');
 		
-		$request->execute(array("id_project" => "%".$string."%"));
+		$request->execute(array("name_searched" => "%".$string."%"));
 		
 		while($data = $request->fetch()) {
-			$tab[$i]['id'] = $data['ID'];
-			$tab[$i]['result'] = $data['project_name'];
-			$tab[$i]["ligne"] = "<a href='C_tab.php?tab=".$data["ID"]."'>Voir le tableau</a>";
+			$projects_results[$i]['id'] = $data['ID'];
+			$projects_results[$i]['result'] = $data['NAME'];
+			$projects_results[$i]["ligne"] = "<a href='C_project.php?project=".$data["ID"]."'>Voir le tableau</a>";
 			$i++;
 		}
 		
 		$request->closeCursor();
-		return $tab;
+		return $array;
 	}
-
 	
 ?>
