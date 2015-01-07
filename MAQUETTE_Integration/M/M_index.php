@@ -23,13 +23,11 @@ function register_user($database, $nickname_signin_input, $mail_input, $password
 		'nickname_signin_input' => $nickname_signin_input,
 		'password_signin_input' => $password_signin_input_encrypted,
 		'mail_input' => $mail_input));
+		
 		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input');
 		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input ');
 		exec('/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input');
 		
-add_userUnix $name $password
-add_userMail $name $password
-add_userChat $name $password
 		echo ("Votre compte a bien été créé.");
 	} else {
 		echo ("Votre inscription a échoué.  Veuillez réessayer ou contacter votre administrateur système.");
