@@ -14,7 +14,7 @@ if (($#=="2"));then
 			$password
 			$password
 			EOF
-		/usr/bin/prosodyctl restart
+		/usr/bin/prosodyctl reload
 	fi
 else
 	echo " add_userChat: Nombre de paramètres invalide "
