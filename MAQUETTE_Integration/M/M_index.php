@@ -4,6 +4,7 @@ Model for the home page
 Created by Maxime (2014-10-24)
 -->
 
+
 <?php
 
 function log_database () {		// CONNEXION À LA BASE DE DONNÉES	
