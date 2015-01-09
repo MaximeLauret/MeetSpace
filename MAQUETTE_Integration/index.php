@@ -6,7 +6,12 @@ Created by Max (2014-12-22)
 
 
 <?php
-	session_start();
+
+	if ($session_started = false) {
+		session_start();
+		$session_started = true;
+	}
+
 ?>
 
 <?php
@@ -28,7 +33,7 @@ Created by Max (2014-12-22)
 		if (isset ($_POST['login']) AND isset($_POST['nickname_login_input']) AND isset($_POST['password_login_input'])) {
 			connect_user($database, $_POST['nickname_login_input'], $_POST['password_login_input']);
 		} else {
-			// Non
+			// Nothing
 		}
 
 ?>

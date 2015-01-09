@@ -24,8 +24,9 @@ function register_user ($database, $nickname_signin_input, $mail_input, $passwor
 		'password_signin_input' => $password_signin_input,
 		'mail_input' => $mail_input));
 		$request -> closeCursor();
+		echo ("Votre compte a bien été créé");
 	} else {
-		// Nothing
+		// Erreur : Les mots de passe ne correspondent pas
 	}
 }
 
@@ -36,7 +37,13 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		$request = $database -> prepare ('SELECT NICKNAME FROM USERS WHERE NICKNAME LIKE :nickname_login_input');
 		$request -> execute (array ('nickname_login_input' => $nickname_login_input));
 		$line_01 = $request -> fetch();
+		$nickname_database = $line_01["NICKNAME"];
 		$request -> closeCursor();
+		if ($nickname_login_input === $nickname_database) {
+			$user_exists = true;
+		} else {
+			// Nothing
+		}
 
 	// Checking if the password input matches the database password
 		$password_matches = false;
@@ -51,18 +58,18 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 			// Nothing
 		}
 		
-		// Creating the session for the user
-		if ($user_exists = false) {
-			echo ("Cet utilisateur n'existe pas.");
-		} else if ($password_matches = false) {
-			echo ("Erreur de combinaisom pseudo / mot de passe.");
-		} else {
+	// Creating the session for the user
+		if ($user_exists = true && $password_matches = true) {
 			$request = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
 			$request -> execute (array ("nickname_login_input" => $nickname_login_input));
 			$line_03 = $request -> fetch();
 			$id = $line_03["ID"];
 			$request -> closeCursor();
 			$_SESSION["USER"] = $id;
+			$connected = true;
+			echo ("YEAH");
+		} else {
+			echo ("Erreur : La connexion a échoué");
 		}
 
 }

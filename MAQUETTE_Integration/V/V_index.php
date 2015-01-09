@@ -46,7 +46,7 @@ Created by Maxime (2014-10-24)
 								<h3>
 									Connexion
 								</h3>	
-								<form class="form-horizontal" action="#" method="POST">
+								<form class="form-horizontal" action="redirection.php" method="POST">
 									<!-- PSEUDO INPUT -->
 										<input id="nickname_login_input" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
 										<br/>

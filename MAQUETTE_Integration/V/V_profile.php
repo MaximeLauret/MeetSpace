@@ -10,7 +10,7 @@ Created by Maxime (2015-07-01)
 <html>
 
 	<?php
-		include ("INCLUDE/header_priv.php");
+		include ("INCLUDE/header.php");
 	?>
 	
 	<body>
@@ -85,7 +85,7 @@ Created by Maxime (2015-07-01)
     
 
 	<?php
-		include ("INCLUDE/footer_priv.php");		// Including the footer
+		include ("INCLUDE/footer.php");		// Including the footer
 	?>
 	
 	</body>

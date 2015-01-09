@@ -21,7 +21,7 @@ Created by Max (2014-12-23)
 			//include ("INCLUDE/topbar.php");
 		?>
 		
-		Lancez votre propre projet	
+		Lancez votre propre projet <?php echo $_SESSION["USER"] ?>
 		<form class = "form-horizontal" action = "#" method = "POST">
 			<!-- PROJECT NAME INPUT -->
 				<input id = "pseudoinput" name = "project_name_input" type = "text" placeholder = "Nom du projet" class = "form-control input-md" required = "">

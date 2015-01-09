@@ -6,7 +6,10 @@ Created by Maxime (2015-07-01)
 
 
 <?php
-	session_start();
+	if ($session_started = false) {
+		session_start();
+		$session_started = true;
+	}
 ?>
 
 <?php
