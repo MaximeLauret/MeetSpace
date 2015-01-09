@@ -12,8 +12,8 @@ footer.php
 			</p>
 			
 			<p>
-				<a href = "#"> Contact </a>
-				<a href = "#"> Licences </a>
+				<a href = "#"> Contact | </a>
+				<a href = "#"> Licences | </a>
 				<a href = "#"> GitHub </a>
 			</p>
 			
