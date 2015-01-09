@@ -73,44 +73,6 @@ Created by Maxime (2014-10-24)
 						<!-- SIGN IN BUTTON -->
 							<button id="submit" name="signin" class="btn btn-success btn-lg" value="signin">Inscription</button>
 					</form>
-
-<<<<<<< HEAD
-								<h3>
-									Inscription
-								</h3>
-								<form class="form-horizontal" action="#" method="POST">
-									<!-- PSEUDO INPUT -->
-										<input id="pseudoinput" name="nickname_signin_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
-										<br/>
-									<!-- MAIL INPUT -->
-										<input id="pseudoinput" name="mail_input" type="text" placeholder="Mail" class="form-control input-md" required="">
-										<br/>
-									<!-- PASSWORD INPUT 1 -->
-										<input id="passwordinput" name="password_signin_input" type="password" placeholder="Mot de passe" class="form-control input-md" required="">
-										<br/>
-									<!-- PASSWORD VERIFICATION -->
-										<input id="passwordinput" name="password_confirmation_input" type="password" placeholder="Confirmation du mot de passe" class="form-control input-md" required="">
-										<br/>
-									<!-- SIGN IN BUTTON -->
-										<button id="submit" name="signin" class="btn btn-success btn-lg" value="signin">Inscription</button>
-								</form>
-								
-								<?php
-									echo (
-									"nickname_database : ".$nickname_database."</br>
-									line_01['NICKNAME'] : ".$line_01["NICKNAME"]."</br>
-									password_database : ".$password_database."</br>
-									line_02['PASSWORD'] : ".$line["PASSWORD"]."</br>");
-								?>
-		
-								<?php
-									include("INCLUDE/footer.php");
-								?>
-		
-						</div>
-					</div>
-=======
->>>>>>> 847d9178374210b616ab123e10ddfe160112a653
 				</div>
 				
 				<?php include("INCLUDE/footer.php"); ?>
