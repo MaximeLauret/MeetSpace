@@ -28,7 +28,7 @@ function log_database () {				// Logging into the database
 function create_new_project ($database, /*$owncloud_database, */$project_name_input, $project_description_input) {		// Create a new project
 	
 	// Creating the new project in the MeetSpace database
-		$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
+		$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
 		$request -> execute (array (
 		"project_name_input" => $project_name_input,
 		"project_description_input" => $project_description_input));

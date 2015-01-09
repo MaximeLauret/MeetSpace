@@ -28,9 +28,9 @@ Created by Max (2014-12-22)
 		if (isset ($_POST["create_project"])) {
 			if (isset ($_POST["project_name_input"]) AND isset ($_POST["project_description_input"])) {
 				create_new_project ($database, /*$owncloud_database, */$_POST["project_name_input"], $_POST["project_description_input"]);
-				echo ("Le projet a bien été créé.<br/>");
+				echo ("Le projet a bien été créé<br/>");
 			} else {
-			echo ("An error has occured, feel free to try again.<br/>");
+				echo ("Erruer : le projet n'a pas pu être créé");
 			}
 		}
 
