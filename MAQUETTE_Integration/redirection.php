@@ -11,12 +11,6 @@ Created by Maxime (2015-01-09)
 		session_start();
 		$session_started = true;
 	}
-	
-	echo (
-		"nickname_database : ".$nickname_database."</br>
-		line_01['NICKNAME'] : ".$line_01["NICKNAME"]."</br>
-		password_database : ".$password_database."</br>
-		line_02['PASSWORD'] : ".$line["PASSWORD"]."</br>");
 
 	if ($connected = true) {
 		include ("C_myprojects.php");

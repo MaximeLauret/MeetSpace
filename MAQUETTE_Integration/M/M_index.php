@@ -26,7 +26,7 @@ function register_user ($database, $nickname_signin_input, $mail_input, $passwor
 		$request -> closeCursor();
 		echo ("Votre compte a bien été créé");
 	} else {
-		// Erreur : Les mots de passe ne correspondent pas
+		echo ("Erreur : votre compte n'a pas pu être créé");
 	}
 }
 
@@ -42,7 +42,7 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		if ($nickname_login_input === $nickname_database) {
 			$user_exists = true;
 		} else {
-			// Nothing
+			echo ("Erreur : Cet utilisateur n'existe pas");
 		}
 
 	// Checking if the password input matches the database password
@@ -52,26 +52,29 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		$line_02 = $request -> fetch();
 		$password_database = $line_02["PASSWORD"];
 		$request -> closeCursor();
-		if ($password_login_input === $password_database) {
+		if ($password_login_input == $password_database) {
 			$password_matches = true;
 		} else {
 			// Nothing
 		}
 		
 	// Creating the session for the user
-		if ($user_exists = true && $password_matches = true) {
-			$request = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
-			$request -> execute (array ("nickname_login_input" => $nickname_login_input));
-			$line_03 = $request -> fetch();
-			$id = $line_03["ID"];
-			$request -> closeCursor();
-			$_SESSION["USER"] = $id;
-			$connected = true;
-			echo ("YEAH");
+		if ($user_exists = true) {
+			if ($password_matches = true) {
+				$request = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
+				$request -> execute (array ("nickname_login_input" => $nickname_login_input));
+				$line_03 = $request -> fetch();
+				$id = $line_03["ID"];
+				$request -> closeCursor();
+				$_SESSION["USER"] = $id;
+				$connected = true;
+				echo $connected;
+			} else {
+				echo ("Erreur : La connexion a échoué");
+			}
 		} else {
-			echo ("Erreur : La connexion a échoué");
+				echo ("Erreur : Cet utilisateur n'existe pas, V02");
 		}
-
 }
 
 ?>
