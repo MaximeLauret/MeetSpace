@@ -46,7 +46,7 @@ Created by Maxime (2014-10-24)
 								<h3>
 									Connexion
 								</h3>	
-								<form class="form-horizontal" action="redirection.php" method="POST">
+								<form class="form-horizontal" action="#" method="POST">
 									<!-- PSEUDO INPUT -->
 										<input id="nickname_login_input" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
 										<br/>
@@ -76,6 +76,14 @@ Created by Maxime (2014-10-24)
 									<!-- SIGN IN BUTTON -->
 										<button id="submit" name="signin" class="btn btn-success btn-lg" value="signin">Inscription</button>
 								</form>
+								
+								<?php
+									echo (
+									"nickname_database : ".$nickname_database."</br>
+									line_01['NICKNAME'] : ".$line_01["NICKNAME"]."</br>
+									password_database : ".$password_database."</br>
+									line_02['PASSWORD'] : ".$line["PASSWORD"]."</br>");
+								?>
 		
 								<?php
 									include("INCLUDE/footer.php");
