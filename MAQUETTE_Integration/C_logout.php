@@ -6,21 +6,26 @@ Created by Max (2015-01-07)
 
 
 <?php
-	session_start();
+
+	if ($session_started = false) {
+		session_start();
+		$session_started = true;
+	}
+
 ?>
 
 <?php
-	include("M/M_deconnexion.php");			// Including the Model
+	include("M/M_logout.php");				// Including the Model
 ?>
 
 <?php
-	if(isset($_POST["deco"])) {				// Checking if we have a POST
-		$auto_refresh = deconnexion();
+	if(isset($_POST["logout"])) {			// Checking if we have a POST
+		$auto_refresh = logout();
 	} else {	
 		// Nothing
 	}
 ?>
 
 <?php
-	include("V/V_deconnexion.php");			// Including the View
+	include("V/INCLUDE/V_logout.php");		// Including the View
 ?>

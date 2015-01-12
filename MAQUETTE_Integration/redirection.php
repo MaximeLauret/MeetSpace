@@ -13,9 +13,9 @@ Created by Maxime (2015-01-09)
 	}
 
 	if ($connected = true) {
-		include ("C_myprojects.php");
+		echo ("<meta http-equiv='Refresh' content='0; url = C_myprojects.php'/>");
 	} else {
-		include ("index.php");
+		echo ("<meta http-equiv='Refresh' content='0; url = index.php'/>");
 		echo ("Erreur : la connexion n'a pas pu être établie");
 	}
 

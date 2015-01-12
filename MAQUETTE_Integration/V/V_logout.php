@@ -4,6 +4,7 @@ View for the logout
 Created by Max (2015-01-12)
 -->
 
+
 <!DOCTYPE html >
 
 <html>
@@ -21,17 +22,23 @@ Created by Max (2015-01-12)
 			// Nothing
 		}
 	?>
-</head>
-<body>
-<?php include ("V/INCLUDE/entete.php"); ?>
+	
+	</head>
+	
+	<body>
 
+		<?php
+			include ("V/INCLUDE/topbar.php");
+		?>
 
-<!-- Code Vue :D -->
+		<form action="#" method="POST">
+			<input type="submit" name="logout" value="Déconnexion"/>
+		</form>
 
-<form action="#" method="POST">
-	<input type="submit" name="deco" value="Déconnexion"/>
-</form>
+		<?php
+			include("V/INCLUDE/footer.php");
+		?>
 
-<?php include("V/INCLUDE/footer.php"); ?>
-</body>
+	</body>
+
 </html>
