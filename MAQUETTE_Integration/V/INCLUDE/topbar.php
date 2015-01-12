@@ -48,7 +48,7 @@ Edited by Max (2015-01-07)
 					<a href="../USER/perso_viewprofile.php"><i class="fa fa-user fa-x"></i> Profil </a></li>
 			
 				<li>
-					<a href="../../C_logout.php"><i class="fa fa-user fa-x"></i> Déconnexion </a></li>
+					<a href="C_logout.php"><i class="fa fa-user fa-x"></i> Déconnexion </a></li>
 				</li>
 
 			</ul>
