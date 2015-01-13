@@ -27,5 +27,5 @@ Created by Max (2015-01-07)
 ?>
 
 <?php
-	include("V/INCLUDE/V_logout.php");		// Including the View
+	include("./V/V_logout.php");		// Including the View
 ?>
