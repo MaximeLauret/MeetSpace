@@ -5,26 +5,35 @@ Created by Max (2014-12-22)
 -->
 
 
-<?php include_once ("./sessionStatus.php"); /* On test si l'utilisateur est connecté*/ ?>
-
-
+<?php
+	session_start();
+?>
 	
 <?php
-	/* Si il est connecté on rentre ici */
-	
-	if (!isset($_GET))
+	if (isset($_SESSION['ID'])) // SI L'UTILISATEUR EST CONNECTE
+	 {
+		if (isset($_GET['section'])) // ET SI ON A DES PARMS DANS L'URL
+		{
+			switch ($_GET['section']) { // ALORS ON SE BALADE SUR LE SITE
+				case 'user':
+					include_once ("./switchUser.php");
+					break;
+				case 'project':
+					include_once ("./switchProject.php");
+					break;
+				default:
+					include_once ("./C_myprojects.php"); // SI ON EST CONNECTE SANS BON PARMS: ON TOMBE SUR SA PAGE PERSO
+			}
+		}
+		else
+		{
+			include_once ("./C_myprojects.php");// SI ON EST CONNECTE SANS PARMS: ON TOMBE SUR SA PAGE PERSO
+		}
+	 }
+	else
 	{
-		switch ($$_GET['choix']):
-			case "user":
-				echo "i equals 0";
-				break;
-			case "project":
-				echo "i equals 1";
-				break;
-			default:
-				include_once ("./C_myprojects.php");
-		endswitch;
+		#echo "Session Enabled but No Session values Created";
+		include_once ("./C_public.php"); // SI ON EST PAS CONNECTE ON TOMBE SUR LA PAGE D'ACUEILLE
 	}
-	include_once ("./C_myprojects.php");
-
 ?>
+
