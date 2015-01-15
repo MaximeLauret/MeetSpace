@@ -19,7 +19,18 @@ Created by Max (2014-12-23)
 			include ("./V/INCLUDE/topbar.php");
 		?>
 		
+<<<<<<< HEAD
 		<br/><br/><br/><br/><br/>		<!-- DEBUG : la topbar est relou -->
+=======
+		<?php
+		
+			$i = 0;
+			echo "Bonjour ";
+			echo $_SESSION['USER'];
+			
+		
+		?>
+>>>>>>> 5807ea984d08b9e46c7d1f1dcfa5cd5b37950c69
 		
 		Lancez votre propre projet
 		<form class = "form-horizontal" action = "#" method = "POST">
