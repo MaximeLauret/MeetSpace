@@ -9,12 +9,16 @@ header.php
 	<link href = "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel = "stylesheet">		<!-- Inclusion des icones -->
 	<link rel = "stylesheet" href = "meetspace_02.css" type = "text/css">		<!-- CSS MeetSpace -->
 
-    <?php
-		if (isset ($_SESSION["ID"])) {
-			echo ("<link href = 'http://getbootstrap.com/examples/starter-template/starter-template.css' rel='stylesheet'>");
-		} else {
-			echo ("<link href = 'http://getbootstrap.com/examples/cover/cover.css' rel='stylesheet'>");
-		}
-    ?>
+
+<?php
+if (isset($_SESSION['ID']))
+	{
+		echo ("<link href = 'http://getbootstrap.com/examples/starter-template/starter-template.css' rel='stylesheet'>");
+	}
+	else
+	{
+		echo ("<link href = 'http://getbootstrap.com/examples/cover/cover.css' rel='stylesheet'>");
+	}
+?>
     
 </head>

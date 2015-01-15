@@ -9,16 +9,14 @@ Created by Max (2014-12-23)
 
 <html>
 
-	<head>
 		<?php
-			include("INCLUDE/header.php");
+			include("./V/INCLUDE/header.php");
 		?>
-	</head>
 	
 	<body>
 		
 		<?php
-			include ("INCLUDE/topbar.php");
+			include ("./V/INCLUDE/topbar.php");
 		?>
 		
 		<br/>

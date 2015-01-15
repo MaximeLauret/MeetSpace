@@ -6,12 +6,7 @@ Created by Max (2015-01-07)
 
 
 <?php
-
-	if ($session_started = false) {
 		session_start();
-		$session_started = true;
-	}
-
 ?>
 
 <?php
@@ -19,11 +14,11 @@ Created by Max (2015-01-07)
 ?>
 
 <?php
-	if(isset($_POST["logout"])) {			// Checking if we have a POST
-		$auto_refresh = logout();
-	} else {	
-		// Nothing
-	}
+
+	// Suppression des variables de session et de la session
+	$_SESSION = array();
+	session_destroy();
+	header("Location: ./index.php");
 ?>
 
 <?php
