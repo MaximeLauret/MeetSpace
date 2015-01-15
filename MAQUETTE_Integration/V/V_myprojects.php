@@ -19,14 +19,7 @@ Created by Max (2014-12-23)
 			include ("./V/INCLUDE/topbar.php");
 		?>
 		
-		<?php
-		
-			$i = 0;
-			
-			echo "SESSION".$_SESSION["nickname_login_input"];
-			
-		
-		?>
+		<br/><br/><br/><br/><br/>		<!-- DEBUG : la topbar est relou -->
 		
 		Lancez votre propre projet
 		<form class = "form-horizontal" action = "#" method = "POST">
