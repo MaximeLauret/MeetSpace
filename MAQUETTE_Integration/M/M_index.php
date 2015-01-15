@@ -17,13 +17,14 @@ function log_database () {		// CONNEXION À LA BASE DE DONNÉES
 }
 
 function register_user ($database, $nickname_signin_input, $mail_input, $password_signin_input, $password_confirmation_input) {		// Signing in
-	if ($password_signin_input === $password_confirmation_input) {		// Checking if the password input and the confirmation input matches
-		$request = $database -> prepare ("INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)");
-		$request -> execute (array (
+	if ($password_signin_input === $password_confirmation_input) {		// ON VÉRIFIE SI LE MOT DE PASSE ET LA CONFIRMATION CORRESPONDENT
+		$password_signin_input_encrypted = password_hash ($password_signin_input, PASSWORD_DEFAULT). "\n";		// CHIFFREMENT DU MOT DE PASSE
+		$req = $database->prepare('INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)');
+		$req->execute(array(
+		
 		'nickname_signin_input' => $nickname_signin_input,
-		'password_signin_input' => $password_signin_input,
-		'mail_input' => $mail_input));
-		$request -> closeCursor();
+		'password_signin_input' => $password_signin_input_encrypted,
+		exec ("/home/maxime/./test.sh");
 		echo ("Votre compte a bien été créé");
 	} else {
 		echo ("Erreur : votre compte n'a pas pu être créé");
