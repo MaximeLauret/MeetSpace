@@ -19,7 +19,7 @@ Edited by Max (2015-01-07)
 				<span class="icon-bar"></span>
 			</button>
 			
-			<a class="navbar-brand" href="../USER/perso.php">Meetspace</a>
+			<a class="navbar-brand" href="./index.php">Meetspace</a>
 			
 		</div>
 
@@ -28,7 +28,7 @@ Edited by Max (2015-01-07)
 			<ul class="nav navbar-nav navbar-right">		<!-- Menu de droite -->
 
 				<li class="active">							<!-- Search bar -->
-					<form action = "./../../C_search_results.php" method = "POST" class = "navbar-form navbar-right" role = "form">
+					<form action = "./index.php?section=project&amp;part=search" method = "POST" class = "navbar-form navbar-right" role = "form">
 						<div class="form-group">
 							<input type="text" placeholder="Search" name = "aim" class="form-control">
 						</div>
@@ -45,7 +45,7 @@ Edited by Max (2015-01-07)
 				</li>
 		
 				<li>										<!-- Profil -->
-					<a href="../USER/perso_viewprofile.php"><i class="fa fa-user fa-x"></i> Profil </a></li>
+					<a href="./index.php?section=user&amp;part=profil"><i class="fa fa-user fa-x"></i> Profil </a></li>
 			
 				<li>
 					<a href="C_logout.php"><i class="fa fa-user fa-x"></i> Déconnexion </a></li>
