@@ -43,7 +43,7 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 
 
 	// Vérification des identifiants
-	$req = $database->prepare('SELECT id FROM users WHERE NICKNAME = :pseudo AND PASSWORD = :pass');
+	$req = $database->prepare('SELECT id FROM USERS WHERE NICKNAME = :pseudo AND PASSWORD = :pass');
 	$req->execute(array(
 		'pseudo' => $nickname_login_input,
 		'pass' => $password_login_input));
