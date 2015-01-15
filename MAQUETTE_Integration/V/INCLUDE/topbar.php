@@ -32,7 +32,7 @@ Edited by Max (2015-01-07)
 						<div class="form-group">
 							<input type="text" placeholder="Search" name = "aim" class="form-control">
 						</div>
-						<button type="submit" class="btn btn-success" name="search" value="search"> Search </button>
+						<button type="submit" class="btn btn-success" name="search" value="search"> Go! </button>
 					</form>
 				</li>
 		

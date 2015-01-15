@@ -6,7 +6,7 @@ Created by Max (2014-12-22)
 
 
 <?php
-	session_start();
+	if (!isset($_SESSION)) { session_start(); }
 ?>
 	
 <?php

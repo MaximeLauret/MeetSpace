@@ -3,6 +3,7 @@ header.php
 -->
 
 <head>
+
 	<title>MeetSpace</title>
 	<meta http-equiv = "Content-Type" content = "text/html" charset = "UTF-8";>
 	<link href = "http://getbootstrap.com/dist/css/bootstrap.min.css" rel = "stylesheet">		<!-- CSS BootStrap -->
@@ -13,10 +14,14 @@ header.php
 <?php
 if (isset($_SESSION['ID']))
 	{
+	// SI CONNECTER
 		echo ("<link href = 'http://getbootstrap.com/examples/starter-template/starter-template.css' rel='stylesheet'>");
+		
+		include ("./V/V_jappix.php");
 	}
 	else
 	{
+	// SI DECONNECTER
 		echo ("<link href = 'http://getbootstrap.com/examples/cover/cover.css' rel='stylesheet'>");
 	}
 ?>

@@ -15,9 +15,7 @@ Created by Max (2014-12-23)
 	
 	<body>
 		
-		<?php
-			include ("./V/INCLUDE/topbar.php");
-		?>
+		<?php include ("./V/INCLUDE/topbar.php"); ?>
 	
 		<br/><br/><br/><br/><br/>		<!-- DEBUG : la topbar est relou -->
 		<?php
