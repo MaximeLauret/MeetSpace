@@ -6,13 +6,9 @@ Created by Max (2014-12-22)
 
 
 <?php
-
-	if ($session_started = false) {
-		session_start();
-		$session_started = true;
-	}
-
+if (!isset($_SESSION)) { session_start(); }
 ?>
+
 	
 <?php
 	include ("M/M_myprojects.php");

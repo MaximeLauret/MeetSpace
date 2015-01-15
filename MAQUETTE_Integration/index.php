@@ -9,30 +9,23 @@ Created by Max (2014-12-22)
 	session_start();
 ?>
 
-<?php
-	include ("./M/M_index.php");
-?>
 	
 <?php
+	/* Si il est connecté on rentre ici */
+	
+	if (!isset($_GET))
+	{
+		switch ($$_GET['choix']):
+			case "user":
+				echo "i equals 0";
+				break;
+			case "project":
+				echo "i equals 1";
+				break;
+			default:
+				include_once ("./C_myprojects.php");
+		endswitch;
+	}
+	include_once ("./C_myprojects.php");
 
-	$database = log_database();		// Connexion à la base de données
-	
-	// SIGNIN
-		if (isset ($_POST['signin']) AND isset($_POST['nickname_signin_input']) AND isset($_POST['password_signin_input'])) {
-			register_user ($database, $_POST['nickname_signin_input'], $_POST['mail_input'], $_POST['password_signin_input'], $_POST['password_confirmation_input']);
-		} else {
-			// Nothing
-		}
-	
-	// LOGIN
-		if (isset ($_POST['login']) AND isset($_POST['nickname_login_input']) AND isset($_POST['password_login_input'])) {
-			connect_user($database, $_POST['nickname_login_input'], $_POST['password_login_input']);
-		} else {
-			// Nothing
-		}
-
-?>
-	
-<?php
-	include ("./V/V_index.php");
 ?>

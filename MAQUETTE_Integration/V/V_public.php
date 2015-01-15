@@ -9,7 +9,7 @@ Created by Maxime (2014-10-24)
 <html>
 
 	<?php
-		include ("INCLUDE/header.php");
+		include_once ("INCLUDE/header.php");
 	?>
 	
 	<body>
@@ -44,7 +44,7 @@ Created by Maxime (2014-10-24)
 					<h3>
 						Connexion
 					</h3>	
-					<form class="form-horizontal" action="redirection.php" method="POST">
+					<form class="form-horizontal" action="#" method="POST">
 						<!-- PSEUDO INPUT -->
 							<input id="nickname_login_input" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
 							<br/>
@@ -76,7 +76,7 @@ Created by Maxime (2014-10-24)
 					</form>
 				</div>
 				
-				<?php include("INCLUDE/footer.php"); ?>
+				<?php include_once("INCLUDE/footer.php"); ?>
 
 			</div>
 		</div>
