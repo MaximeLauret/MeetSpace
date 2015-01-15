@@ -5,22 +5,23 @@
 
 <?php
 
-echo "
-		<!--Jappix -->
-		<script type=\"text/javascript\" src=\"//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js\"></script>
+echo '
+	<!-- JAPPIX : START.. -->
 
-		<script type=\"text/javascript\">
+		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+		<script type="text/javascript">
 			jQuery.ajaxSetup({cache: true});
 
-			jQuery.getScript('http://chat.meetspace.itinet.fr/server/get.php?l=fr&t=js&g=mini.xml', function() {
+			jQuery.getScript(\'http://chat.meetspace.itinet.fr/server/get.php?l=fr&t=js&g=mini.xml\', function() {
 				// Configure application & connect user
-				// Notice: exclude \"user\" and \"password\" if using anonymous login
+				// Notice: exclude "user" and "password" if using anonymous login
 				JappixMini.launch({
 					connection: {
-						user: 'guillaume',
-						password: 'leboss91',
-						domain: 'meetspace.itinet.fr',
-						resource: 'Jappix'
+						user: \' ' . $_SESSION['USER'] . ' \' ,
+						password: \' ' . $_SESSION['PASSWORD'] . ' \',
+						domain: \'meetspace.itinet.fr\',
+						resource: \'Jappix\'
 					},
 
 					application: {
@@ -35,7 +36,7 @@ echo "
 
 						user: {
 							random_nickname: false,
-							nickname: 'guillaume'
+							nickname: \' ' . $_SESSION['USER'] . ' \'
 						},
 
 						chat: {
@@ -50,5 +51,7 @@ echo "
 				});
 			});
 		</script>
-	";	
+	<!-- JAPPIX : ..END -->
+	';
+	
 ?>
