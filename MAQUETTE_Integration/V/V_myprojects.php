@@ -22,8 +22,8 @@ Created by Max (2014-12-23)
 		<?php
 		
 			$i = 0;
-			
-			echo "SESSION".$_SESSION["nickname_login_input"];
+			echo "Bonjour ";
+			echo $_SESSION['USER'];
 			
 		
 		?>
