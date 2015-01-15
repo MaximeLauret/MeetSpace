@@ -59,6 +59,7 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		session_start();
 		$_SESSION['ID'] = $resultat['id'];
 		$_SESSION['USER'] = $nickname_login_input;
+		$_SESSION['PASSWORD'] = $password_login_input;
 		echo 'Vous êtes connecté !';
 	}
 }
