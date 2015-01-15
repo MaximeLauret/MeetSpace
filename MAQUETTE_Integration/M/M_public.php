@@ -25,14 +25,22 @@ function register_user ($database, $nickname_signin_input, $mail_input, $passwor
 		'mail_input' => $mail_input));
 		$request -> closeCursor();
 		
-		// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
-			// EN TANT QU'UTILISATEUR UNIX
-		exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input');
-			// EN TANT QU'UTILISATEUR MAIL
-		exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input ');
-			// EN TANT QU'UTILISATEUR CHAT
-		exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input');
-		
+		$userApache = shell_exec('whoami');
+		if($testLinux==="www-data")
+		{
+			echo "<pre>$output</pre>";
+			// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
+				// EN TANT QU'UTILISATEUR UNIX
+			$output = shell_exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input');
+			echo "<pre>$output</pre>";
+				// EN TANT QU'UTILISATEUR MAIL
+			$output = shell_exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input ');
+			echo "<pre>$output</pre>";
+				// EN TANT QU'UTILISATEUR CHAT
+			$output = shell_exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input');
+			echo "<pre>$output</pre>";
+		}
+				
 		echo ("Votre compte a bien été créé");
 	} else {
 		echo ("Erreur : votre compte n'a pas pu être créé");
