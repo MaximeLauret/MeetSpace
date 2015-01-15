@@ -42,7 +42,6 @@ function register_user ($database, $nickname_signin_input, $mail_input, $passwor
 			$output = shell_exec('sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input, $password_signin_input');
 			echo "<pre>$output</pre>";
 		}
-
 				
 		echo ("Votre compte a bien été créé");
 	} else {
