@@ -18,17 +18,19 @@ Created by Max (2014-12-23)
 	<body>
 		
 		<?php
-			include ("INCLUDE/topbar.php");
+			// include ("INCLUDE/topbar.php");
 		?>
 		
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
-		<br/>
+		<?php
 		
-		Lancez votre propre projet <?php echo $_SESSION['USER']; ?>
+			$i = 0;
+			
+			echo "SESSION".$_SESSION["nickname_login_input"];
+			
+		
+		?>
+		
+		Lancez votre propre projet
 		<form class = "form-horizontal" action = "#" method = "POST">
 			<!-- PROJECT NAME INPUT -->
 				<input id = "pseudoinput" name = "project_name_input" type = "text" placeholder = "Nom du projet" class = "form-control input-md" required = "">

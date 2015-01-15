@@ -6,12 +6,7 @@ Created by Max (2014-12-22)
 
 
 <?php
-
-	if ($session_started = false) {
-		session_start();
-		$session_started = true;
-	}
-
+	session_start();
 ?>
 
 <?php

@@ -34,8 +34,16 @@ function get_user_name ($database) {		// Get the username from the session ID
 	return $session_nickname;
 }
 
+function get_projects ($database) {		// Get the user's projects and display them
+	$request = $database -> prepare ("SELECT NAME, PROJECT_DESCRIPTION FROM PROJECTS LEFT JOIN WHERE USER LIKE :session_id");
+	$request -> execute (array ("session_id" => $_SESSION["USER"]));
+	$line = $request -> fetch ();
+	$project_name = $line["PROJECT"];
+	$request -> closeCursor();
+	return $project_name;
+}
+
 function create_new_project ($database, /*$owncloud_database, */$project_name_input, $project_description_input, $project_creator) {		// Create a new project
-	
 	// Creating the new project in the MeetSpace database
 		$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
 		$request -> execute (array (
@@ -56,8 +64,14 @@ function create_new_project ($database, /*$owncloud_database, */$project_name_in
 	
 	
 	// Creating the chatroom for the collaborators
-
-
 }
+
+function leave_project ($database) {
+}
+
+/*function delete_project ($database) {
+	$request = $database -> prepare ("DELETE FROM PROJECTS WHERE USER LIKE :session_id");
+	$request -> execute (array ("session_id" =>
+}*/
 
 ?>

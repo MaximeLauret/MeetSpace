@@ -59,16 +59,16 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		}
 		
 	// Creating the session for the user
-		if ($user_exists = true) {
-			if ($password_matches = true) {
+		if ($user_exists == true) {
+			if ($password_matches == true) {
 				$request = $database -> prepare ("SELECT ID FROM USERS WHERE NICKNAME LIKE :nickname_login_input");
 				$request -> execute (array ("nickname_login_input" => $nickname_login_input));
 				$line_03 = $request -> fetch();
 				$id = $line_03["ID"];
 				$request -> closeCursor();
-				$_SESSION["USER"] = $id;
+				$_SESSION["nickname_login_input"] = $id;
 				$connected = true;
-				echo $connected;
+				echo "CONNEXION ?".$connected;
 			} else {
 				echo ("Erreur : La connexion a échoué");
 			}

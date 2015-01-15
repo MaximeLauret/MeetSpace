@@ -28,6 +28,7 @@ Created by Maxime (2014-10-24)
 						Réunissez-vous où que vous soyez et à tout moment avec MeetSpace, l'espace de réunion en ligne.
 						<br/>
 						Créez votre réseau et profitez des services offerts par MeetSpace pour gérer votre projet.
+						<?php echo "LALALA".$_SESSION["USER"]; ?>
 					</p>
 			
 					<p class="lead">

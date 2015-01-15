@@ -28,12 +28,18 @@ Created by Max (2015-01-12)
 	<body>
 
 		<?php
-			include ("V/INCLUDE/topbar.php");
+			//include ("V/INCLUDE/topbar.php");
 		?>
 
 		<form action="#" method="POST">
 			<input type="submit" name="logout" value="Déconnexion"/>
 		</form>
+
+		<?php
+
+			echo "LALALALALALA".$_SESSION["USER"];
+		
+		?>
 
 		<?php
 			include("V/INCLUDE/footer.php");
