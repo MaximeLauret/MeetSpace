@@ -19,4 +19,3 @@ if (($#=="2"));then
 else
 	echo " add_userChat: Nombre de paramètres invalide "
 fi
-

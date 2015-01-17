@@ -7,9 +7,8 @@ name=$1
 
 if (($#=="1"));then
 	/bin/sed -i "/^contact@${name}/d" /etc/postfix/virtual
-	/usr/sbin/postmap /etc/postfix/virtual
-	/usr/sbin/service postfix restart
+	sudo /usr/sbin/postmap /etc/postfix/virtual
+	sudo /usr/sbin/service postfix restart
 else
 	echo " del_projectAlias: Nombre de paramètres invalide "
 fi
-

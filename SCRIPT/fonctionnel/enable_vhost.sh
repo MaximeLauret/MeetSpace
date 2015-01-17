@@ -13,7 +13,7 @@ name=$1
 
 if (($#=="1"));then
 	/bin/ln -s /etc/apache2/sites-available/$name.conf /etc/apache2/sites-enabled/$name.conf
-	/usr/sbin/service apache2 reload							# Reloading the Apache service
+	sudo /usr/sbin/service apache2 reload							# Reloading the Apache service
 else
 	echo " enable_vhost: Nombre de paramètres invalide "
 fi

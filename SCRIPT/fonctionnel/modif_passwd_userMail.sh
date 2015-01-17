@@ -2,10 +2,10 @@
 
 #Variables : Nom et Password utilisateur
 
-password=$(/usr/sbin/userdbpw -md5 <<-EOF
+password=$(sudo /usr/sbin/userdbpw -md5 <<-EOF
 	$password
 	$password
 	EOF
 	)
-/usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password 
-/usr/sbin/makeuserdb
+sudo /usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password 
+sudo /usr/sbin/makeuserdb

@@ -12,5 +12,3 @@ if (($#=="1"));then
 else
 	echo " add_blogNombre: de paramètres invalide "
 fi
-
-

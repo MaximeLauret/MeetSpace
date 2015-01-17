@@ -14,4 +14,3 @@ if (($#=="1"));then
 else
 	echo " add_dns: Nombre de paramètres invalide "
 fi
-

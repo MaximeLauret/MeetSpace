@@ -2,6 +2,7 @@
 	
 	<?php
 
+
 	$database = log_database();		// Connexion à la base de données
 
 	// SIGNIN

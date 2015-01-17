@@ -51,6 +51,3 @@ echo " 		Suppresion d'un utilisateur"
 ./master.sh user del $userName
 
 echo " .. end test "
-
-
-

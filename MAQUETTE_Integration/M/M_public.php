@@ -7,6 +7,8 @@ Created by Maxime (2014-10-24)
 
 <?php
 
+
+
 function log_database () {		// CONNEXION À LA BASE DE DONNÉES	
 	try {	
 		$database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
@@ -16,31 +18,42 @@ function log_database () {		// CONNEXION À LA BASE DE DONNÉES
 	return $database;
 }
 
-function register_user ($database, $nickname_signin_input, $mail_input, $password_signin_input, $password_confirmation_input) {		// Signing in
-	if ($password_signin_input === $password_confirmation_input) {		// Checking if the password input and the confirmation input matches
+// USER Registering part
+
+function register_user (
+	$database, 
+	$nickname_signin_input, 
+	$mail_input, 
+	$password_signin_input, 
+	$password_confirmation_input)
+ 
+{		// Signing in
+	if ($password_signin_input === $password_confirmation_input) 
+	{	
+	// Checking if the password input and the confirmation input matches
 		$request = $database -> prepare ("INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)");
 		$request -> execute (array (
 		'nickname_signin_input' => $nickname_signin_input,
 		'password_signin_input' => $password_signin_input,
 		'mail_input' => $mail_input));
 		$request -> closeCursor();
+
+
+		// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
+			// EN TANT QU'UTILISATEUR UNIX
+		$output = exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
+		var_dump ($out);
+		echo $output;
 		
-		$testApache = shell_exec('whoami');
-		#echo "WHOAMI :<pre>$testApache</pre>";
-		
-		if($testApache==="www-data")
-		{
-			// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
-				// EN TANT QU'UTILISATEUR UNIX
-			$output = shell_exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input");
-			#echo "<pre>$output</pre>";
-				// EN TANT QU'UTILISATEUR MAIL
-			$output = shell_exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input");
-			#echo "<pre>$output</pre>";
-				// EN TANT QU'UTILISATEUR CHAT
-			$output = shell_exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input");
-			#echo "<pre>$output</pre>";
-		}
+			// EN TANT QU'UTILISATEUR MAIL
+		$output = exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
+		var_dump ($out);
+		echo $output;
+			// EN TANT QU'UTILISATEUR CHAT
+		$output = exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
+		var_dump ($out);
+		echo $output;
+
 				
 		echo ("Votre compte a bien été créé");
 	} else {
