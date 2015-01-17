@@ -41,16 +41,16 @@ function register_user (
 
 		// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
 			// EN TANT QU'UTILISATEUR UNIX
-		$output = exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
 		var_dump ($out);
 		echo $output;
 		
 			// EN TANT QU'UTILISATEUR MAIL
-		$output = exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
 		var_dump ($out);
 		echo $output;
 			// EN TANT QU'UTILISATEUR CHAT
-		$output = exec("/home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
 		var_dump ($out);
 		echo $output;
 
