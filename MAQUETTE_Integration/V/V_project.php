@@ -28,7 +28,20 @@ Created by Maxime (2015-01-14)
 		<br/>
 		<form class = "form-horizontal" action = "#" method = "POST">
 			<button id = "submit" name = "join_project" value = "join_project"> Rejoindre </button>
+			<button id = "submit" name = "leave_project" value = "leave_project"> Quitter </button>
 		</form>
+
+		<?php
+
+			if ($status == "MANAGER") {
+				echo ("<form class = 'form-horizontal' action = '#' method = 'POST'>
+					<button id = 'submit' name = 'delete_project' value = 'delete_project'> Supprimer le projet </button>
+				</form>");
+			} else {
+				// Nothing
+			}
+
+		?>
 
 		<?php
 			include("INCLUDE/footer.php");
