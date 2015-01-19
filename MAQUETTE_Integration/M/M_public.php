@@ -84,6 +84,44 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		$_SESSION['PASSWORD'] = $password_login_input;
 		echo 'Vous êtes connecté !';
 	}
+
+function delete_user(
+	$database, 
+	$nickname_signin_input, 
+	$mail_input, 
+	$password_signin_input, 
+	$password_confirmation_input) {		// SUPPRESSION D'UN UTILISATEUR
+		// Signing in
+	if ($password_signin_input === $password_confirmation_input) 
+	{	
+	// Checking if the password input and the confirmation input matches
+		$request = $database -> prepare ("DELETE FROM `USERS` WHERE `ID` = :id");
+		$request -> execute (array (
+		'id' => $_SESSION['ID'];
+
+		$request -> closeCursor();
+
+
+		// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
+			// EN TANT QU'UTILISATEUR UNIX
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userUnix.sh $nickname_signin_input", $out);
+		var_dump ($out);
+		echo $output;
+		
+			// EN TANT QU'UTILISATEUR MAIL
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userMail.sh $nickname_signin_input", $out);
+		var_dump ($out);
+		echo $output;
+			// EN TANT QU'UTILISATEUR CHAT
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userChat.sh $nickname_signin_input", $out);
+		var_dump ($out);
+		echo $output;
+
+				
+		echo ("Votre compte a bien été créé");
+	} else {
+		echo ("Erreur : votre compte n'a pas pu être créé");
+	}
 }
 
 ?>
