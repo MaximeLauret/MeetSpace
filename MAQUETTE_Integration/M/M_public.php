@@ -85,7 +85,7 @@ function connect_user($database, $nickname_login_input, $password_login_input) {
 		echo 'Vous êtes connecté !';
 	}
 
-function delete_user(
+/*function delete_user(
 	$database, 
 	$nickname_signin_input, 
 	$mail_input, 
@@ -121,7 +121,7 @@ function delete_user(
 		echo ("Votre compte a bien été créé");
 	} else {
 		echo ("Erreur : votre compte n'a pas pu être créé");
-	}
+	}*/
 }
 
 ?>

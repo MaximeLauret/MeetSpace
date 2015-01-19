@@ -16,10 +16,10 @@ Created by Max (2014-12-22)
 		{
 			switch ($_GET['section']) { // ALORS ON SE BALADE SUR LE SITE
 				case 'user':
-					include_once ("./switchUser.php");
+					include_once ("./SWITCH/switchUser.php");
 					break;
 				case 'project':
-					include_once ("./switchProject.php");
+					include_once ("./SWITCH/switchProject.php");
 					break;
 				default:
 					include_once ("./C_myprojects.php"); // SI ON EST CONNECTE SANS BON PARMS: ON TOMBE SUR SA PAGE PERSO
