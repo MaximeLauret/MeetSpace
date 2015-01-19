@@ -1,4 +1,4 @@
-	<?php include ("./M/M_public.php"); /* Inclusion du modéle */?>
+	<?php include_once ("./M/M_public.php"); /* Inclusion du modéle */?>
 	
 	<?php
 

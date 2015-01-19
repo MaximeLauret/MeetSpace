@@ -17,12 +17,28 @@ class User {
     public function __construct($idMembre)
     {
     	// Récupérer en base de données les infos du membre
-    	// SELECT pseudo, email, signature, actif FROM membres WHERE id = ...
-    	
+		$req = $database->prepare('SELECT MAIL, NICKNAME, PASSWORD FROM USERS WHERE id=$idDB');
+		$req->execute(array('idDB' => $idMembre));
+		$resultat = $req->fetch();
+
+	if (!$resultat)
+	{
+		echo 'Mauvais id!';
+	}
+	else
+	{
+		session_start();
+		$_SESSION['ID'] = $resultat['id'];
+
     	// Définir les variables avec les résultats de la base
-    	$this->pseudo = $donnees['pseudo'];
-    	$this->email = $donnees['email'];
+    	$this->MAIL = $donnees['MAIL'];
+    	$this->NICKNAME = $donnees['NICKNAME'];
+    	$this->PASSWORD = $donnees['PASSWORD'];
     	// etc.
+		echo 'OBJET MEMBRE CREE';
+		var_dump ($donnees);
+	}
+
     }
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -32,6 +48,7 @@ class User {
 	protected  $nickname;
 	protected  $password;
 	protected  $mail;
+	protected  $description;
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  FUNCTION
@@ -101,6 +118,13 @@ class User {
 
 	//DECONNECTION
 	public function deconnection ($name, $password)
+	{
+
+		return ($result);
+	}
+
+	//AJOUT D'UN CONTACT TCHAT
+	public function addUserChat ($name)
 	{
 
 		return ($result);

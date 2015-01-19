@@ -9,7 +9,7 @@ Created by Maxime (2014-10-24)
 <html>
 
 	<?php
-		include_once ("INCLUDE/header.php");
+		include_once ("./V/INCLUDE/header.php");
 	?>
 	
 	<body>

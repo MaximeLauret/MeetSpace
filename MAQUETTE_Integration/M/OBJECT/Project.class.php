@@ -20,6 +20,7 @@ class Project {
     	// Définir les variables avec les résultats de la base
     	$this->pseudo = $donnees['pseudo'];
     	$this->email = $donnees['email'];
+    	
     	// etc.
     }
 
@@ -31,6 +32,7 @@ class Project {
 	protected  $description;
 	protected  $visibility;
 	protected  $rmq;
+	protected  $member; //array qui stock la liste des membres
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  FUNCTION

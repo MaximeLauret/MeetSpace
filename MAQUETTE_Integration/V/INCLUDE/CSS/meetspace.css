@@ -9,6 +9,10 @@ h1{
   min-height: 100px;
 }
 
+footer{
+margin-top: 40px;
+}
+
 .project {
   /*Jolie bleu - background-color:#8AA3C8;*/ 
   border-radius:10px;
@@ -16,6 +20,10 @@ h1{
   background-color: #e1e1e1;
 
   min-height: 225px
+}
+
+.topbar{
+margin-bottom: 20px;
 }
 /*
 html, body, .container {
