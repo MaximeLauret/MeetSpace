@@ -8,7 +8,7 @@ password=$2
 
 if (($#=="2"));then
 		#Ajout utilisateur postfix
-		/bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
+		sudo /bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
 		sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
 		sudo /usr/sbin/service postfix restart
 
