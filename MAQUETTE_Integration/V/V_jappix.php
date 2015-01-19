@@ -18,8 +18,8 @@ echo '
 				// Notice: exclude "user" and "password" if using anonymous login
 				JappixMini.launch({
 					connection: {
-						user: \' ' . $_SESSION['USER'] . ' \' ,
-						password: \' ' . $_SESSION['PASSWORD'] . ' \',
+						user: \''.$_SESSION['USER'] .'\' ,
+						password: \''.$_SESSION['PASSWORD'].'\',
 						domain: \'meetspace.itinet.fr\',
 						resource: \'Jappix\'
 					},
@@ -36,7 +36,7 @@ echo '
 
 						user: {
 							random_nickname: false,
-							nickname: \' ' . $_SESSION['USER'] . ' \'
+							nickname: \''.$_SESSION['USER'].'\'
 						},
 
 						chat: {
