@@ -22,5 +22,7 @@ if (($#=="1"));then
 	" > /etc/apache2/sites-available/$name.conf
 	sudo /usr/sbin/service apache2 reload		# Reloading the Apache service
 else
-	echo " ad_vhost: Nombre de paramètres invalide "
+	echo " add_vhost: Nombre de paramètres invalide "
 fi
+
+exit 0
