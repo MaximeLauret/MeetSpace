@@ -9,7 +9,7 @@ name=$1
 
 
 #Script
-if test -z "$1";then
+#if test -z "$1";then
 	# Creating the directory host
 	/bin/mkdir -p /var/sftp/$name/www
 	# According rights to the user interface
@@ -21,8 +21,8 @@ if test -z "$1";then
 	</VirtualHost>
 	" > /etc/apache2/sites-available/$name.conf
 	sudo /usr/sbin/service apache2 reload		# Reloading the Apache service
-else
-	echo " add_vhost: Nombre de paramètres invalide "
-fi
+#else
+#	echo " add_vhost: Nombre de paramètres invalide "
+#fi
 
 exit 0
