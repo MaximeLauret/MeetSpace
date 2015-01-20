@@ -12,14 +12,18 @@ Created by Max (2014-12-22)
 <?php
 	if (isset($_SESSION['ID'])) // SI L'UTILISATEUR EST CONNECTE
 	 {
+
 		if (isset($_GET['section'])) // ET SI ON A DES PARMS DANS L'URL
 		{
 			switch ($_GET['section']) { // ALORS ON SE BALADE SUR LE SITE
 				case 'user':
-					include_once ("./switchUser.php");
+					include_once ("./SWITCH/switchUser.php");
 					break;
 				case 'project':
-					include_once ("./switchProject.php");
+					include_once ("./SWITCH/switchProject.php");
+					break;
+				case 'search':
+					include_once("./C_search.php"); //ON INCLUS LA FONCTION DE RECHERCHE
 					break;
 				default:
 					include_once ("./C_myprojects.php"); // SI ON EST CONNECTE SANS BON PARMS: ON TOMBE SUR SA PAGE PERSO

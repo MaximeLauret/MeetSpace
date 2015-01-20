@@ -8,9 +8,9 @@ password=$2
 
 if (($#=="2"));then
 		#Ajout utilisateur postfix
-		/bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
-		/usr/sbin/postmap  /etc/postfix/mailboxmap
-		/usr/sbin/service postfix restart
+		sudo /bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
+		sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
+		sudo /usr/sbin/service postfix restart
 
 	#Création Maildir utilisateur
 		if [ ! -r /var/mail/$name ]
@@ -21,13 +21,13 @@ if (($#=="2"));then
 		fi
 
 	#Création authentication IMAP
-		password=$(/usr/sbin/userdbpw -md5 <<-EOF
+		password=$(sudo /usr/sbin/userdbpw -md5 <<-EOF
 		$password
 		$password
 		EOF
 		)
-		/usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
-		/usr/sbin/makeuserdb 
+		sudo /usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
+		sudo /usr/sbin/makeuserdb
 
 	#Initialisation du dossier principal de la boite mail
 	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<-AUTO

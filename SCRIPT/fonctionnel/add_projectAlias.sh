@@ -13,10 +13,8 @@ if (($#=="1"));then
 		   /bin/echo "contact@$name" >> /etc/postfix/virtual
 	fi
 
-	/usr/sbin/postmap  /etc/postfix/virtual
-	/usr/sbin/service postfix restart
+	sudo /usr/sbin/postmap  /etc/postfix/virtual
+	sudo /usr/sbin/service postfix restart
 else
 	echo " add_projectAlias: Nombre de paramètres invalide "
 fi
-
-

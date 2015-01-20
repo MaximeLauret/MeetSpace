@@ -9,7 +9,7 @@ name=$1
 
 if (($#=="1"));then
 	#Suppression de l'utilisateur
-	/usr/sbin/userdel --force $name 
+	sudo /usr/sbin/userdel --force $name 
 
 	#Suppression de son répertoire
 	/bin/rm -rf /var/sftp/home/$name

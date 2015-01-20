@@ -18,7 +18,7 @@ if (($#=="2"));then
 	mkpassword=`/usr/bin/mkpasswd $password`
 
 	#Ajout de l'utilisateur
-	/usr/sbin/useradd --home /var/sftp/home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
+	sudo /usr/sbin/useradd --home /var/sftp/home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
 
 
 	#Mise en place de ses droits sur son /home
@@ -26,9 +26,12 @@ if (($#=="2"));then
 	/bin/chgrp -R meetspace_user /var/sftp/home/$name
 
 	#Mise en place des quotas:
-	/usr/sbin/setquota -u $name 300 300 0 0 -a /var/sftp/home/$name
-	/usr/sbin/setquota -u $name 200 200 0 0 -a /var/mail/$name
+	sudo /usr/sbin/setquota -u $name 300 300 0 0 -a /var/sftp/home/$name
+	sudo /usr/sbin/setquota -u $name 200 200 0 0 -a /var/mail/$name
+	echo " add_userUnix: Inscription OK"
 
 else
 	echo " add_userUnix: Nombre de paramètres invalide "
 fi
+
+exit 0
