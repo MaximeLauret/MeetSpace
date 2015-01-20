@@ -16,14 +16,14 @@ function log_database () {				// Logging into the database
 	return $database;
 }
 
-/*function log_owncloud_database () {		// Logging into the OwnCloud database
+function log_owncloud_database () {		// Logging into the OwnCloud database
 	try {	
 		$owncloud_database = new PDO('mysql:host=localhost;dbname=SHARE', 'meetspace', 'meetspace');
 	} catch (Exception $e) {
 		die("Error : ".$e->getMessage());
 	}
 	return $owncloud_database;
-}*/
+}
 
 function get_projects ($database) {		// Get the user's projects and display them
 	$tab = array ();
@@ -38,7 +38,7 @@ function get_projects ($database) {		// Get the user's projects and display them
 	return $tab;
 }
 
-function create_new_project ($database, /*$owncloud_database, */$project_name_input, $project_description_input, $project_creator) {		// Create a new project
+function create_new_project ($database, $project_name_input, $project_description_input, $project_creator) {		// Create a new project
 	$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
 	$request -> execute (array (
 	"project_name_input" => $project_name_input,
@@ -46,7 +46,7 @@ function create_new_project ($database, /*$owncloud_database, */$project_name_in
 	$request -> closeCursor();
 }
 
-function get_project_id ($database, $project_name_input) {
+function get_project_id ($database, $project_name_input) {		// Récupère l'ID du projet afin d'ajouter l'auteur par la suite.
 	$request = $database -> prepare ("SELECT ID FROM PROJECTS WHERE NAME LIKE :project_name_input");
 	$request -> execute (array ("project_name_input" => $project_name_input));
 	$line = $request -> fetch ();
@@ -55,20 +55,15 @@ function get_project_id ($database, $project_name_input) {
 	return $project_id;
 }
 
-function add_author ($database, $project_id_exe) {
+function add_author ($database, $project_id_exe) {		// Ajoute l'auteur du projet.
 	$request = $database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS, AUTHOR) VALUES (:user_id, :project_id, 'MANAGER', 1)");
 	$request -> execute (array (
 	"user_id" => $_SESSION["ID"],
 	"project_id" => $project_id_exe));
 	$request -> closeCursor();
-		
-	// Creating a shared repository between the collaborators
-	
-	
-	// Creating the chatroom for the collaborators
 }
 
-function get_project_id_to_leave ($database, $project_selection) {
+function get_project_id_to_leave ($database, $project_selection) {		// Récupère l'ID du projet sélectionné afin de se désabonner.
 	$request = $database -> prepare ("SELECT ID FROM PROJECTS WHERE NAME LIKE :project_selection");
 	$request -> execute (array ("project_selection" => $project_selection));
 	$line = $request -> fetch ();
@@ -77,17 +72,12 @@ function get_project_id_to_leave ($database, $project_selection) {
 	return $project_id_to_leave;
 }
 
-function leave_project ($database, $project_id_to_leave_exe) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_project.php
+function leave_project ($database, $project_id_to_leave_exe) {		// Désabonne du projet précédemment sélectionné.
 	$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user_id AND PROJECT LIKE :project_id");
 	$request -> execute (array (
 	"user_id" => $_SESSION["ID"],
 	"project_id" => $project_id_to_leave_exe));
 	$request -> closeCursor();
 }
-
-/*function delete_project ($database) {
-	$request = $database -> prepare ("DELETE FROM PROJECTS WHERE USER LIKE :session_id");
-	$request -> execute (array ("session_id" =>
-}*/
 
 ?>
