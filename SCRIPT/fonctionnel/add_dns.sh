@@ -4,7 +4,7 @@
 
 #Variable
 name=$1
-if test -z "$1";then
+if (($#=="1"));then
 	#Script
 	/bin/echo " Ajout de la ligne:"
 	/bin/echo "+$name.meetspace.itinet.fr:88.177.168.133:86400"
