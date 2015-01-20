@@ -56,7 +56,12 @@ function create_new_project ($database, /*$owncloud_database, */$project_name_in
 	// Creating the chatroom for the collaborators
 }
 
-function leave_project ($database) {
+function leave_project ($database) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_project.php
+	$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");
+	$request -> execute (array (
+	"user" => $_SESSION["USER"],
+	"project" => $project_name));
+	$request -> closeCursor();
 }
 
 /*function delete_project ($database) {
