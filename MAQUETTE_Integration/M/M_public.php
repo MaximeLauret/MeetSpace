@@ -66,10 +66,10 @@ Created by Maxime (2014-10-24)
 			//AJOUT D'UN PREMIER CONTACT PROSODY
 
 			//INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
-			$request = $database -> prepare ("INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr', :nickname_signin_input,'roster','pierrick@meetspace.itinet.fr','json','{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​")​
+			/*$request = $database -> prepare ("INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr', :nickname_signin_input,'roster','pierrick@meetspace.itinet.fr','json','{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​")​;
 			$request -> execute (array (
 			'nickname_signin_input' => $nickname_signin_input));
-			$request -> closeCursor();
+			$request -> closeCursor();*/
 
 			//Il s'est inscrit, on le connecte
 			connect_user($database, $nickname_signin_input, $password_signin_input);
