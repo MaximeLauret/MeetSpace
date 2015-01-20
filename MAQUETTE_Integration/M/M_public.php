@@ -15,6 +15,15 @@ Created by Maxime (2014-10-24)
 		return $database;
 	}
 
+	function log_prosody_database () {		// Connexion à la base de données de Prosody
+		try {	
+			$prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
+		} catch (Exception $e) {
+			die("Error : ".$e->getMessage());
+		}
+		return $prosody_database;
+	}
+
 	// USER Registering part
 
 	function register_user (
@@ -65,10 +74,9 @@ Created by Maxime (2014-10-24)
 
 			//AJOUT D'UN PREMIER CONTACT PROSODY
 
-			//INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
-			$request = $database -> prepare ("INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr', :nickname_signin_input,'roster','pierrick@meetspace.itinet.fr','json','{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​")​
-			$request -> execute (array (
-			'nickname_signin_input' => $nickname_signin_input));
+			// INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
+			$request = $prosody_database -> prepare ("INSERT INTO prosod`(host, user, store, key, type, value) VALUES ('meetspace.itinet.fr', :nickname_signin_input, 'roster', 'pierrick@meetspace.itinet.fr', 'json', '{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​");​
+			$request -> execute (array ("nickname_signin_input" => $nickname_signin_input));
 			$request -> closeCursor();
 
 			//Il s'est inscrit, on le connecte

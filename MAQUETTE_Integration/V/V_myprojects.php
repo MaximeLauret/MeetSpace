@@ -26,15 +26,27 @@ Created by Max (2014-12-23)
 			echo "<br/> <br/>";
 			echo "Vos projets : ";
 			echo "<br/>";
-			foreach ($projects_list as $element) {
-				echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");		// Affiche le nom du projet et fait le lien vers la page de celui-ci.
-				echo ("<br/>");
-				echo $element["PROJECT_DESCRIPTION"];		// Affiche la description s'il y a.
-				echo ("<form action = '#' method = 'POST'>".		// Formulaire pour récupérer le nom du projet.		À PLANQUER
-						"<input id = 'text' name = 'project_selection' value = ".$element['NAME'].">
-						<button id = 'submit' name = 'leave_project' value = 'leave_project' > Quitter le projet </button>
-						</form>");
-				echo "<br/>";
+
+			while ($i < 4) {		// On affiche 5 projets.
+				foreach ($projects_list as $element) {
+					echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");		// Affiche le nom du projet et fait le lien vers la page de celui-ci.
+					echo ("<br/>");
+					echo $element["PROJECT_DESCRIPTION"];		// Affiche la description s'il y a.
+					echo ("<form action = '#' method = 'POST'>".		// Formulaire pour récupérer le nom du projet.		À PLANQUER
+							"<input id = 'text' name = 'project_selection' value = ".$element['NAME'].">
+							<button id = 'submit' name = 'leave_project' value = 'leave_project' > Quitter le projet </button>
+							</form>");
+					echo "<br/>";
+					$i++;
+				}
+			}
+
+			if ($i == 0) {
+				echo ("Vous ne collaborez à aucun projet.
+				<br/>
+				Rejoignez-en un ou créez le votre dès maintenant !");
+			} else {
+				// Nothing
 			}
 		
 		?>
