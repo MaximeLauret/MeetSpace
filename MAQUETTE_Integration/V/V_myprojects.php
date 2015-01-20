@@ -8,7 +8,6 @@ Created by Max (2014-12-23)
 <!DOCTYPE html>
 
 <html>
-
 		<?php
 			include("./V/INCLUDE/header.php");
 		?>
@@ -20,8 +19,6 @@ Created by Max (2014-12-23)
 		
 		<?php
 		
-			$i = 0;
-<<<<<<< HEAD
 			echo "<h3>Bonjour ".$_SESSION['USER']."</h3>";
 			echo "<h4>Voici vos projets : </h4>";
 			foreach ($projects_list as $element) {
@@ -33,12 +30,13 @@ Created by Max (2014-12-23)
 						<button id = 'submit' name = 'leave_project' value = 'leave_project' > Quitter le projet </button>
 						</form>");
 				echo "<br/>";
-=======
 			echo "Bonjour ".$_SESSION['USER'];
 			echo "<br/> <br/>";
 			echo "Vos projets : ";
 			echo "<br/>";
+			}
 
+			$i = 0;
 			while ($i < 4) {		// On affiche 5 projets.
 				foreach ($projects_list as $element) {
 					echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");		// Affiche le nom du projet et fait le lien vers la page de celui-ci.
@@ -49,8 +47,8 @@ Created by Max (2014-12-23)
 							<button id = 'submit' name = 'leave_project' value = 'leave_project' > Quitter le projet </button>
 							</form>");
 					echo "<br/>";
-					$i++;
 				}
+			$i++;
 			}
 
 			if ($i == 0) {
@@ -59,7 +57,6 @@ Created by Max (2014-12-23)
 				Rejoignez-en un ou créez le votre dès maintenant !");
 			} else {
 				// Nothing
->>>>>>> 0ea6307293134402feb48082b1f478adec1742c8
 			}
 		
 		?>
