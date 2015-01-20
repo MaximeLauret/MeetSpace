@@ -55,7 +55,7 @@ Created by Maxime (2014-10-24)
 			echo $output;
 
 			//ENVOIE D'UN EMAL DE BIENVENU
-			$destinataire = .$nickname_signin_input.'@toutestfacile.com';
+			$destinataire = ''.$nickname_signin_input.'@toutestfacile.com';
 			$expediteur   = "contact@meetspace.itinet.fr";
 			$reponse      = $expediteur;
 
