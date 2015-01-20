@@ -37,28 +37,37 @@ function get_projects ($database) {		// Get the user's projects and display them
 	$request -> closeCursor();
 	return $tab;
 }
-/*
-function create_new_project ($database, /*$owncloud_database, *//*$project_name_input, $project_description_input, $project_creator) {		// Create a new project
-	// Creating the new project in the MeetSpace database
-		$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
-		$request -> execute (array (
-		"project_name_input" => $project_name_input,
-		"project_description_input" => $project_description_input));
-		$request -> closeCursor();
-		
-	// Adding the author of the project to the collaborators
 
-		$request = $database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS, AUTHOR) VALUES (:user, :project, MANAGER, 1)");
-		$request -> execute (array (
-		"user" => $_SESSION["USER"],
-		"project" => $project_name_input));
-		$request -> closeCursor();
+function create_new_project ($database, /*$owncloud_database, */$project_name_input, $project_description_input, $project_creator) {		// Create a new project
+	$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
+	$request -> execute (array (
+	"project_name_input" => $project_name_input,
+	"project_description_input" => $project_description_input));
+	$request -> closeCursor();
+}
+
+function get_project_id ($database, $project_name_input) {
+	$request = $database -> prepare ("SELECT ID FROM PROJECTS WHERE NAME LIKE :project_name_input");
+	$request -> execute (array ("project_name_input" => $project_name_input));
+	$line = $request -> fetch ();
+	$project_id = $line["ID"];
+	$request -> closeCursor();
+	return $project_id;
+}
+
+function add_author ($database, $project_id_exe) {
+	$request = $database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS, AUTHOR) VALUES (:user_id, :project_id, 'MANAGER', 1)");
+	$request -> execute (array (
+	"user_id" => $_SESSION["ID"],
+	"project_id" => $project_id_exe));
+	$request -> closeCursor();
 		
 	// Creating a shared repository between the collaborators
 	
 	
 	// Creating the chatroom for the collaborators
 }
+
 /*
 function leave_project ($database) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_project.php
 	$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");

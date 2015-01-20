@@ -18,7 +18,7 @@ if (($#=="2"));then
 	mkpassword=`/usr/bin/mkpasswd $password`
 
 	#Ajout de l'utilisateur
-	sudo /usr/sbin/useradd --home /var/sftp/home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
+	sudo /usr/sbin/useradd --home /var/sftp/home/$name --groups meetspace_user meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
 
 
 	#Mise en place de ses droits sur son /home

@@ -26,6 +26,8 @@ if (!isset($_SESSION)) { session_start(); }
 		if (isset ($_POST["create_project"])) {
 			if (isset ($_POST["project_name_input"]) AND isset ($_POST["project_description_input"])) {
 				create_new_project ($database, /*$owncloud_database, */$_POST["project_name_input"], $_POST["project_description_input"], $_SESSION["USER"]);
+				$project_id_exe = get_project_id ($database, $_POST["project_name_input"]);
+				add_author ($database, $project_id_exe);
 				echo ("Le projet a bien été créé<br/>");
 			} else {
 				echo ("Erreur : le projet n'a pas pu être créé");

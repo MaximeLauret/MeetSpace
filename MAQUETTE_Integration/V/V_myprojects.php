@@ -27,7 +27,9 @@ Created by Max (2014-12-23)
 			echo "Vos projets : ";
 			echo "<br/>";
 			foreach ($projects_list as $element) {
-				echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");
+				echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");		// Affiche le nom du projet et fait le lien vers la page de celui-ci.
+				echo ("<br/>");
+				echo $element["PROJECT_DESCRIPTION"];		// Affiche la description s'il y a.
 				echo "<br/>";
 			}
 			
