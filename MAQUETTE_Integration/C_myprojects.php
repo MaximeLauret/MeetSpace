@@ -34,6 +34,12 @@ if (!isset($_SESSION)) { session_start(); }
 			}
 		}
 
+	// QUITTER UN PROJET
+		if (isset ($_POST["leave_project"]) AND isset ($_POST["project_selection"])) {
+			$project_id_to_leave_exe = get_project_id_to_leave ($database, $_POST["project_selection"]);
+			leave_project ($database, $project_id_to_leave_exe);
+		}
+
 ?>
 	
 <?php

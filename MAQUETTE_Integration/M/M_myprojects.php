@@ -68,12 +68,20 @@ function add_author ($database, $project_id_exe) {
 	// Creating the chatroom for the collaborators
 }
 
-/*
-function leave_project ($database) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_project.php
-	$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");
+function get_project_id_to_leave ($database, $project_selection) {
+	$request = $database -> prepare ("SELECT ID FROM PROJECTS WHERE NAME LIKE :project_selection");
+	$request -> execute (array ("project_selection" => $project_selection));
+	$line = $request -> fetch ();
+	$project_id_to_leave = $line["ID"];
+	$request -> closeCursor();
+	return $project_id_to_leave;
+}
+
+function leave_project ($database, $project_id_to_leave_exe) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_project.php
+	$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user_id AND PROJECT LIKE :project_id");
 	$request -> execute (array (
-	"user" => $_SESSION["USER"],
-	"project" => $project_name));
+	"user_id" => $_SESSION["ID"],
+	"project_id" => $project_id_to_leave_exe));
 	$request -> closeCursor();
 }
 

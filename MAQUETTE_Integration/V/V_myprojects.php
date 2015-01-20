@@ -30,6 +30,10 @@ Created by Max (2014-12-23)
 				echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");		// Affiche le nom du projet et fait le lien vers la page de celui-ci.
 				echo ("<br/>");
 				echo $element["PROJECT_DESCRIPTION"];		// Affiche la description s'il y a.
+				echo ("<form action = '#' method = 'POST'>
+						<input id = 'text' name = 'project_selection' value = ".$element['NAME'].">
+						<button id = 'submit' name = 'leave_project' value = 'leave_project' > Quitter le projet </button>
+						</form>");
 				echo "<br/>";
 			}
 			
