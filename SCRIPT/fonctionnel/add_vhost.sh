@@ -9,7 +9,7 @@ name=$1
 
 
 #Script
-if (($#=="1"));then
+if test -z "$1";then
 	# Creating the directory host
 	/bin/mkdir -p /var/sftp/$name/www
 	# According rights to the user interface

@@ -19,3 +19,5 @@ if (($#=="1"));then
 else
 	echo " del_dns: Nombre de paramètres invalide "
 fi
+
+exit 0
