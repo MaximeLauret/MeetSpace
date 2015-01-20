@@ -19,8 +19,8 @@ if (($#=="2"));then
 		/bin/echo "$var" >> /etc/postfix/virtual
 	fi
 
-	/usr/sbin/postmap /etc/postfix/virtual
-	/usr/sbin/service postfix restart
+	sudo /usr/sbin/postmap /etc/postfix/virtual
+	sudo /usr/sbin/service postfix restart
 else
 	echo " del_userAlias: Nombre de paramètres invalide "
 fi

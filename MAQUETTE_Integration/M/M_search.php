@@ -26,7 +26,7 @@ Created by Maxime (2015-01-07)
 		$i=0;
 		$request = $database -> prepare("SELECT ID, NICKNAME FROM USERS WHERE NICKNAME LIKE :member_searched");
 		
-		$request->execute(array("member_searched" => "%".$string."%"));
+		$request->execute(array("member_searched" => "%$string%"));
 		
 		while($data = $request->fetch()) {
 			$users_results[$i]['id'] = $data['ID'];
@@ -36,7 +36,7 @@ Created by Maxime (2015-01-07)
 		}
 		
 		$request->closeCursor();
-		return $array;
+		return $users_results;
 		
 	}
 
@@ -46,7 +46,7 @@ Created by Maxime (2015-01-07)
 		
 		$request = $database->prepare('SELECT ID, NAME FROM PROJECTS WHERE NAME LIKE :name_searched');
 		
-		$request->execute(array("name_searched" => "%".$string."%"));
+		$request->execute(array("name_searched" => "%$string%"));
 		
 		while($data = $request->fetch()) {
 			$projects_results[$i]['id'] = $data['ID'];
@@ -56,7 +56,7 @@ Created by Maxime (2015-01-07)
 		}
 		
 		$request->closeCursor();
-		return $array;
+		return $projects_results;
 	}
 	
 ?>
