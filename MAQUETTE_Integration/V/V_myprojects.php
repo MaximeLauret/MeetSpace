@@ -18,11 +18,18 @@ Created by Max (2014-12-23)
 		<?php include ("./V/INCLUDE/topbar.php"); ?>
 	
 		<br/><br/><br/><br/><br/>		<!-- DEBUG : la topbar est relou -->
+		
 		<?php
 		
 			$i = 0;
-			echo "Bonjour ";
-			echo $_SESSION['USER'];
+			echo "Bonjour ".$_SESSION['USER'];
+			echo "<br/> <br/>";
+			echo "Vos projets : ";
+			echo "<br/>";
+			foreach ($projects_list as $element) {
+				echo ("<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>");
+				echo "<br/>";
+			}
 			
 		
 		?>
