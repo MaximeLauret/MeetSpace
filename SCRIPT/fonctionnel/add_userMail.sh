@@ -27,7 +27,7 @@ if (($#=="2"));then
 		EOF
 		)
 		sudo /usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
-		sudo /usr/sbin/makeuserdb -f /var/mail/$name/
+		sudo /usr/sbin/makeuserdb
 
 	#Initialisation du dossier principal de la boite mail
 	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<-AUTO
