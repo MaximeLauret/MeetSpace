@@ -19,6 +19,8 @@ if (!isset($_SESSION)) { session_start(); }
 	$database = log_database();							// Log into the database
 	
 	//$owncloud_database = log_owncloud_database;		// Log into the ownCloud database
+
+	$projects_list = get_projects ($database);
 	
 	// NEW PROJECT
 		if (isset ($_POST["create_project"])) {

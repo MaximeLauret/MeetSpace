@@ -26,15 +26,19 @@ function log_database () {				// Logging into the database
 }*/
 
 function get_projects ($database) {		// Get the user's projects and display them
-	$request = $database -> prepare ("SELECT NAME, PROJECT_DESCRIPTION FROM PROJECTS LEFT JOIN SUBSCRIBE WHERE SUBSCRIBE.USER LIKE :session_id");
-	$request -> execute (array ("session_id" => $_SESSION["USER"]));
-	$line = $request -> fetch ();
-	$project_name = $line["PROJECT"];
+	$tab = array ();
+	$request = $database -> prepare ("SELECT PROJECTS.NAME, PROJECTS.PROJECT_DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :session_id");
+	$request -> execute (array ("session_id" => $_SESSION["ID"]));
+	while ($line = $request -> fetch ()) {
+		$project_name = $line["NAME"];
+		$project_description = $line["PROJECT_DESCRIPTION"];
+		array_push ($tab, array ("NAME" => $project_name, "PROJECT_DESCRIPTION" => $project_description));
+	}
 	$request -> closeCursor();
-	return $project_name;
+	return $tab;
 }
-
-function create_new_project ($database, /*$owncloud_database, */$project_name_input, $project_description_input, $project_creator) {		// Create a new project
+/*
+function create_new_project ($database, /*$owncloud_database, *//*$project_name_input, $project_description_input, $project_creator) {		// Create a new project
 	// Creating the new project in the MeetSpace database
 		$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
 		$request -> execute (array (
@@ -55,7 +59,7 @@ function create_new_project ($database, /*$owncloud_database, */$project_name_in
 	
 	// Creating the chatroom for the collaborators
 }
-
+/*
 function leave_project ($database) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_project.php
 	$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");
 	$request -> execute (array (
