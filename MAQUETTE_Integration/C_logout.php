@@ -4,9 +4,8 @@ Controller for the log out function
 Created by Max (2015-01-07)
 -->
 
-
 <?php
-		session_start();
+	if (!isset($_SESSION)) { session_start(); }
 ?>
 
 <?php
@@ -18,6 +17,8 @@ Created by Max (2015-01-07)
 	// Suppression des variables de session et de la session
 	$_SESSION = array();
 	session_destroy();
+
+	//Et on recharge l'index
 	header("Location: ./index.php");
 ?>
 

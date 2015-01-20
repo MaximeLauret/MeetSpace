@@ -18,7 +18,7 @@ Edited by Max (2015-01-07)
 					<span class="icon-bar"></span>
 				</button>
 				
-				<a class="navbar-brand" href="http://meetspace.itinet.fr/index.php">Meetspace</a>
+				<a class="navbar-brand" href="./index.php">Meetspace</a>
 				
 			</div>
 

@@ -6,9 +6,6 @@ Created by Maxime (2014-10-24)
 
 
 <?php
-
-
-
 	function log_database () {		// CONNEXION À LA BASE DE DONNÉES	
 		try {	
 			$database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
@@ -42,20 +39,20 @@ Created by Maxime (2014-10-24)
 			// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
 				// EN TANT QU'UTILISATEUR UNIX
 			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
-			var_dump ($out);
-			echo $output;
+			#var_dump ($out);
+			#echo $output;
 			
 				// EN TANT QU'UTILISATEUR MAIL
 			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
-			var_dump ($out);
-			echo $output;
+			#var_dump ($out);
+			#echo $output;
 				// EN TANT QU'UTILISATEUR CHAT
 			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
-			var_dump ($out);
-			echo $output;
+			#var_dump ($out);
+			#echo $output;
 
 			//ENVOIE D'UN EMAL DE BIENVENU
-			$destinataire = ''.$nickname_signin_input.'@toutestfacile.com';
+			$destinataire = ''.$nickname_signin_input.'@meetspace.itinet.fr';
 			$expediteur   = "contact@meetspace.itinet.fr";
 			$reponse      = $expediteur;
 
@@ -63,10 +60,14 @@ Created by Maxime (2014-10-24)
 			     "Bienvenue sur Meetspace",
 			     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
 			     "From: $expediteur\r\nReply-To: $reponse");
-
-
 					
 			echo ("Votre compte a bien été créé");
+
+			//Il s'est inscrit, on le connecte
+			connect_user($database, $nickname_signin_input, $password_signin_input);
+
+			header("Location: ./index.php");
+
 		} else {
 			echo ("Erreur : votre compte n'a pas pu être créé");
 		}
@@ -89,7 +90,7 @@ Created by Maxime (2014-10-24)
 		}
 		else
 		{
-			session_start();
+			if (!isset($_SESSION)) { session_start(); }
 			$_SESSION['ID'] = $resultat['id'];
 			$_SESSION['USER'] = $nickname_login_input;
 			$_SESSION['PASSWORD'] = $password_login_input;
@@ -109,18 +110,18 @@ Created by Maxime (2014-10-24)
 		// SUPPRESSION DE L'UTILISATEUR SUR LE SERVEUR
 			// EN TANT QU'UTILISATEUR UNIX
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userUnix.sh $nickname_signin_input", $out);
-		var_dump ($out);
-		echo $output;
+		#var_dump ($out);
+		#echo $output;
 		
 			// EN TANT QU'UTILISATEUR MAIL
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userMail.sh $nickname_signin_input", $out);
-		var_dump ($out);
-		echo $output;
+		#var_dump ($out);
+		#echo $output;
 			// EN TANT QU'UTILISATEUR CHAT
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/del_userChat.sh $nickname_signin_input", $out);
-		var_dump ($out);
-		echo $output;	
-		echo ("Votre compte a bien été supprimé");
+		#var_dump ($out);
+		#echo $output;	
+		#echo ("Votre compte a bien été supprimé");
 
 	}
 
