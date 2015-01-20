@@ -54,6 +54,17 @@ Created by Maxime (2014-10-24)
 			var_dump ($out);
 			echo $output;
 
+			//ENVOIE D'UN EMAL DE BIENVENU
+			$destinataire = .$nickname_signin_input.'@toutestfacile.com';
+			$expediteur   = "contact@meetspace.itinet.fr";
+			$reponse      = $expediteur;
+
+			mail($destinataire,
+			     "Bienvenue sur Meetspace",
+			     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
+			     "From: $expediteur\r\nReply-To: $reponse");
+
+
 					
 			echo ("Votre compte a bien été créé");
 		} else {

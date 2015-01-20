@@ -16,8 +16,6 @@ if (isset($_SESSION['ID']))
 	{
 	// SI CONNECTER
 		echo ("<link href = 'http://getbootstrap.com/examples/starter-template/starter-template.css' rel='stylesheet'>");
-		
-		include_once ("./V/V_jappix.php");
 	}
 	else
 	{
