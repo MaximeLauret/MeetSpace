@@ -45,11 +45,8 @@ Created by Maxime (2015-01-14)
 
 			?>
 		</section>
-		
-
-		<?php
-			include("INCLUDE/footer.php");
-		?>
-
-	</body>
+	</body>		
+	<?php
+		include("INCLUDE/footer.php");
+	?>
 </html>

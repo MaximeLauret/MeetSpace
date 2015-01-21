@@ -12,7 +12,7 @@ Created by Maxime (2014-10-24)
 		include_once ("./V/INCLUDE/header.php");
 	?>
 	
-	<body>		
+	<body>	
 		<div class = "site-wrapper">
 			<div class = "site-wrapper-inner">
 				<div class="col-xs-12 col-sm-5 col-md-4 col-md-offset-2" >		<!-- Colonne de gauche (Description) -->
@@ -74,10 +74,10 @@ Created by Maxime (2014-10-24)
 					</form>
 				</div>
 				
-				<?php include_once("INCLUDE/footer.php"); ?>
 
 			</div>
 		</div>
-
+	
 	</body>
+	<?php include_once("INCLUDE/footer.php"); ?>
 </html>

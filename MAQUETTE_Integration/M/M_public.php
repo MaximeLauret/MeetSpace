@@ -61,7 +61,7 @@ Created by Maxime (2014-10-24)
 			#echo $output;
 
 			//ENVOIE D'UN EMAL DE BIENVENU
-			$destinataire = ''.$nickname_signin_input.'@meetspace.itinet.fr';
+			$destinataire = $nickname_signin_input.'@meetspace.itinet.fr';
 			$expediteur   = "contact@meetspace.itinet.fr";
 			$reponse      = $expediteur;
 
