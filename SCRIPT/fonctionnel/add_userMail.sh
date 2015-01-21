@@ -30,15 +30,15 @@ if (($#=="2"));then
 		sudo /usr/sbin/makeuserdb
 
 	#Initialisation du dossier principal de la boite mail
-	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<-AUTO
-	mail from:<contact@meetspace.itinet.fr>
-	rcpt to:<$name@meetspace.itinet.fr>
-	data
-	Subject: Bienvenue sur Meetspace
-	L'équipe de Meetspace vous souhaite la bienvenue sur son site.
-	.
-	quit
-	AUTO
+#	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<-AUTO
+#	mail from:<contact@meetspace.itinet.fr>
+#	rcpt to:<$name@meetspace.itinet.fr>
+#	data
+#	Subject: Bienvenue sur Meetspace
+#	L'équipe de Meetspace vous souhaite la bienvenue sur son site.
+#	.
+#	quit
+#	AUTO
 
 else
 	echo " add_userMail: Nombre de paramètres invalide "
