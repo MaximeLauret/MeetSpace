@@ -74,11 +74,20 @@ Created by Maxime (2014-10-24)
 			echo ("Votre compte a bien été créé");
 	}
 
+<<<<<<< HEAD
 	/*function first_contact ($prosody_database, $nickname_signin_input) {
 		$request = $prosody_database -> prepare ("INSERT INTO prosody (host, user, store, key, type, value) VALUES ('meetspace.itinet.fr', :nickname_signin_input, 'roster', 'pierrick@meetspace.itinet.fr', 'json', '{\"groups\"\:{\"Meetspace\":true},\"subscription\"\:\"both\"}')​");​
 		$request -> execute (array ("nickname_signin_input" => $nickname_signin_input));
 		$line = 
 		$request -> closeCursor();
+=======
+			//AJOUT D'UN PREMIER CONTACT PROSODY
+
+			/*// INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
+			$request = $prosody_database -> prepare ("INSERT INTO prosod`(host, user, store, key, type, value) VALUES ('meetspace.itinet.fr', :nickname_signin_input, 'roster', 'pierrick@meetspace.itinet.fr', 'json', '{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​");​
+			$request -> execute (array ("nickname_signin_input" => $nickname_signin_input));
+			$request -> closeCursor();*/
+>>>>>>> 91301f1ad9a77f026e8b29cd0e1c76a1f40b9a92
 
 		//Il s'est inscrit, on le connecte
 		connect_user($database, $nickname_signin_input, $password_signin_input);

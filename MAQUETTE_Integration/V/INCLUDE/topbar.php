@@ -29,7 +29,7 @@ Edited by Max (2015-01-07)
 					<li class="active">							<!-- Search bar -->
 						<form action = "./index.php?section=search" method = "POST" class = "navbar-form navbar-right" role = "form">
 							<div class="form-group">
-								<input type="text" placeholder="Search" name = "keyWord" class="form-control">
+								<input type="text" placeholder="Personne, projet,.." name = "keyWord" class="form-control">
 							</div>
 							<button type="submit" class="btn btn-success" name="search" value=""> Search </button>
 						</form>
