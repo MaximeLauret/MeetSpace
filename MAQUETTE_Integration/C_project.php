@@ -21,7 +21,9 @@ Created by Maxime (2015-01-14)
 
 	$database = log_database();						// Logging into the database
 
-	/*$current_project = "My Project";		// TEMP
+	$current_project = get_current_project ();
+	$project_name = get_project_infos ($database, $current_project);
+	$manager_list = get_manager_list ($database, $project_name);
 
 	get_project_infos ($database, $current_project);
 	
@@ -47,7 +49,6 @@ Created by Maxime (2015-01-14)
 	} else {
 		echo ("Erreur : Le projet n'a pas pu être supprimé.");
 	}
-*/
 
 
 ?>

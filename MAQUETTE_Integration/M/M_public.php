@@ -31,7 +31,8 @@ Created by Maxime (2014-10-24)
 		$nickname_signin_input, 
 		$mail_input, 
 		$password_signin_input, 
-		$password_confirmation_input)
+		$password_confirmation_input,
+		$prosody_database)
 	 
 	{		// Signing in
 		if ($password_signin_input === $password_confirmation_input) 
@@ -71,30 +72,22 @@ Created by Maxime (2014-10-24)
 			     "From: $expediteur\r\nReply-To: $reponse");
 					
 			echo ("Votre compte a bien été créé");
+	}
 
-			//AJOUT D'UN PREMIER CONTACT PROSODY
+	/*function first_contact ($prosody_database, $nickname_signin_input) {
+		$request = $prosody_database -> prepare ("INSERT INTO prosody (host, user, store, key, type, value) VALUES ('meetspace.itinet.fr', :nickname_signin_input, 'roster', 'pierrick@meetspace.itinet.fr', 'json', '{\"groups\"\:{\"Meetspace\":true},\"subscription\"\:\"both\"}')​");​
+		$request -> execute (array ("nickname_signin_input" => $nickname_signin_input));
+		$line = 
+		$request -> closeCursor();
 
-<<<<<<< HEAD
-			//INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
-			/*$request = $database -> prepare ("INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr', :nickname_signin_input,'roster','pierrick@meetspace.itinet.fr','json','{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​")​;
-			$request -> execute (array (
-			'nickname_signin_input' => $nickname_signin_input));
-			$request -> closeCursor();*/
-=======
-			// INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
-			$request = $prosody_database -> prepare ("INSERT INTO prosod`(host, user, store, key, type, value) VALUES ('meetspace.itinet.fr', :nickname_signin_input, 'roster', 'pierrick@meetspace.itinet.fr', 'json', '{\"groups\":{\"Meetspace\":true},\"subscription\":\"both\"}')​");​
-			$request -> execute (array ("nickname_signin_input" => $nickname_signin_input));
-			$request -> closeCursor();
->>>>>>> 0ea6307293134402feb48082b1f478adec1742c8
+		//Il s'est inscrit, on le connecte
+		connect_user($database, $nickname_signin_input, $password_signin_input);
 
-			//Il s'est inscrit, on le connecte
-			connect_user($database, $nickname_signin_input, $password_signin_input);
+		header("Location: ./index.php");
 
-			header("Location: ./index.php");
-
-		} else {
-			echo ("Erreur : votre compte n'a pas pu être créé");
-		}
+	} else {
+		echo ("Erreur : votre compte n'a pas pu être créé");
+	}*/
 	}
 
 	function connect_user($database, $nickname_login_input, $password_login_input) {		// CONNEXION

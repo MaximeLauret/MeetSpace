@@ -16,25 +16,43 @@ function log_database () {				// Logging into the database
 	return $database;
 }
 
+function log_owncloud_database () {				// Connexion à la database d'ownCloud
+	try {	
+		$owncloud_database = new PDO('mysql:host=localhost;dbname=SHARE', 'meetspace', 'meetspace');
+	} catch (Exception $e) {
+		die("Error : ".$e->getMessage());
+	}
+	return $owncloud_database;
+}
+
+function get_current_project () {
+	$query = parse_url ($_SERVER);
+	return $query;
+}
+
 function get_project_infos ($database, $current_project) {		// Get the user's projects and display them
-	$request = $database -> prepare ("SELECT NAME, PROJECT_DESCRIPTION FROM PROJECTS WHERE NAME LIKE :project_name_input");
-	$request -> execute (array ("project_name_input" => $current_project));
+	$tab = array ();
+	$request = $database -> prepare ("SELECT NAME, PROJECT_DESCRIPTION FROM PROJECTS WHERE NAME LIKE :project_query");
+	$request -> execute (array ("project_query" => $current_project));
 	while ($line = $request -> fetch ()) {
 		$project_name = $line["NAME"];
 		$project_description = $line["PROJECT_DESCRIPTION"];
+		array_push ($tab, array ("NAME" => $project_name, "PROJECT_DESCRIPTION" => $project_description));
 	}
-	return $project_name;
-	return $project_description;
 	$request -> closeCursor();
+	return $tab;
 }
 
-function is_manager ($database) {
-	$request -> prepare ("SELECT USER FROM SUBSCRIBE LEFT JOIN PROJECTS WHERE SUBSCRIBE.STATUS = 'MANAGER'");		// PROBLÈME DE SUBSCRIBE
-	$request -> execute;
-	$line = $request -> fetch ();
-	$status = $line["STATUS"];
-	return $status;
+function get_manager_list ($database, $project_name) {
+	$tab = array ();
+	$request = $database -> prepare ("SELECT SUBSCRIBE.USER FROM SUBSCRIBE LEFT JOIN SUBSCRIBE.PROJECTS ON PROJECTS.ID WHERE WHERE PROJECTS.NAME LIKE :project_name AND SUBSCRIBE.STATUS = 'MANAGER'");
+	$request -> execute (array ("project_name" => $project_name));
+	while ($line = $request -> fetch ()) {
+		$project_manager_list = $line["USER"];
+		array_push ($tab, array ("USER" => $project_manager_list));
+	}
 	$request -> closeCursor();
+	return $tab;
 }
 
 function join_project ($database) {		// Add the user as a contributor to the project		// AJOUTER ICI LE INSERT DE SUBSCRIBE
