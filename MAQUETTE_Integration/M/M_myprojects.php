@@ -27,12 +27,13 @@ function log_owncloud_database () {		// Logging into the OwnCloud database
 
 function get_projects ($database) {		// Get the user's projects and display them
 	$tab = array ();
-	$request = $database -> prepare ("SELECT PROJECTS.NAME, PROJECTS.PROJECT_DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :session_id");
+	$request = $database -> prepare ("SELECT PROJECTS.ID, PROJECTS.NAME, PROJECTS.PROJECT_DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :session_id");
 	$request -> execute (array ("session_id" => $_SESSION["ID"]));
 	while ($line = $request -> fetch ()) {
+		$project_id = $line["ID"];
 		$project_name = $line["NAME"];
 		$project_description = $line["PROJECT_DESCRIPTION"];
-		array_push ($tab, array ("NAME" => $project_name, "PROJECT_DESCRIPTION" => $project_description));
+		array_push ($tab, array ("ID" => $project_id, "NAME" => $project_name, "PROJECT_DESCRIPTION" => $project_description));
 	}
 	$request -> closeCursor();
 	return $tab;

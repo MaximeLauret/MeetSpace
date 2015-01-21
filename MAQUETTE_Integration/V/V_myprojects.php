@@ -21,17 +21,16 @@ Created by Max (2014-12-23)
 				echo "<h3>Bonjour ".$_SESSION['USER']."</h3>";
 				
 				echo "<h4>Voici vos projets : </h4>";
+
+				echo "<br/>";
 				
 				foreach ($projects_list as $element) {
 					
 					echo ("<h4>
-								<a href = './../C_project.php?".$element['NAME']."'>".$element['NAME']."</a>
+								Nom du projet : <a href = './C_project.php?id=".$element["ID"]."'>".$element['NAME']."</a>
 							</h4>");		// Affiche le nom du projet et fait le lien vers la page de celui-ci.
 					echo ("<br/>");
-					echo $element["PROJECT_DESCRIPTION"];		// Affiche la description s'il y a.
-					echo ("<form action = './../C_project.php' metod = 'GET'>
-							<button id = 'submit' name = '".$element['NAME']."'> Aller à la page du projet </button>	
-						</form>");
+					echo ("<h5>Description : </h5>").$element["PROJECT_DESCRIPTION"];		// Affiche la description s'il y a.
 					echo ("<form action = '#' method = 'POST'>".		// Formulaire pour récupérer le nom du projet.		À PLANQUER
 							"<button id = 'submit' name = 'leave_project' value = 'leave_project' > Quitter le projet </button>
 							</form>");

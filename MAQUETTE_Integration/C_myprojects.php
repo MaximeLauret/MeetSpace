@@ -32,14 +32,14 @@ if (!isset($_SESSION)) { session_start(); }
 				echo("<meta http-equiv='Refresh' content='0; url=C_myprojects.php'/>");
 			} else {
 				echo ("Erreur : le projet n'a pas pu être créé");
-				echo("<meta http-equiv='Refresh' content='0; url=C_project.php?".$element['NAME']."'/>");
+				echo("<meta http-equiv='Refresh' content='0; url=./C_project.php?".$element['NAME']."'/>");
 			}
 		}
 
 	// AFFICHER PAGE PROJET
 
 		if (isset ($_GET["project_query"])) {
-			echo("<meta http-equiv='Refresh' content='0; url=C_myprojects.php'/>");
+			echo("<meta http-equiv='Refresh' content='0; url=./C_myprojects.php'/>");
 		}
 
 	// QUITTER UN PROJET

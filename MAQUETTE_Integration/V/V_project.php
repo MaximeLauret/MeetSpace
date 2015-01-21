@@ -20,20 +20,28 @@ Created by Maxime (2015-01-14)
 				include ("INCLUDE/topbar.php");
 			?>
 			
-		<section>		
+		<section>
 
+		<?php
+			echo ("<h3>");
+				echo $project_name;
+			echo ("</h3>");
+			echo ("<p>");
+				echo $project_description;
+			echo ("</p>");
+			echo ("<br/><br/>");
 
-			<br/><br/><br/>
-			Nom du projet : <?php echo $project_name; ?>
-			<br/>
-			Description du projet : <?php echo $project_description; ?>
-			<br/>
+			foreach ($projects_users_names as $element2) {
+				echo $element2["NICKNAME"];
+			}
+		?>
+		
 			<form class = "form-horizontal" action = "#" method = "POST">
-				<button id = "submit" name = "join_project" value = "join_project"> Rejoindre </button>
+				<button id = "submit" name = "join_project" value = "join_project"> Rejoindre le projet </button>
 				<button id = "submit" name = "leave_project" value = "leave_project"> Quitter </button>
 			</form>
 
-			<?php
+			<!--<?php
 
 				if ($status == "MANAGER") {
 					echo ("<form class = 'form-horizontal' action = '#' method = 'POST'>
@@ -43,7 +51,7 @@ Created by Maxime (2015-01-14)
 					// Nothing
 				}
 
-			?>
+			?> -->
 		</section>
 		
 
