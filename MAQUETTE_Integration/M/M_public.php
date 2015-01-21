@@ -61,7 +61,7 @@ Created by Maxime (2014-10-24)
 			#echo $output;
 
 			//ENVOIE D'UN EMAL DE BIENVENU
-			$destinataire = ''.$nickname_signin_input.'@meetspace.itinet.fr';
+			$destinataire = $nickname_signin_input.'@meetspace.itinet.fr';
 			$expediteur   = "contact@meetspace.itinet.fr";
 			$reponse      = $expediteur;
 
@@ -71,6 +71,11 @@ Created by Maxime (2014-10-24)
 			     "From: $expediteur\r\nReply-To: $reponse");
 					
 			echo ("Votre compte a bien été créé");
+			
+			//Il s'est inscrit, on le connecte
+			connect_user($database, $nickname_signin_input, $password_signin_input);
+
+			header("Location: ./index.php");
 	}
 
 	/*function first_contact ($prosody_database, $nickname_signin_input) {

@@ -13,11 +13,12 @@ Created by Max (2014-12-23)
 		?>
 	
 	<body>
+		<section>
 		
-		<?php include ("./V/INCLUDE/topbar.php"); ?>
+			<?php include ("./V/INCLUDE/topbar.php"); ?>
 
-		<?php
-			
+			<?php
+				
 				echo "<h3>Bonjour ".$_SESSION['USER']."</h3>";
 				
 				echo "<h4>Voici vos projets : </h4>";
@@ -45,27 +46,28 @@ Created by Max (2014-12-23)
 				} else {
 					// Nothing
 				}*/
-			
+				
 			?>
-		
-		<div class="col-xs-12 col-sm-9 col-md-9 col-lg-3 col-lg-offset">
-			<div  class="project" >
-				<form class = "form-horizontal" action = "#" method = "POST">
-				<legend>Lancez votre propre projet</legend>
-					<!-- PROJECT NAME INPUT -->
-						<input id = "pseudoinput" name = "project_name_input" type = "text" placeholder = "Nom du projet" class = "form-control input-md" required = "">
-					<!-- PROJECT DESCRIPTION INPUT -->
-						<input id = "text" name = "project_description_input" type = "text" placeholder = "Description" class = "form-control input-md">
-					<!-- SUBMIT BUTTON -->
-						<button id = "submit" name = "create_project" class = "btn btn-success btn-lg" value = "create_project"> Créer
-						</button>
-				</form>
+			
+			<div class="col-xs-12 col-sm-9 col-md-9 col-lg-3 col-lg-offset">
+				<div  class="project" >
+					<form class = "form-horizontal" action = "#" method = "POST">
+					<legend>Lancez votre propre projet</legend>
+						<!-- PROJECT NAME INPUT -->
+							<input id = "pseudoinput" name = "project_name_input" type = "text" placeholder = "Nom du projet" class = "form-control input-md" required = "">
+						<!-- PROJECT DESCRIPTION INPUT -->
+							<input id = "text" name = "project_description_input" type = "text" placeholder = "Description" class = "form-control input-md">
+						<!-- SUBMIT BUTTON -->
+							<button id = "submit" name = "create_project" class = "btn btn-success btn-lg" value = "create_project"> Créer
+							</button>
+					</form>
+				</div>
 			</div>
-		</div>
-
+		</section>
+	</body>
 		<?php
 			include("INCLUDE/footer.php");
 		?>
 
-	</body>
+
 </html>
