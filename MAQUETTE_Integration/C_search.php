@@ -16,8 +16,6 @@ Created by Maxime (2015-01-07)
 	if(isset($_POST['search']) AND $_POST['keyWord'] !== "") {
 		$users_results = search_user($database, $_POST['keyWord']);
 		$projects_results = search_project($database, $_POST['keyWord']);
-		var_dump ($users_results);
-		var_dump ($projects_results);	
 	} else {
 		// Nothing
 		}

@@ -11,7 +11,6 @@ Created by Max (2014-12-22)
 
 		switch ($_GET['part']) { // ALORS ON SE BALADE SUR LE SITE
 			case 'profil':
-				echo "user --> profil";
 				include_once ("./C_profile.php");
 				break;
 			case 'editProfil':
