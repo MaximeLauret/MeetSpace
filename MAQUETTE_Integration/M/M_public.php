@@ -31,8 +31,7 @@ Created by Maxime (2014-10-24)
 		$nickname_signin_input, 
 		$mail_input, 
 		$password_signin_input, 
-		$password_confirmation_input,
-		$prosody_database)
+		$password_confirmation_input)
 	 
 	{		// Signing in
 		if ($password_signin_input === $password_confirmation_input) 
