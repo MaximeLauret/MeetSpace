@@ -5,23 +5,21 @@ Created by Maxime (2015-07-01)
 -->
 
 
-<?php
-	if ($session_started = false) {
-		session_start();
-		$session_started = true;
-	}
-?>
 
 <?php
 	include ("M/M_profile.php");		// Including the Model
 ?>
 
 <?php
+	$user_profile_name=$user->get('NICKNAME');
+	$user_profile_mail=$user->get('NICKNAME').'@meetspace.itinet.fr</p>';
+	$user_profile_description=$user->get('DESCRIPTION');
+	$user_profile_picture='./V/INCLUDE/IMG/default_profile_picture.png';
 
-	$database = log_database();		// Logging into the database
+	if (!isset($_SESSION)) { $DESCRIPTION='<p> Vous n\'avez pas encore complété votre profil</p>';}
 	
-	//$get_profile_picture = get_profile_picture ($database);
-	
+/*
+
 	if (isset ($user_profile_picture)) {		// Checking if the user set a profile picture.
 		$profile_picture = $user_profile_picture;		// If so, showing it.
 	} else {
@@ -31,7 +29,7 @@ Created by Maxime (2015-07-01)
 	$profile_name = get_user_name ($database);
 	
 	$profile_description = get_profile_description ($database);
-
+*/
 ?>
 
 <?php

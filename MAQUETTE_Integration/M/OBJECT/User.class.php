@@ -32,7 +32,7 @@ class User{
 		$this->log_prosody_database ();
     	 $memberID = (int)$memberID;
 
-    	 var_dump($memberID);
+    	 //var_dump($memberID);
 
     	if (!isset($memberID) || $memberID == false) {
 
@@ -57,7 +57,7 @@ class User{
 			*/
 
 			$this->resultat = $this->request->fetch();
-			print_r($this->resultat);
+			//print_r($this->resultat);
     		$this->ID = $this->resultat['ID'];
     		$this->NICKNAME = $this->resultat['NICKNAME'];
     		$this->PASSWORD = $this->resultat['PASSWORD'];
@@ -94,7 +94,7 @@ class User{
 					$this->result=$this->PASSWORD;
 					break;
 				case 'DESCRIPTION':
-					$this->result=$this->PASSWORD;
+					$this->result=$this->DESCRIPTION;
 					break;
 				default:
 					$this->result="UserClass:Mauvais nom de variable";
@@ -102,15 +102,15 @@ class User{
 		return ($this->result);
 	}
 
-public function setID($var){$this->ID=$var;}
-	
-public function setNICKNAME($var){$this->NICKNAME=$var;}
+	public function setID($var){$this->ID=$var;}
+		
+	public function setNICKNAME($var){$this->NICKNAME=$var;}
 
-public function setMAIL($var){$this->MAIL=$var;}
-	
-public function setPASSWORD($var){$this->PASSWORD=$var;}
-	
-public function setDESCRIPTION($var){$this->DESCRIPTION=$var;}
+	public function setMAIL($var){$this->MAIL=$var;}
+		
+	public function setPASSWORD($var){$this->PASSWORD=$var;}
+		
+	public function setDESCRIPTION($var){$this->DESCRIPTION=$var;}
 	
 
     public function add_user (
@@ -180,6 +180,9 @@ public function setDESCRIPTION($var){$this->DESCRIPTION=$var;}
 		}
 	}
 
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	#PROTECTED  FUNCTION
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
 		try {	
 			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');

@@ -8,7 +8,7 @@ Created by Max (2014-12-22)
 <?php include_once ("./M/OBJECT/User.class.php"); /* Inclusion de la class User */?>
 
 
-<?php if (!isset($_SESSION)) { session_start(); var_dump($_SESSION);} //Démarrage de la session ?> 
+<?php if (!isset($_SESSION)) { session_start();} //Démarrage de la session ?> 
 	
 <?php
 	if (isset($_SESSION['ID'])) // SI L'UTILISATEUR EST CONNECTE

@@ -8,8 +8,8 @@ body{
 }
 
 section{
-  margin-right: 20%;
-  margin-left: 20%;
+  /*margin-right: 20%;
+  margin-left: 20%;*/
 }
 
 img{
@@ -23,6 +23,10 @@ h1{
 
 footer{
 margin-top: 40px;
+}
+.profil_project{
+    border: 1px solid black;
+    padding: 2px;
 }
 
 .project {

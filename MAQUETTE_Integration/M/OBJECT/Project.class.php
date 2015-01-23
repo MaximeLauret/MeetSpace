@@ -8,10 +8,6 @@ class Project {
 	#PUBLIC FUNCTION - CONSTRUCTEUR
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 
-    public function __construct()  {
-    	//CONSTRUCTEUR SANS INITIALISATION
-    }
-
     public function __construct($idMembre)
     {
     	// Récupérer en base de données les infos du membre
