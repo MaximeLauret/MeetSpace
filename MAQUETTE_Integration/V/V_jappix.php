@@ -1,7 +1,8 @@
 
 <?php
 
-echo '
+echo 
+'
 	<!-- JAPPIX : START.. -->
 
 		<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -14,8 +15,8 @@ echo '
 				// Notice: exclude "user" and "password" if using anonymous login
 				JappixMini.launch({
 					connection: {
-						user: \''.$_SESSION['USER'] .'\' ,
-						password: \''.$_SESSION['PASSWORD'].'\',
+						user: \''.$user->get('NICKNAME').'\' ,
+						password: \''.$user->get('PASSWORD').'\',
 						domain: \'meetspace.itinet.fr\',
 						resource: \'Jappix\'
 					},
@@ -32,7 +33,7 @@ echo '
 
 						user: {
 							random_nickname: false,
-							nickname: \''.$_SESSION['USER'].'\'
+							nickname: \''.$user->get('NICKNAME').'\'
 						},
 
 						chat: {
@@ -48,6 +49,6 @@ echo '
 			});
 		</script>
 	<!-- JAPPIX : ..END -->
-	';
+';
 	
 ?>

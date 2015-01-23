@@ -1,81 +1,133 @@
+
 <?php
 
 // CLASS USER - Permet de gérer un utilisateur
 
-class User {
 
+class User{
 
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PUBLIC FUNCTION - CONSTRUCTEUR
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
-    public function __construct()  {
-    	//CONSTRUCTEUR SANS INITIALISATION
-    }
-
-    public function __construct($idMembre)
-    {
-    	// Récupérer en base de données les infos du membre
-		$req = $database->prepare('SELECT MAIL, NICKNAME, PASSWORD FROM USERS WHERE id=$idDB');
-		$req->execute(array('idDB' => $idMembre));
-		$resultat = $req->fetch();
-
-	if (!$resultat)
-	{
-		echo 'Mauvais id!';
-	}
-	else
-	{
-		session_start();
-		$_SESSION['ID'] = $resultat['id'];
-
-    	// Définir les variables avec les résultats de la base
-    	$this->MAIL = $donnees['MAIL'];
-    	$this->NICKNAME = $donnees['NICKNAME'];
-    	$this->PASSWORD = $donnees['PASSWORD'];
-    	// etc.
-		echo 'OBJET MEMBRE CREE';
-		var_dump ($donnees);
-	}
-
-    }
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  ATTRIBUT
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected  $id;
-	protected  $nickname;
-	protected  $password;
-	protected  $mail;
-	protected  $description;
+
+	protected $ID;
+	protected $NICKNAME;
+	protected $PASSWORD;
+	protected $MAIL;
+	protected $DESCRIPTION;
+	protected $meetspace_database;
+	protected $request;
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PROTECTED  FUNCTION
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PUBLIC FUNCTION
+	#PUBLIC FUNCTION - CONSTRUCTEUR
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+	
+	//CONSTRUCTEUR SANS INITIALISATION L'UTILISATEUR N'EST PAS CONNECTE
+    public function __construct($memberID){
+    	// Définir les variables avec les résultats de la base
+
+		//LOG DATABASE
+		$this->log_meetspace_database ();
+		$this->log_prosody_database ();
+    	 $memberID = (int)$memberID;
+
+    	 var_dump($memberID);
+
+    	if (!isset($memberID) || $memberID == false) {
+
+    		$ID = NULL;
+    		$NICKNAME = NULL;
+    		$PASSWORD = NULL;
+    		$MAIL = NULL;
+    		$DESCRIPTION = NULL;
+    		echo "Member ID = O";
+    	}
+    	else{
+
+    		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NICKNAME`, `PASSWORD`, `MAIL`, `USER_DESCRIPTION` FROM `USERS` WHERE `ID` = :id");
+    		//var_dump($this->request);
+			$this->request->execute (array ('id' => $memberID));
+			//var_dump($this->request);
+			
+			/*
+			$stmt = $db->prepare("SELECT * FROM table WHERE id=? AND name=?");
+			$stmt->execute(array($id, $name));
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			*/
+
+			$this->resultat = $this->request->fetch();
+			print_r($this->resultat);
+    		$this->ID = $this->resultat['ID'];
+    		$this->NICKNAME = $this->resultat['NICKNAME'];
+    		$this->PASSWORD = $this->resultat['PASSWORD'];
+    		$this->MAIL = $this->resultat['MAIL'];
+    		$this->DESCRIPTION = $this->resultat['USER_DESCRIPTION'];
+			
+			$this->request -> closeCursor();
+    		//print_r($this);
+    		/*
+	    	 var_dump($ID);
+	    	 var_dump($NICKNAME);
+	    	 var_dump($PASSWORD);
+	    	 var_dump($MAIL);
+	    	 var_dump($DESCRIPTION);
+	    	 */
+    	}
+
+    }
 
 
-	//INSCRIPTION
-	public function inscription (
-			$database, 
-			$nickname, 
-			$mail, 
-			$password, 
-			$password_confirmation)
+	public function get($var)
+		{
+			switch ($var) { // On renvoi la variable demandé
+				case 'ID':
+					$this->result=$this->ID;
+					break;
+				case 'NICKNAME':
+					$this->result=$this->NICKNAME;
+					break;
+				case 'MAIL':
+					$this->result=$this->MAIL;
+					break;
+				case 'PASSWORD':
+					$this->result=$this->PASSWORD;
+					break;
+				case 'DESCRIPTION':
+					$this->result=$this->PASSWORD;
+					break;
+				default:
+					$this->result="UserClass:Mauvais nom de variable";
+			}
+		return ($this->result);
+	}
+
+public function setID($var){$this->ID=$var;}
+	
+public function setNICKNAME($var){$this->NICKNAME=$var;}
+
+public function setMAIL($var){$this->MAIL=$var;}
+	
+public function setPASSWORD($var){$this->PASSWORD=$var;}
+	
+public function setDESCRIPTION($var){$this->DESCRIPTION=$var;}
+	
+
+    public function add_user (
+			$nickname_signin_input, 
+			$mail_signin_input, 
+			$password_signin_input, 
+			$password_confirmation_input)
 	{	// Signing in
 	if ($password_signin_input === $password_confirmation_input) 
 	{	
 	// Checking if the password input and the confirmation input matches
-		$request = $database -> prepare ("INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)");
-		$request -> execute (array (
+		$this->request = $this->meetspace_database->prepare ("INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)");
+		$this->request -> execute (array (
 		'nickname_signin_input' => $nickname_signin_input,
 		'password_signin_input' => $password_signin_input,
-		'mail_input' => $mail_input));
-		$request -> closeCursor();
+		'mail_input' => $mail_signin_input));
+		$this->request -> closeCursor();
 
 
 		// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
@@ -93,106 +145,56 @@ class User {
 		var_dump ($out);
 		echo $output;
 
-				
 		echo ("Votre compte a bien été créé");
-	} else {
-		echo ("Erreur : votre compte n'a pas pu être créé");
-	}
+		//L'INSCRIPTION A FONCTIONNER: ON CONNECTE L'UTILISATEUR
+		$this->connect($nickname_signin_input,$password_signin_input);
+
+		$result=true;
+	} 
+
+	else { echo ("Erreur : votre compte n'a pas pu être créé");$result=false;}
 
 		return ($result);
 	}
 
-	//DESINSCRIPTION
-	public function desinscription ($name, $password)
-	{
-
-		return ($result);
-	}
-
-	//CONNECTION
-	public function connection ($name, $password)
-	{
-
-		return ($result);
-	}
-
-	//DECONNECTION
-	public function deconnection ($name, $password)
-	{
-
-		return ($result);
-	}
-
-	//AJOUT D'UN CONTACT TCHAT
-	public function addUserChat ($name)
-	{
-
-		return ($result);
-	}
+	public function connect($nickname_login_input, $password_login_input) {		// CONNEXION
 
 
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PUBLIC FUNCTION - GET
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+		// Vérification des identifiants
+		$req = $this->meetspace_database->prepare('SELECT id FROM USERS WHERE NICKNAME = :pseudo AND PASSWORD = :pass');
+		$req->execute(array(
+			'pseudo' => $nickname_login_input,
+			'pass' => $password_login_input));
 
+		$resultat = $req->fetch();
 
-	public function getId ()
-	{
-		return $this->id;
-	}
-
-	public function getNickname ()
-	{
-		return $this->nickname;
-	}
-
-	public function getPassword ()
-	{
-		return $this->nickname;
-	}
-
-	public function getMail ()
-	{
-		return $this->nickname;
-	}
-
-	/*public function getDescription ()
-	{
-		return $this->Description;
-	}*/
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PUBLIC FUNCTION - SET
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
-	/*		//SET
-		public function setDescription ($newDescription)
+		if (!$resultat)
 		{
-			//$this->description = $newDescription;
+			echo 'Mauvais identifiant ou mot de passe !';
 		}
-	*/
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PUBLIC FUNCTION - DESTRUCTEUR
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
-public function __destruct()
-{
-    echo 'Cet objet va être détruit !';
-}
-
-
-	// MODEL:
-
-	/*	public function gettestif ($if)
+		else
 		{
-			$test_interface = exec("ifconfig $if", $out);
-			$coucou = 'Chalut';
-			var_dump ($coucou);
-			var_dump ($out);
-			return ($test_interface);
+			if (!isset($_SESSION)) { session_start(); }
+			$_SESSION['ID'] = $resultat['id'];
+			echo 'Vous êtes connecté !';
 		}
-	*/
+	}
+
+	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
+		try {	
+			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
+		} catch (Exception $e) {
+			die("Error : ".$e->getMessage());
+		}
+	}
+
+	protected function log_meetspace_database () {		// CONNEXION À LA BASE DE DONNÉES	
+		try {	
+			$this->meetspace_database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
+		} catch (Exception $e) {
+			die("Error : ".$e->getMessage());
+		}
+	}
 
 }
 

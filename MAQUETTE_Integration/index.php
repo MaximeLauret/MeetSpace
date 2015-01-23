@@ -5,13 +5,21 @@ Created by Max (2014-12-22)
 -->
 
 
-<?php
-	if (!isset($_SESSION)) { session_start(); }
-?>
+<?php include_once ("./M/OBJECT/User.class.php"); /* Inclusion de la class User */?>
+
+
+<?php if (!isset($_SESSION)) { session_start(); var_dump($_SESSION);} //Démarrage de la session ?> 
 	
 <?php
 	if (isset($_SESSION['ID'])) // SI L'UTILISATEUR EST CONNECTE
 	 {
+ 		//S'il est connecté l'objet est initialiser grâce à son ID
+		$user= new User($_SESSION['ID']);
+		/*var_dump($user[$_SESSION['ID']]);
+		var_dump($user[$_SESSION['ID']]->get('ID'));
+		var_dump($user[$_SESSION['ID']]->get('NICKNAME'));
+		var_dump($user[$_SESSION['ID']]->get('PASSWORD'));
+		var_dump($user[$_SESSION['ID']]->get('MAIL'));*/
 
 		if (isset($_GET['section'])) // ET SI ON A DES PARMS DANS L'URL
 		{
@@ -37,6 +45,7 @@ Created by Max (2014-12-22)
 	else
 	{
 		#echo "Session Enabled but No Session values Created";
+		$user = new User(FALSE);
 		include_once ("./C_public.php"); // SI ON EST PAS CONNECTE ON TOMBE SUR LA PAGE D'ACUEILLE
 	}
 ?>

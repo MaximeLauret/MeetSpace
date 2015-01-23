@@ -19,7 +19,7 @@ Created by Max (2014-12-23)
 
 			<?php
 				
-				echo "<h3>Bonjour ".$_SESSION['USER']."</h3>";
+				echo "<h3>Bonjour ".$user->get('NICKNAME')."</h3>";
 				
 				echo "<h4>Voici vos projets : </h4>";
 

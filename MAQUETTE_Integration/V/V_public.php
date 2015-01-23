@@ -61,7 +61,7 @@ Created by Maxime (2014-10-24)
 							<input id="pseudoinput" name="nickname_signin_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
 							<br/>
 						<!-- MAIL INPUT -->
-							<input id="pseudoinput" name="mail_input" type="text" placeholder="Mail" class="form-control input-md" required="">
+							<input id="pseudoinput" name="mail_signin_input" type="text" placeholder="Mail" class="form-control input-md" required="">
 							<br/>
 						<!-- PASSWORD INPUT 1 -->
 							<input id="passwordinput" name="password_signin_input" type="password" placeholder="Mot de passe" class="form-control input-md" required="">

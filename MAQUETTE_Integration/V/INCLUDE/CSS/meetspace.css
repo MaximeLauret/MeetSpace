@@ -1,4 +1,12 @@
 /* Mise en page du site de meetspace */
+body{
+    /*background-image: url('');*/
+    background-repeat: no-repeat;
+    background-color: none;
+    background-attachment:fixed;
+
+}
+
 section{
   margin-right: 20%;
   margin-left: 20%;
