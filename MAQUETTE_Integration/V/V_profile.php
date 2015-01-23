@@ -14,13 +14,13 @@ Created by Maxime (2015-07-01)
 		<?php include ("./V/INCLUDE/topbar.php"); ?>
 
 		<section>
-			<div class="col-xs-12 col-sm-9 col-md-2 col-md-offset-2">
+			<div class="col-xs-12 col-md-3 col-md-offset-1">
 				<?php //PARTIE DE GAUCHE - AFFICHAGE DES PROJETS
 					echo '<img src="'.$user_profile_picture.'">';
 				?>
 			</div>
 
-			<div class="col-xs-12 col-sm-3 col-md-3 col-md-offset">
+			<div class="col-xs-12 col-md-5 col-md-offset">
 				<?php //PARTIE DE GAUCHE - AFFICHAGE DU PROFIL
 					echo '<h3>' .$user_profile_name. '</h3>';
 					echo '<p>'.$user_profile_mail.'</p>';
@@ -28,7 +28,7 @@ Created by Maxime (2015-07-01)
 				?>
 			</div>
 
-			<div class="col-xs-12 col-sm-3 col-md-3 col-md-offset2">
+			<div class="col-xs-12 col-md-2 col-md-offset1">
 				<div class="profil_project">
 				<?php //PARTIE DE GAUCHE - AFFICHAGE DES PROJETS
 					echo '<h4>Vous êtes abonné au projet suivant:</h4>';
