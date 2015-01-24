@@ -16,7 +16,7 @@ password=$2
 mkpassword=`/usr/bin/mkpasswd $password`
 
 #Ajout de l'utilisateur
-sudo /usr/sbin/useradd --home /var/sftp/home/$name --groups meetspace_user meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
+sudo /usr/sbin/useradd --home /var/sftp/home/$name --group meetspace_user meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
 
 
 #Mise en place de ses droits sur son /home
