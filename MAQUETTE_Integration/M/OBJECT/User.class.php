@@ -1,10 +1,11 @@
 
+<?php include_once ("./M/OBJECT/DB.class.php"); /* Inclusion de la class de la database */?>
 <?php
 
 // CLASS USER - Permet de gérer un utilisateur
 
 
-class User{
+class User extends  DB{
 
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -16,8 +17,6 @@ class User{
 	protected $PASSWORD;
 	protected $MAIL;
 	protected $DESCRIPTION;
-	protected $meetspace_database;
-	protected $request;
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PUBLIC FUNCTION - CONSTRUCTEUR
@@ -194,25 +193,5 @@ class User{
 			echo 'Vous êtes connecté !';
 		}
 	}
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PROTECTED  FUNCTION
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
-		try {	
-			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
-		} catch (Exception $e) {
-			die("Error : ".$e->getMessage());
-		}
-	}
-
-	protected function log_meetspace_database () {		// CONNEXION À LA BASE DE DONNÉES	
-		try {	
-			$this->meetspace_database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
-		} catch (Exception $e) {
-			die("Error : ".$e->getMessage());
-		}
-	}
-
 }
 

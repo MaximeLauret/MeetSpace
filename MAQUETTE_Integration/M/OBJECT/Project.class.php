@@ -1,8 +1,11 @@
+
+<?php include_once ("./M/OBJECT/DB.class.php"); /* Inclusion de la class de la database */?>
+
 <?php
 
 // CLASS PROJECT - Permet de gérer un projet
 
-class Project {
+class Project  extends DB{
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  ATTRIBUT
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,25 +89,6 @@ class Project {
 		"project_name_input" => $project_name_input,
 		"project_description_input" => $project_description_input));
 		$this->request -> closeCursor();
-	}
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PROTECTED  FUNCTION
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
-		try {	
-			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
-		} catch (Exception $e) {
-			die("Error : ".$e->getMessage());
-		}
-	}
-
-	protected function log_meetspace_database () {		// CONNEXION À LA BASE DE DONNÉES	
-		try {	
-			$this->meetspace_database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
-		} catch (Exception $e) {
-			die("Error : ".$e->getMessage());
-		}
 	}
 
 }

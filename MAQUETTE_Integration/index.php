@@ -6,6 +6,7 @@ Created by Max (2014-12-22)
 
 
 <?php include_once ("./M/OBJECT/User.class.php"); /* Inclusion de la class User */?>
+<?php  /* Inclusion de la class de la database */?>
 
 
 <?php if (!isset($_SESSION)) { session_start();} //Démarrage de la session ?> 
@@ -31,6 +32,8 @@ Created by Max (2014-12-22)
 					include_once ("./SWITCH/switchProject.php");
 					break;
 				case 'search':
+					include_once ("./M/OBJECT/Search.class.php");
+					$search= new Search();
 					include_once("./C_search.php"); //ON INCLUS LA FONCTION DE RECHERCHE
 					break;
 				default:
