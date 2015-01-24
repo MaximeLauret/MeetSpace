@@ -27,20 +27,20 @@ function log_owncloud_database () {		// Logging into the OwnCloud database
 
 function get_projects ($database) {		// Get the user's projects and display them
 	$tab = array ();
-	$request = $database -> prepare ("SELECT PROJECTS.ID, PROJECTS.NAME, PROJECTS.PROJECT_DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :session_id");
+	$request = $database -> prepare ("SELECT PROJECTS.ID, PROJECTS.NAME, PROJECTS.DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :session_id");
 	$request -> execute (array ("session_id" => $_SESSION["ID"]));
 	while ($line = $request -> fetch ()) {
 		$project_id = $line["ID"];
 		$project_name = $line["NAME"];
-		$project_description = $line["PROJECT_DESCRIPTION"];
-		array_push ($tab, array ("ID" => $project_id, "NAME" => $project_name, "PROJECT_DESCRIPTION" => $project_description));
+		$project_description = $line["DESCRIPTION"];
+		array_push ($tab, array ("ID" => $project_id, "NAME" => $project_name, "DESCRIPTION" => $project_description));
 	}
 	$request -> closeCursor();
 	return $tab;
 }
 
 function create_new_project ($database, $project_name_input, $project_description_input, $project_creator) {		// Create a new project
-	$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
+	$request = $database -> prepare ("INSERT INTO PROJECTS (NAME, DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
 	$request -> execute (array (
 	"project_name_input" => $project_name_input,
 	"project_description_input" => $project_description_input));

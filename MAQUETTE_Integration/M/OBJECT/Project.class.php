@@ -3,23 +3,6 @@
 // CLASS PROJECT - Permet de gérer un projet
 
 class Project {
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PUBLIC FUNCTION - CONSTRUCTEUR
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
-    public function __construct($idMembre)
-    {
-    	// Récupérer en base de données les infos du membre
-    	// SELECT pseudo, email, signature, actif FROM membres WHERE id = ...
-    	
-    	// Définir les variables avec les résultats de la base
-    	$this->pseudo = $donnees['pseudo'];
-    	$this->email = $donnees['email'];
-    	
-    	// etc.
-    }
-
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  ATTRIBUT
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -31,78 +14,98 @@ class Project {
 	protected  $member; //array qui stock la liste des membres
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	#PUBLIC FUNCTION - CONSTRUCTEUR
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+
+    public function __construct($idMembre)
+    {
+    	
+    	// Définir les variables avec les résultats de la base
+
+		//LOG DATABASE
+		$this->log_meetspace_database ();
+		$this->log_prosody_database ();
+    	 $memberID = (int)$memberID;
+
+    	 //var_dump($memberID);
+
+    	if (!isset($memberID) || $memberID == false) {
+
+    		$ID = NULL;
+    		$NICKNAME = NULL;
+    		$PASSWORD = NULL;
+    		$MAIL = NULL;
+    		$DESCRIPTION = NULL;
+    		echo "Member ID = O";
+    	}
+    	else{
+
+    		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NICKNAME`, `PASSWORD`, `MAIL`, `USER_DESCRIPTION` FROM `USERS` WHERE `ID` = :id");
+    		//var_dump($this->request);
+			$this->request->execute (array ('id' => $memberID));
+			//var_dump($this->request);
+			
+			/*
+			$stmt = $db->prepare("SELECT * FROM table WHERE id=? AND name=?");
+			$stmt->execute(array($id, $name));
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			*/
+
+			$this->resultat = $this->request->fetch();
+			//print_r($this->resultat);
+    		$this->ID = $this->resultat['ID'];
+    		$this->NICKNAME = $this->resultat['NICKNAME'];
+    		$this->PASSWORD = $this->resultat['PASSWORD'];
+    		$this->MAIL = $this->resultat['MAIL'];
+    		$this->DESCRIPTION = $this->resultat['USER_DESCRIPTION'];
+			
+			$this->request -> closeCursor();
+    		//print_r($this);
+    		/*
+	    	 var_dump($ID);
+	    	 var_dump($NICKNAME);
+	    	 var_dump($PASSWORD);
+	    	 var_dump($MAIL);
+	    	 var_dump($DESCRIPTION);
+	    	 */
+    	}
+    }
+
+
+
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  FUNCTION
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PUBLIC FUNCTION
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
-
-	// CREATE - Créer un projet
-
-	public function create ($var)
-	{
-
-		return ($result);
+	public function create_new_project ($database, $project_name_input, $project_description_input, $project_creator) {		// Create a new project
+		$this->request = $this->meetspace_database->prepare("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
+		$this->request -> execute (array (
+		"project_name_input" => $project_name_input,
+		"project_description_input" => $project_description_input));
+		$this->request -> closeCursor();
 	}
 
-	// DEL - Supprimer un projet
-
-	public function del ($var)
-	{
-
-		return ($result);
-	}
-
-	// ADDUSER - ajouter un utilisateur au projet
-
-	public function adduser ($var)
-	{
-
-		return ($result);
-	}
-
-	// DELUSER - supprimer un utilisateur du projet
-
-	public function deluser ($var)
-	{
-
-		return ($result);
-	}
-
-	// GET - Fonction get pour récupérer les variables
-
-	public function get ($var)
-	{
-
-		return ($result);
-	}
-
-
-	// GET - Fonction set pour récupérer les variables
-
-	public function set ($var)
-	{
-
-		return ($result);
-	}
-
-
-
-
-
-
-	// MODEL:
-
-	/*	public function gettestvar ($var)
-		{
-			$result = exec("varconfig $var", $out);
-			$coucou = 'Chalut';
-			var_dump ($coucou);
-			var_dump ($out);
-			return ($result);
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	#PROTECTED  FUNCTION
+	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
+		try {	
+			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
+		} catch (Exception $e) {
+			die("Error : ".$e->getMessage());
 		}
-	*/
+	}
+
+	protected function log_meetspace_database () {		// CONNEXION À LA BASE DE DONNÉES	
+		try {	
+			$this->meetspace_database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
+		} catch (Exception $e) {
+			die("Error : ".$e->getMessage());
+		}
+	}
 
 }
 
