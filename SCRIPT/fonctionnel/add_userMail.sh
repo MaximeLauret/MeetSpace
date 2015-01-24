@@ -6,30 +6,29 @@ password=$2
 
 #Script
 
-if (($#=="2"));then
-		#Ajout utilisateur postfix
-		sudo /bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
-		sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
-		sudo /usr/sbin/service postfix restart
+#Ajout utilisateur postfix
+sudo /bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
+sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
+sudo /usr/sbin/service postfix restart
 
-	#Création Maildir utilisateur
-		if [ ! -r /var/mail/$name ]
-			then
-				/bin/mkdir /var/mail/$name
-				/usr/bin/maildirmake /var/mail/$name/Maildir
-				/bin/chown -R vmail:vmail /var/mail/$name
-		fi
+#Création Maildir utilisateur
+if [ ! -r /var/mail/$name ]
+	then
+		/bin/mkdir /var/mail/$name
+		/usr/bin/maildirmake /var/mail/$name/Maildir
+		/bin/chown -R vmail:vmail /var/mail/$name
+fi
 
-	#Création authentication IMAP
-		password=$(sudo /usr/sbin/userdbpw -md5 <<-EOF
-		$password
-		$password
-		EOF
-		)
-		sudo /usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
-		sudo /usr/sbin/makeuserdb
+#Création authentication IMAP
+password=$(sudo /usr/sbin/userdbpw -md5 <<-EOF
+$password
+$password
+EOF
+)
+sudo /usr/sbin/userdb "$name@meetspace.itinet.fr" set imappw=$password home=/var/mail/$name/ mail=/var/mail/$name uid=1006 gid=1006 
+sudo /usr/sbin/makeuserdb
 
-	#Initialisation du dossier principal de la boite mail
+#Initialisation du dossier principal de la boite mail
 #	/usr/bin/telnet mail.meetspace.itinet.fr 25 <<-AUTO
 #	mail from:<contact@meetspace.itinet.fr>
 #	rcpt to:<$name@meetspace.itinet.fr>
@@ -39,7 +38,3 @@ if (($#=="2"));then
 #	.
 #	quit
 #	AUTO
-
-else
-	echo " add_userMail: Nombre de paramètres invalide "
-fi
