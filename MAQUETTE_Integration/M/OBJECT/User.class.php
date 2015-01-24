@@ -149,6 +149,21 @@ class User{
 		//L'INSCRIPTION A FONCTIONNER: ON CONNECTE L'UTILISATEUR
 		$this->connect($nickname_signin_input,$password_signin_input);
 
+		//ENVOIE D'UN EMAL DE BIENVENU
+		$destinataire = $nickname_signin_input.'@meetspace.itinet.fr';
+		$expediteur   = "contact@meetspace.itinet.fr";
+		$reponse      = $expediteur;
+
+		mail($destinataire,
+		     "Bienvenue sur Meetspace",
+		     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
+		     "From: $expediteur\r\nReply-To: $reponse");
+				
+		echo ("Votre compte a bien été créé");
+				
+		echo ("Votre compte a bien été créé");
+			
+
 		$result=true;
 	} 
 

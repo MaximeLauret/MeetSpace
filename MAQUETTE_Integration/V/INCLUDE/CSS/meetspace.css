@@ -1,16 +1,11 @@
 /* Mise en page du site de meetspace */
-body{
-    /*background-image: url('');*/
+/*body{
+    background-image: url('');
     background-repeat: no-repeat;
     background-color: none;
     background-attachment:fixed;
 
-}
-
-section{
-  /*margin-right: 20%;
-  margin-left: 20%;*/
-}
+}*/
 
 img{
   text-align: center;
@@ -24,6 +19,7 @@ h1{
 footer{
 margin-top: 40px;
 }
+
 .profil_project{
     border: 1px solid black;
     padding: 2px;
@@ -44,6 +40,8 @@ margin-top: 40px;
   /*Jolie bleu - background-color:#8AA3C8;*/ 
   background-color:#BEBEBE;
   opacity: 1;
+
+	border: 1px solid black;
 }
 
 .project form{
