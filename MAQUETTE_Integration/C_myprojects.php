@@ -9,10 +9,6 @@ Created by Max (2014-12-22)
 if (!isset($_SESSION)) { session_start(); }
 ?>
 
-	
-<?php
-	include_once ("M/M_myprojects.php");
-?>
 
 <?php
 
@@ -20,19 +16,21 @@ if (!isset($_SESSION)) { session_start(); }
 	
 	//$owncloud_database = log_owncloud_database;		// Log into the ownCloud database
 
-	$projects_list = get_projects ($database);
+	$projects_list = $user->get('USER_PROJECTS');;
 	
 	// NEW PROJECT
 		if (isset ($_POST["create_project"])) {
 			if (isset ($_POST["project_name_input"]) AND isset ($_POST["project_description_input"])) {
-				create_new_project ($database, /*$owncloud_database, */$_POST["project_name_input"], $_POST["project_description_input"], $user_name=$user->get('NICKNAME'));		// On crée le nouveau projet.
-				$project_id_exe = get_project_id ($database, $_POST["project_name_input"]);		// On récupère l'ID du projet.
-				add_author ($database, $project_id_exe);		// On ajoute l'auteur.
+				//create_new_project ($database, /*$owncloud_database, */$_POST["project_name_input"], $_POST["project_description_input"], $user_name=$user->get('NICKNAME'));		// On crée le nouveau projet.
+				//$project_id_exe = get_project_id ($database, $_POST["project_name_input"]);		// On récupère l'ID du projet.
+				//add_author ($database, $project_id_exe);		// On ajoute l'auteur.
+				$project->add_project($_POST["project_name_input"], $_POST["project_description_input"], $user->get('ID'));
+				include_once ('./index.php');
 				echo ("Le projet a bien été créé<br/>");
-				echo("<meta http-equiv='Refresh' content='0; url=index.php'/>");
+
 			} else {
 				echo ("Erreur : le projet n'a pas pu être créé");
-				echo("<meta http-equiv='Refresh' content='0; url=./index.php?".$element['NAME']."'/>");
+				include_once ('./index.php');
 			}
 		}
 

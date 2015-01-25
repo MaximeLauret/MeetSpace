@@ -1,10 +1,17 @@
 /* Mise en page du site de meetspace */
 /*body{
-    background-image: url('');
-    background-repeat: no-repeat;
-    background-color: none;
+    background-color: #d9d8d8;
     background-attachment:fixed;
 
+}
+
+.row{
+    background-color: white;
+}
+
+.topbar{
+  background-color: #222;
+  border-color: #080808;
 }*/
 
 img{

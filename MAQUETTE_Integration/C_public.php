@@ -1,23 +1,20 @@
-	<?php include_once ("./M/M_public.php"); /* Inclusion du modéle */?>
-
-	
 	<?php
 
 		var_dump($_POST);
 		// SIGNIN
 		if (isset ($_POST['signin'])
-	 	AND isset($_POST['nickname_signin_input'])
-	 	AND isset($_POST['mail_signin_input'])
-  		AND isset($_POST['password_signin_input'])
-		AND isset($_POST['password_confirmation_input'])) {
+		 	AND isset($_POST['nickname_signin_input'])
+		 	AND isset($_POST['mail_signin_input'])
+	  		AND isset($_POST['password_signin_input'])
+			AND isset($_POST['password_confirmation_input'])) {
 
 
-		$result=$user->add_user ($_POST['nickname_signin_input'],
-								$_POST['mail_signin_input'],
-								$_POST['password_signin_input'],
-								$_POST['password_confirmation_input']);	
-		var_dump($_POST);
-		header("Location: ./index.php");
+			$result=$user->add_user ($_POST['nickname_signin_input'],
+									$_POST['mail_signin_input'],
+									$_POST['password_signin_input'],
+									$_POST['password_confirmation_input']);	
+			var_dump($_POST);
+			header("Location: ./index.php");
 		} else {
 			// Nothing
 		}

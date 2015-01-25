@@ -20,6 +20,7 @@ class DB {
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  FUNCTION
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
 	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
 		try {	
 			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
@@ -34,6 +35,15 @@ class DB {
 		} catch (Exception $e) {
 			die("Error : ".$e->getMessage());
 		}
+	}
+
+	protected function log_owncloud_database () {				// Connexion à la database d'ownCloud
+		try {	
+			$owncloud_database = new PDO('mysql:host=localhost;dbname=SHARE', 'meetspace', 'meetspace');
+		} catch (Exception $e) {
+			die("Error : ".$e->getMessage());
+		}
+		return $owncloud_database;
 	}
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------

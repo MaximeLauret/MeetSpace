@@ -4,18 +4,20 @@ Controller for the index
 Created by Max (2014-12-22)
 -->
 
+<?php if (!isset($_SESSION)) { session_start();} //Démarrage de la session ?> 
+
 
 <?php include_once ("./M/OBJECT/User.class.php"); /* Inclusion de la class User */?>
 <?php include_once ("./M/OBJECT/Project.class.php"); /* Inclusion de la class User */?>
-
-<?php if (!isset($_SESSION)) { session_start();} //Démarrage de la session ?> 
 	
 <?php
 	if (isset($_SESSION['ID'])) // SI L'UTILISATEUR EST CONNECTE
 	 {
- 		//S'il est connecté l'objet est initialiser grâce à son ID
+ 		//S'il est connecté l'objet est initialiser gbackground-color: #222;
+  border-color: #080808;
+}râce à son ID
 		$user= new User($_SESSION['ID']);
-		$project= new Project();
+		$project= new Project(false);
 		/*var_dump($user[$_SESSION['ID']]);
 		var_dump($user[$_SESSION['ID']]->get('ID'));
 		var_dump($user[$_SESSION['ID']]->get('NICKNAME'));
@@ -33,7 +35,7 @@ Created by Max (2014-12-22)
 					break;
 				case 'search':
 					include_once ("./M/OBJECT/Search.class.php");
-					$search= new Search();
+					$search= new Search();// Création de l'objet qui permet de faire les recherches
 					include_once("./C_search.php"); //ON INCLUS LA FONCTION DE RECHERCHE
 					break;
 				default:

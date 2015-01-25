@@ -17,6 +17,7 @@ class User extends  DB{
 	protected $PASSWORD;
 	protected $MAIL;
 	protected $DESCRIPTION;
+	protected $USER_PROJECTS;
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PUBLIC FUNCTION - CONSTRUCTEUR
@@ -40,6 +41,7 @@ class User extends  DB{
     		$PASSWORD = NULL;
     		$MAIL = NULL;
     		$DESCRIPTION = NULL;
+    		$USER_PROJECTS=NULL;
     	}
     	else{
 
@@ -54,6 +56,7 @@ class User extends  DB{
     		$this->DESCRIPTION = $this->resultat['PROFILE_DESCRIPTION'];
 			
 			$this->request -> closeCursor();
+			$this->USER_PROJECTS=$this->find_USER_PROJECTS ();
     	}
 
     }
@@ -77,21 +80,36 @@ class User extends  DB{
 				case 'DESCRIPTION':
 					$this->result=$this->DESCRIPTION;
 					break;
+				case 'USER_PROJECTS':
+					$this->result=$this->USER_PROJECTS;
+					break;
 				default:
 					$this->result="UserClass:Mauvais nom de variable";
 			}
 		return ($this->result);
 	}
 
-	public function setID($var){$this->ID=$var;}
-		
-	public function setNICKNAME($var){$this->NICKNAME=$var;}
+	//public function setNICKNAME($var){$this->NICKNAME=$var;}
 
-	public function setMAIL($var){$this->MAIL=$var;}
+	//public function setMAIL($var){$this->MAIL=$var;}
 		
-	public function setPASSWORD($var){$this->PASSWORD=$var;}
+	/*public function setPASSWORD($var){
+		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`USERS` SET `PASSWORD` = :password WHERE `USERS`.`ID`=:id");
+		$this->request -> execute (array (
+		'id' => $nickname_signin_input,
+		'password' => $password_signin_input));
+		$this->request -> closeCursor()
+		//AJOUTER LES PHP EXEC
+	}*/
 		
-	public function setDESCRIPTION($var){$this->DESCRIPTION=$var;}
+	public function setDESCRIPTION($description){
+		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`USERS` SET `PROFILE_DESCRIPTION` = :description WHERE `USERS`.`ID` :id;
+");
+		$this->request -> execute (array (
+		'description' => $description,
+		'id' => $this->ID));
+		$this->request -> closeCursor()
+	}
 	
 
     public function add_user (
@@ -174,6 +192,9 @@ class User extends  DB{
 			$_SESSION['ID'] = $resultat['id'];
 			echo 'Vous êtes connecté !';
 		}
+	}
+
+		
 	}
 }
 
