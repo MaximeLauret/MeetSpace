@@ -5,10 +5,6 @@ name=$1
 
 #Script
 
-if (($#=="1"));then
-	/bin/sed -i "/^contact@${name}/d" /etc/postfix/virtual
-	sudo /usr/sbin/postmap /etc/postfix/virtual
-	sudo /usr/sbin/service postfix restart
-else
-	echo " del_projectAlias: Nombre de paramètres invalide "
-fi
+/bin/sed -i "/^contact@${name}/d" /etc/postfix/virtual
+sudo /usr/sbin/postmap /etc/postfix/virtual
+sudo /usr/sbin/service postfix restart

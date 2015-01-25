@@ -1,10 +1,11 @@
 
+<?php include_once ("./M/OBJECT/DB.class.php"); /* Inclusion de la class de la database */?>
 <?php
 
 // CLASS USER - Permet de gérer un utilisateur
 
 
-class User{
+class User extends  DB{
 
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -16,8 +17,6 @@ class User{
 	protected $PASSWORD;
 	protected $MAIL;
 	protected $DESCRIPTION;
-	protected $meetspace_database;
-	protected $request;
 
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PUBLIC FUNCTION - CONSTRUCTEUR
@@ -41,38 +40,20 @@ class User{
     		$PASSWORD = NULL;
     		$MAIL = NULL;
     		$DESCRIPTION = NULL;
-    		echo "Member ID = O";
     	}
     	else{
 
-    		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NICKNAME`, `PASSWORD`, `MAIL`, `USER_DESCRIPTION` FROM `USERS` WHERE `ID` = :id");
-    		//var_dump($this->request);
+    		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NICKNAME`, `PASSWORD`, `MAIL`, `PROFILE_DESCRIPTION` FROM `USERS` WHERE `ID` = :id");
 			$this->request->execute (array ('id' => $memberID));
-			//var_dump($this->request);
-			
-			/*
-			$stmt = $db->prepare("SELECT * FROM table WHERE id=? AND name=?");
-			$stmt->execute(array($id, $name));
-			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			*/
-
 			$this->resultat = $this->request->fetch();
-			//print_r($this->resultat);
+
     		$this->ID = $this->resultat['ID'];
     		$this->NICKNAME = $this->resultat['NICKNAME'];
     		$this->PASSWORD = $this->resultat['PASSWORD'];
     		$this->MAIL = $this->resultat['MAIL'];
-    		$this->DESCRIPTION = $this->resultat['USER_DESCRIPTION'];
+    		$this->DESCRIPTION = $this->resultat['PROFILE_DESCRIPTION'];
 			
 			$this->request -> closeCursor();
-    		//print_r($this);
-    		/*
-	    	 var_dump($ID);
-	    	 var_dump($NICKNAME);
-	    	 var_dump($PASSWORD);
-	    	 var_dump($MAIL);
-	    	 var_dump($DESCRIPTION);
-	    	 */
     	}
 
     }
@@ -149,6 +130,21 @@ class User{
 		//L'INSCRIPTION A FONCTIONNER: ON CONNECTE L'UTILISATEUR
 		$this->connect($nickname_signin_input,$password_signin_input);
 
+		//ENVOIE D'UN EMAL DE BIENVENU
+		$destinataire = $nickname_signin_input.'@meetspace.itinet.fr';
+		$expediteur   = "contact@meetspace.itinet.fr";
+		$reponse      = $expediteur;
+
+		mail($destinataire,
+		     "Bienvenue sur Meetspace",
+		     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
+		     "From: $expediteur\r\nReply-To: $reponse");
+				
+		echo ("Votre compte a bien été créé");
+				
+		echo ("Votre compte a bien été créé");
+			
+
 		$result=true;
 	} 
 
@@ -179,25 +175,5 @@ class User{
 			echo 'Vous êtes connecté !';
 		}
 	}
-
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	#PROTECTED  FUNCTION
-	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	protected function log_prosody_database () {		// Connexion à la base de données de Prosody
-		try {	
-			$this->prosody_database = new PDO('mysql:host=localhost;dbname=prosody', 'meetspace', 'meetspace');
-		} catch (Exception $e) {
-			die("Error : ".$e->getMessage());
-		}
-	}
-
-	protected function log_meetspace_database () {		// CONNEXION À LA BASE DE DONNÉES	
-		try {	
-			$this->meetspace_database = new PDO('mysql:host=localhost;dbname=meetspace', 'meetspace', 'meetspace');
-		} catch (Exception $e) {
-			die("Error : ".$e->getMessage());
-		}
-	}
-
 }
 

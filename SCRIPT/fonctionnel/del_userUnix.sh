@@ -7,12 +7,8 @@ name=$1
 
 #Script
 
-if (($#=="1"));then
-	#Suppression de l'utilisateur
-	sudo /usr/sbin/userdel --force $name 
+#Suppression de l'utilisateur
+sudo /usr/sbin/userdel --force $name 
 
-	#Suppression de son répertoire
-	/bin/rm -rf /var/sftp/home/$name
-else
-	echo " del_userUnix: Nombre de paramètre invalide "
-fi
+#Suppression de son répertoire
+/bin/rm -rf /var/sftp/home/$name

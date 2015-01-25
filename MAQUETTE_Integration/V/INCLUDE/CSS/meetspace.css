@@ -1,16 +1,11 @@
 /* Mise en page du site de meetspace */
-body{
-    /*background-image: url('');*/
+/*body{
+    background-image: url('');
     background-repeat: no-repeat;
     background-color: none;
     background-attachment:fixed;
 
-}
-
-section{
-  /*margin-right: 20%;
-  margin-left: 20%;*/
-}
+}*/
 
 img{
   text-align: center;
@@ -24,6 +19,28 @@ h1{
 footer{
 margin-top: 40px;
 }
+
+.searchResult{
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+
+  border-radius:10px;
+  background-color: #e1e1e1;
+  opacity: 0.80;
+  min-height: 100px;
+}
+
+.searchResult:hover{
+  background-color:white;
+  opacity: 1;
+  border: 1px solid black;
+}
+
+.searchResult > h3{
+  text-align: center;
+}
 .profil_project{
     border: 1px solid black;
     padding: 2px;
@@ -35,7 +52,7 @@ margin-top: 40px;
   text-align: center;
   background-color: #e1e1e1;
   min-height: 225px;
-  opacity: 0.90;
+  opacity: 0.80;
   width: 225px;
   margin-top: 10px;
 }

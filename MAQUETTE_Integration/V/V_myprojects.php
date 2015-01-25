@@ -59,8 +59,7 @@ Created by Max (2014-12-23)
 									<!-- PROJECT DESCRIPTION INPUT -->
 										<input id = "text" name = "project_description_input" type = "text" placeholder = "Description" class = "form-control input-md">
 									<!-- SUBMIT BUTTON -->
-										<button id = "submit" name = "create_project" class = "btn btn-success btn-lg" value = "create_project"> Créer
-										</button>
+										<button id = "submit" name = "create_project" class = "btn btn-success btn-lg" value = "create_project"> Créer </button>
 								</form>
 							</div>
 						</div>

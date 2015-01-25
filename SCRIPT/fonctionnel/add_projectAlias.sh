@@ -3,18 +3,14 @@
 #Variable
 name=$1
 
-if (($#=="1"));then
-	#Script
-	/bin/grep -on "contact@$name" /etc/postfix/virtual
-	retval=$?
+#Script
+/bin/grep -on "contact@$name" /etc/postfix/virtual
+retval=$?
 
-	if [ "$retval" != 0 ]
-	then
-		   /bin/echo "contact@$name" >> /etc/postfix/virtual
-	fi
-
-	sudo /usr/sbin/postmap  /etc/postfix/virtual
-	sudo /usr/sbin/service postfix restart
-else
-	echo " add_projectAlias: Nombre de paramètres invalide "
+if [ "$retval" != 0 ]
+then
+	   /bin/echo "contact@$name" >> /etc/postfix/virtual
 fi
+
+sudo /usr/sbin/postmap  /etc/postfix/virtual
+sudo /usr/sbin/service postfix restart
