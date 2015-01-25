@@ -11,11 +11,12 @@ Created by Maxime (2015-01-07)
 
 <?php
 			
-	$database = log_database();		// Logging into the database
-			
 	if(isset($_POST['search']) AND $_POST['keyWord'] !== "") {
-		$users_results = search_user($database, $_POST['keyWord']);
-		$projects_results = search_project($database, $_POST['keyWord']);
+
+		//$users_results = search_user($_POST['keyWord']);
+		//$projects_results = search_project($_POST['keyWord']);
+		$users_results=$search->search_user($_POST['keyWord']);
+		$users_results=$search->search_user($_POST['keyWord']);
 	} else {
 		// Nothing
 		}

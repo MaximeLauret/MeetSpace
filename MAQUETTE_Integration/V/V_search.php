@@ -13,37 +13,52 @@ Created by Maxime (2015-01-07)
 		?>
 
 		<body>
-			<section>
+			<div class="container">
+				<div class="row">
+					<section>
 
-				<?php
-					include ("./V/INCLUDE/topbar.php");	// Including the topbar
-				?>
-				<?php
-					echo "<h3>Utilisateur:</h3>";
-					if (isset($users_results)) // SI IL Y A DES RESULTATS
-					{
-						foreach ($users_results as $key => $value) {
-						echo $value[result] . '<br />';
-						}
-					}
-					else
-					{
-						echo "<p>La recherche n'a trouvé aucun utilisateur.</p>";
-					}
-					
-					echo "<h3>Projet:</h3>";
-					if (isset($projects_results)) // SI L'UTILISATEUR EST CONNECTE// SI IL Y A DES RESULTATS
-					{
-						foreach ($projects_results as $key => $value) {
-						echo $value[result] . '<br />';
-						}
-					}
-					else
-					{
-						echo "<p>La recherche n'a trouvé aucun projet.</p>";
-					}
-				?>
-			</section>
+						<?php include ("./V/INCLUDE/topbar.php");	// Including the topbar?>
+
+						<div class="col-xs-12 col-md-4 col-md-offset-2">
+							<div class="searchResult">
+								<?php
+								echo "<h3>Projet:</h3>";
+								if (isset($projects_results)) // SI IL Y A DES RESULTATS
+								{
+									foreach ($projects_results as $key => $value) {
+									echo $value['result'] . '<br />';
+									}
+								}
+								else
+								{
+									echo "<p>La recherche n'a trouvé aucun projet.</p>";
+								}
+								?>
+							</div>
+						</div>
+
+						<div class="col-xs-12 col-md-4 col-md-offset2">
+							<div class="searchResult">
+							<?php
+
+								echo "<h3>Utilisateur:</h3>";
+								if (isset($users_results)) // SI IL Y A DES RESULTATS
+								{
+									foreach ($users_results as $key => $value) {
+									echo $value['result'] . '<br />';
+									}
+								}
+								else
+								{
+									echo "<p>La recherche n'a trouvé aucun utilisateur.</p>";
+								}
+							?>
+							</div>
+						</div>	
+
+					</section>
+				</div>
+	</div>
 		</body>
 		<?php
 			include("./V/INCLUDE/footer.php");		// Including the footer
