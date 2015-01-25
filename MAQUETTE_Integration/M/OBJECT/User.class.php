@@ -40,38 +40,20 @@ class User extends  DB{
     		$PASSWORD = NULL;
     		$MAIL = NULL;
     		$DESCRIPTION = NULL;
-    		echo "Member ID = O";
     	}
     	else{
 
-    		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NICKNAME`, `PASSWORD`, `MAIL`, `USER_DESCRIPTION` FROM `USERS` WHERE `ID` = :id");
-    		//var_dump($this->request);
+    		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NICKNAME`, `PASSWORD`, `MAIL`, `PROFILE_DESCRIPTION` FROM `USERS` WHERE `ID` = :id");
 			$this->request->execute (array ('id' => $memberID));
-			//var_dump($this->request);
-			
-			/*
-			$stmt = $db->prepare("SELECT * FROM table WHERE id=? AND name=?");
-			$stmt->execute(array($id, $name));
-			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			*/
-
 			$this->resultat = $this->request->fetch();
-			//print_r($this->resultat);
+
     		$this->ID = $this->resultat['ID'];
     		$this->NICKNAME = $this->resultat['NICKNAME'];
     		$this->PASSWORD = $this->resultat['PASSWORD'];
     		$this->MAIL = $this->resultat['MAIL'];
-    		$this->DESCRIPTION = $this->resultat['USER_DESCRIPTION'];
+    		$this->DESCRIPTION = $this->resultat['PROFILE_DESCRIPTION'];
 			
 			$this->request -> closeCursor();
-    		//print_r($this);
-    		/*
-	    	 var_dump($ID);
-	    	 var_dump($NICKNAME);
-	    	 var_dump($PASSWORD);
-	    	 var_dump($MAIL);
-	    	 var_dump($DESCRIPTION);
-	    	 */
     	}
 
     }

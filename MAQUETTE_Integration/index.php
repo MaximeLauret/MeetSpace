@@ -6,8 +6,7 @@ Created by Max (2014-12-22)
 
 
 <?php include_once ("./M/OBJECT/User.class.php"); /* Inclusion de la class User */?>
-<?php  /* Inclusion de la class de la database */?>
-
+<?php include_once ("./M/OBJECT/Project.class.php"); /* Inclusion de la class User */?>
 
 <?php if (!isset($_SESSION)) { session_start();} //Démarrage de la session ?> 
 	
@@ -16,6 +15,7 @@ Created by Max (2014-12-22)
 	 {
  		//S'il est connecté l'objet est initialiser grâce à son ID
 		$user= new User($_SESSION['ID']);
+		$project= new Project();
 		/*var_dump($user[$_SESSION['ID']]);
 		var_dump($user[$_SESSION['ID']]->get('ID'));
 		var_dump($user[$_SESSION['ID']]->get('NICKNAME'));

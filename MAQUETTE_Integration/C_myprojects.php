@@ -11,15 +11,12 @@ if (!isset($_SESSION)) { session_start(); }
 
 	
 <?php
-	include ("M/M_myprojects.php");
+	include_once ("M/M_myprojects.php");
 ?>
 
 <?php
 
 	$user_name=$user->get('NICKNAME');
-	
-
-	$database = log_database();							// Log into the database
 	
 	//$owncloud_database = log_owncloud_database;		// Log into the ownCloud database
 
@@ -28,7 +25,7 @@ if (!isset($_SESSION)) { session_start(); }
 	// NEW PROJECT
 		if (isset ($_POST["create_project"])) {
 			if (isset ($_POST["project_name_input"]) AND isset ($_POST["project_description_input"])) {
-				create_new_project ($database, /*$owncloud_database, */$_POST["project_name_input"], $_POST["project_description_input"], $_SESSION["USER"]);		// On crée le nouveau projet.
+				create_new_project ($database, /*$owncloud_database, */$_POST["project_name_input"], $_POST["project_description_input"], $user_name=$user->get('NICKNAME'));		// On crée le nouveau projet.
 				$project_id_exe = get_project_id ($database, $_POST["project_name_input"]);		// On récupère l'ID du projet.
 				add_author ($database, $project_id_exe);		// On ajoute l'auteur.
 				echo ("Le projet a bien été créé<br/>");
@@ -57,5 +54,5 @@ if (!isset($_SESSION)) { session_start(); }
 ?>
 	
 <?php
-	include ("V/V_myprojects.php");
+	include_once ("V/V_myprojects.php");
 ?>
