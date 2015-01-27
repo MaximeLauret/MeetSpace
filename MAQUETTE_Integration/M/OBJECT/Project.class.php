@@ -5,7 +5,7 @@
 
 // CLASS PROJECT - Permet de gérer un projet
 
-class Project  extends DB{
+class Project  extends DB {
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	#PROTECTED  ATTRIBUT
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -20,8 +20,7 @@ class Project  extends DB{
 	#PUBLIC FUNCTION - CONSTRUCTEUR
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 
-    public function __construct($projectID)
-    {
+    public function __construct($projectID){
     	
     	// Définir les variables avec les résultats de la base
 
@@ -47,7 +46,7 @@ class Project  extends DB{
     	else{
 
     		$this->request = $this->meetspace_database->prepare ("SELECT `ID`, `NAME`, `PROJECT_DESCRIPTION`, `VISIBILITY`, `RMQ` FROM `PROJECTS` WHERE ID=:id");
-			$this->request->execute (array ('id' => $memberID));
+			$this->request->execute (array ('id' => $projectID));
 			$this->resultat = $this->request->fetch();
 
     		$this->ID = $this->resultat['ID'];
@@ -71,18 +70,67 @@ class Project  extends DB{
 	#PUBLIC FUNCTION
 	#------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
 	public function add_project ($project_name_input, $project_description_input, $user_id) {		// Create a new project
+		//On créé le projet à partir des variables passer en paramètre
 		$this->request = $this->meetspace_database->prepare("INSERT INTO PROJECTS (NAME, PROJECT_DESCRIPTION) VALUES (:project_name_input, :project_description_input)");
 		$this->request -> execute (array (
 		"project_name_input" => $project_name_input,
 		"project_description_input" => $project_description_input));
 		$this->request -> closeCursor();
 
-		$project_id=$this->get_project_id($project_name_input);
-		$this->add_author($project_id, $user_id);
-	}	
+		//On initialise les variables du projet et on récupére au passage son ID
+		//RQT
+		$this->request = $this->meetspace_database->prepare("SELECT `ID`, `NAME`, `PROJECT_DESCRIPTION`, `VISIBILITY`, `RMQ` FROM `PROJECTS` WHERE NAME=:project_name_input");
+		$this->request -> execute (array (
+		"project_description_input" => $project_description_input));
+		$this->request -> closeCursor();
 
+		//INIT
+		$this->resultat = $this->request->fetch();
 
-	protected function get_project_id ($project_name_input) {		// Récupère l'ID du projet afin d'ajouter l'auteur par la suite.
+		$this->ID = $this->resultat['ID'];
+		$this->NAME = $this->resultat['NAME'];
+		$this->PROJECT_DESCRIPTION = $this->resultat['PROJECT_DESCRIPTION'];
+		$this->VISIBILITY = $this->resultat['VISIBILITY'];
+		$this->RMQ = $this->resultat['RMQ'];
+
+		//Ajout de l'auteur du pjet
+
+		$this->set_author($user_id);
+	}
+
+	protected function set_author ($user_id) {		// Ajoute l'auteur du projet.
+		$this->request = $this->meetspace_database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS, AUTHOR) VALUES (:user_id, :project_id, 'MANAGER', 1)");
+		$this->request -> execute (array (
+		"user_id" => $user_id,
+		"project_id" => $this->ID));
+		$this->request -> closeCursor();
+	}
+
+	// Cette fonction, permet de trouver les ID des projet au quel colabore un utilisateur
+	public function find_USER_PROJECTS ($userID) {		// Get the user's projects
+		$tab = array ();
+
+		$this->request = $this->meetspace_database ->prepare ("SELECT PROJECTS.ID, PROJECTS.NAME, PROJECTS.PROJECT_DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :id");
+		$this->request-> execute (array ('id' => $userID));
+		//Le if est là pour que l'on essaie pas de remplir de tableau si les variables sont vide.
+		// Cela évite que php renvoie des erreurs.
+		 
+		while ($line = $this->request -> fetch ()) {
+			//if ($line['NAME'] == NULL || $line['PROJECT_DESCRIPTION'] == NULL) { 	}
+			//else{
+					$project_id = $line['ID'];
+					/*$project_name = $line['NAME'];
+					$project_description = $line['PROJECT_DESCRIPTION'];
+					array_push ($tab, array ('ID'=> $project_id, 'NAME' => $project_name, 'PROJECT_DESCRIPTION' => $project_description));*/
+			}
+			
+		$this->request -> closeCursor();
+		var_dump($project_id);
+		return $project_id;
+	}
+
+	///!\A supprimer
+	/*protected function get_project_id ($project_name_input) {		// Récupère l'ID du projet afin d'ajouter l'auteur par la suite.
 		$this->request = $this->meetspace_database -> prepare ("SELECT ID FROM PROJECTS WHERE NAME LIKE :project_name_input");
 		$this->request -> execute (array ("project_name_input" => $project_name_input));
 		$line = $this->request -> fetch ();
@@ -97,42 +145,19 @@ class Project  extends DB{
 		"user_id" => $user_id,
 		"project_id" => $project_id));
 		$this->request -> closeCursor();
-	}
+	}*/
+	///!\ Fin à supprimer
 
-
+	/*
 	public function leave_project ($project_id_to_leave_exe) {		// Désabonne du projet précédemment sélectionné.
 		$this->request = $this->meetspace_database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user_id AND PROJECT LIKE :project_id");
 		$this->request -> execute (array (
 		"user_id" => $_SESSION["ID"],
 		"project_id" => $project_id_to_leave_exe));
 		$this->request -> closeCursor();
-	}
+	}*/ 
 
-	public function find_USER_PROJECTS () {		// Get the user's projects
-		$tab = array ();
-
-		$this->result = $this->meetspace_database ->prepare ("SELECT PROJECTS.ID, PROJECTS.NAME, PROJECTS.PROJECT_DESCRIPTION FROM USERS LEFT JOIN SUBSCRIBE ON SUBSCRIBE.USER = USERS.ID LEFT JOIN PROJECTS ON PROJECTS.ID = SUBSCRIBE.PROJECT WHERE USERS.ID = :id");
-		$this->request-> execute (array ('id' => $this->ID));
-		var_dump($this->result);
-		//Le if est là pour que l'on essaie pas de remplir de tableau si les variables sont vide.
-		// Cela évite que php renvoie des erreurs.
-		 
-		while ($line = $this->request -> fetch ()) {
-			//if ($line['NAME'] == NULL || $line['PROJECT_DESCRIPTION'] == NULL) { 	}
-			//else{
-					$project_id = $line['ID'];
-					$project_name = $line['NAME'];
-					$project_description = $line['PROJECT_DESCRIPTION'];
-					array_push ($tab, array ('ID'=> $project_id, 'NAME' => $project_name, 'PROJECT_DESCRIPTION' => $project_description));
-			//}
-			
-			$this->request -> closeCursor();
-			var_dump($tab);
-			return $tab;
-		} 
-
-	}
-
+/*
 	public function get_project_name ($database, $current_project) {		// Récupère le nom du projet pour l'affichage
 		$request = $database -> prepare ("SELECT NAME FROM PROJECTS WHERE ID LIKE :project_query");
 		$request -> execute (array ("project_query" => $current_project));
@@ -209,7 +234,6 @@ class Project  extends DB{
 		$request -> closeCursor();
 	}
 
-
+*/
 }
-
 

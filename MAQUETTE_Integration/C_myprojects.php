@@ -11,12 +11,27 @@ if (!isset($_SESSION)) { session_start(); }
 
 
 <?php
+	$project= new Project(false);
 
 	$user_name=$user->get('NICKNAME');
+	$user_projects=$project->find_USER_PROJECTS($user->get('ID'));
+	//echo "User project";
+	//var_dump($user_projects);
+	if ($user_projects==NULL) { // L'utilisateur n'a pas de projet
+
+	}
+	else{// L'utilisateur a des projets
+			foreach ($user_projects as $key => $value) {
+				//$project= new Project(false);
+				echo 'key' .$key. 'value' .$value;
+				var_dump($key);
+				$project[$key]= new Project($value);
+
+				# code...
+			}
+		}
 	
 	//$owncloud_database = log_owncloud_database;		// Log into the ownCloud database
-
-	$projects_list = $user->get('USER_PROJECTS');;
 	
 	// NEW PROJECT
 		if (isset ($_POST["create_project"])) {
@@ -34,7 +49,7 @@ if (!isset($_SESSION)) { session_start(); }
 			}
 		}
 
-	// AFFICHER PAGE PROJET
+	/*// AFFICHER PAGE PROJET
 
 		if (isset ($_GET["project_query"])) {
 			echo("<meta http-equiv='Refresh' content='0; url=./index.php'/>");
@@ -47,7 +62,7 @@ if (!isset($_SESSION)) { session_start(); }
 			echo("<meta http-equiv='Refresh' content='0; url=./index.php'/>");
 		} else {
 			// NOthing
-		}
+		}*/
 
 ?>
 	

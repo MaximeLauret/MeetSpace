@@ -56,7 +56,6 @@ class User extends  DB{
     		$this->DESCRIPTION = $this->resultat['PROFILE_DESCRIPTION'];
 			
 			$this->request -> closeCursor();
-			$this->USER_PROJECTS=$this->find_USER_PROJECTS ();
     	}
 
     }
@@ -108,7 +107,7 @@ class User extends  DB{
 		$this->request -> execute (array (
 		'description' => $description,
 		'id' => $this->ID));
-		$this->request -> closeCursor()
+		$this->request -> closeCursor();
 	}
 	
 
@@ -118,60 +117,60 @@ class User extends  DB{
 			$password_signin_input, 
 			$password_confirmation_input)
 	{	// Signing in
-	if ($password_signin_input === $password_confirmation_input) 
-	{	
-	// Checking if the password input and the confirmation input matches
-		$this->request = $this->meetspace_database->prepare ("INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)");
-		$this->request -> execute (array (
-		'nickname_signin_input' => $nickname_signin_input,
-		'password_signin_input' => $password_signin_input,
-		'mail_input' => $mail_signin_input));
-		$this->request -> closeCursor();
+		if ($password_signin_input === $password_confirmation_input) 
+		{	
+		// Checking if the password input and the confirmation input matches
+			$this->request = $this->meetspace_database->prepare ("INSERT INTO USERS (NICKNAME, PASSWORD, MAIL) VALUES(:nickname_signin_input, :password_signin_input, :mail_input)");
+			$this->request -> execute (array (
+			'nickname_signin_input' => $nickname_signin_input,
+			'password_signin_input' => $password_signin_input,
+			'mail_input' => $mail_signin_input));
+			$this->request -> closeCursor();
 
 
-		// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
-			// EN TANT QU'UTILISATEUR UNIX
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
-		var_dump ($out);
-		echo $output;
-		
-			// EN TANT QU'UTILISATEUR MAIL
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
-		var_dump ($out);
-		echo $output;
-			// EN TANT QU'UTILISATEUR CHAT
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
-		var_dump ($out);
-		echo $output;
-
-		echo ("Votre compte a bien été créé");
-		//L'INSCRIPTION A FONCTIONNER: ON CONNECTE L'UTILISATEUR
-		$this->connect($nickname_signin_input,$password_signin_input);
-
-		//ENVOIE D'UN EMAL DE BIENVENU
-		$destinataire = $nickname_signin_input.'@meetspace.itinet.fr';
-		$expediteur   = "contact@meetspace.itinet.fr";
-		$reponse      = $expediteur;
-
-		mail($destinataire,
-		     "Bienvenue sur Meetspace",
-		     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
-		     "From: $expediteur\r\nReply-To: $reponse");
-				
-		echo ("Votre compte a bien été créé");
-				
-		echo ("Votre compte a bien été créé");
+			// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
+				// EN TANT QU'UTILISATEUR UNIX
+			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
+			var_dump ($out);
+			echo $output;
 			
+				// EN TANT QU'UTILISATEUR MAIL
+			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
+			var_dump ($out);
+			echo $output;
+				// EN TANT QU'UTILISATEUR CHAT
+			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
+			var_dump ($out);
+			echo $output;
 
-		$result=true;
-	} 
+			echo ("Votre compte a bien été créé");
+			//L'INSCRIPTION A FONCTIONNER: ON CONNECTE L'UTILISATEUR
+			$this->connect($nickname_signin_input,$password_signin_input);
 
-	else { echo ("Erreur : votre compte n'a pas pu être créé");$result=false;}
+			//ENVOIE D'UN EMAL DE BIENVENU
+			$destinataire = $nickname_signin_input.'@meetspace.itinet.fr';
+			$expediteur   = "contact@meetspace.itinet.fr";
+			$reponse      = $expediteur;
+
+			mail($destinataire,
+			     "Bienvenue sur Meetspace",
+			     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
+			     "From: $expediteur\r\nReply-To: $reponse");
+					
+			echo ("Votre compte a bien été créé");
+					
+			echo ("Votre compte a bien été créé");
+				
+
+			$result=true;
+		}
+
+		else { echo ("Erreur : votre compte n'a pas pu être créé");$result=false;}
 
 		return ($result);
 	}
 
-	public function connect($nickname_login_input, $password_login_input) {		// CONNEXION
+	public function connect($nickname_login_input, $password_login_input) {	// CONNEXION
 
 
 		// Vérification des identifiants
@@ -192,9 +191,7 @@ class User extends  DB{
 			$_SESSION['ID'] = $resultat['id'];
 			echo 'Vous êtes connecté !';
 		}
-	}
-
-		
-	}
+	}	
+	
 }
 

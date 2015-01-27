@@ -24,14 +24,31 @@ Created by Max (2014-12-23)
 								
 								echo '<h3>Bonjour '.$user->get('NICKNAME').'</h3>';
 
-								
+								if ($user_projects==NULL) { // Si l'utilisateur n'a pas de projet
+									echo ("Vous ne collaborez à aucun projet.
+									<br/>
+									Rejoignez-en un ou créez le votre dès maintenant !");
+								}
+								else{// L'utilisateur a des projets
+									echo "<h4>Voici vos projets : </h4>";
+									foreach ($user_projects as $key => $value) {
+									//$project= new Project(false);
+									echo 'key' .$key. 'value' .$value;
+									var_dump($key);
+									echo $project[$key]->getName;
+									echo $project[$key]->getDescription;
+
+									# code...
+								}				
+
+									}
 
 								//if ($projects_list == NULL || isset ($projects_list)){
 								//	echo ("Vous ne collaborez à aucun projet.<br/>
 								//	Rejoignez-en un ou créez le votre dès maintenant !");
 								//}
 								//else{
-									echo "<h4>Voici vos projets : </h4>";
+									/*echo "<h4>Voici vos projets : </h4>";
 
 									foreach ($projects_list as $element) {
 										echo '<div class="col-xs-12 col-md-4 col-md-offset">';
@@ -41,7 +58,7 @@ Created by Max (2014-12-23)
 										echo ("<h5>Description : </h5>".$element["PROJECT_DESCRIPTION"]);		// Affiche la description s'il y a.
 
 										echo '</div>';
-									}
+									}*/
 								//}
 
 								/*if ($i == 0) {
