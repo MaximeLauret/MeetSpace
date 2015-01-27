@@ -15,7 +15,7 @@ then
 	sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
 	sudo /usr/sbin/service postfix restart
 else
-	/bin/echo "L\'utilisateur existe déjà"
+	/bin/echo "L'utilisateur existe déjà"
 fi
 
 #Création Maildir utilisateur
