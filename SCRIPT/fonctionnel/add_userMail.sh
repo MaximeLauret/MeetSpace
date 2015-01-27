@@ -7,9 +7,16 @@ password=$2
 #Script
 
 #Ajout utilisateur postfix
-sudo /bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
-sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
-sudo /usr/sbin/service postfix restart
+var=`/bin/grep "$name@meetspace.itinet.fr" /etc/postfix/mailboxmap`
+
+if [ $? == 1 ]
+then
+	sudo /bin/echo "$name@meetspace.itinet.fr $name/" >> /etc/postfix/mailboxmap
+	sudo /usr/sbin/postmap  /etc/postfix/mailboxmap
+	sudo /usr/sbin/service postfix restart
+else
+	/bin/echo "L\'utilisateur existe déjà"
+fi
 
 #Création Maildir utilisateur
 if [ ! -r /var/mail/$name ]
