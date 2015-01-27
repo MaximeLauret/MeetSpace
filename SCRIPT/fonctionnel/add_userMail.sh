@@ -7,7 +7,7 @@ password=$2
 #Script
 
 #Ajout utilisateur postfix
-var=`/bin/grep "$name@meetspace.itinet.fr" /etc/postfix/mailboxmap`
+/bin/grep "$name@meetspace.itinet.fr" /etc/postfix/mailboxmap
 
 if [ $? == 1 ]
 then
