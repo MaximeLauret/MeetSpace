@@ -141,7 +141,7 @@ class Project  extends DB {
 		//PHP - EXEC
 		//Partie site internet:
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_vhost.sh $this->resultat['NAME']", $out);		
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/enable_vhost.sh this->resultat['NAME']", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/enable_vhost.sh $this->resultat['NAME']", $out);
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_dns.sh $this->resultat['NAME']", $out);
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_blog.sh $this->resultat['NAME']", $out);
 
