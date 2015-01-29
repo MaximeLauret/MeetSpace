@@ -1,8 +1,8 @@
 #!/bin/bash
 # GUEZOU Guillaume - Gestion des alias
 #Variable
-userName=$1
-projectName=$2
+projectName=$1
+userName=$2
 
 #Script
 

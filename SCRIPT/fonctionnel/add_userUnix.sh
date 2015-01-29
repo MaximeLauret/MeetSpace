@@ -19,9 +19,11 @@ mkpassword=`/usr/bin/mkpasswd $password`
 sudo /usr/sbin/useradd --home /var/sftp/home/$name --gid meetspace_user --password $mkpassword $name --shell "/bin/MySecureShell"
 
 
+
 #Mise en place de ses droits sur son /home
-/bin/chown -R $name /var/sftp/home/$name
-/bin/chgrp -R meetspace_user /var/sftp/home/$name
+/bin/chown -R www-data:meetspace_user /var/sftp/home/$name
+#/bin/chgrp -R meetspace_user /var/sftp/home/$name
+#/bin/chmod 775 /var/sftp/home/$name
 
 #Mise en place des quotas:
 sudo /usr/sbin/setquota -u $name 300 300 0 0 -a /var/sftp/home/$name
