@@ -4,7 +4,6 @@ footer.php
 
 <footer>
 
-
 <?php
 	if (isset($_SESSION['ID']))
 	{

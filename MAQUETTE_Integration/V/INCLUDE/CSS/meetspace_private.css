@@ -2,25 +2,15 @@
 
 html {
 	background-image: url(../IMG/background_private.png);
-	background-attachment: fixed;
+	background-size: cover;
+	background-attachment:fixed;
 }
 
-/*body{
-    background-color: #d9d8d8;
-    background-attachment:fixed;
-
+body {
+	margin-top: 10%;
 }
 
-.row{
-    background-color: white;
-}
-
-.topbar{
-  background-color: #222;
-  border-color: #080808;
-}*/
-
-img{
+img {
   text-align: center;
 }
 
@@ -92,18 +82,44 @@ footer a {
   margin-bottom: 10px;
 }
 
-.topbar-color {
-	background-color: white;
+.topbar {
+background-color: transparent;
+}
+
+.topbar-meetspace {
+	background-color: transparent;
+	margin-top: -10%;
+	margin-
+}
+
+.topbar-meetspace img {
+	margin-left: 2%;
+	margin-right: 0%;
+	margin-top: 0.5%;
+}
+
+.navbar-header {
+	margin-right: 100px;
 }
 
 /*
 html, body, .container {
   height: 100%;
-}
-textarea.form-control {
-  height: 100%;
 }*/
+
 
 .lead {
 	color: black;
+}
+
+i {
+	color: black;
+}
+
+i:hover {
+	color: gray;
+}
+
+.form-control {
+	height: 42px;
 }

@@ -25,7 +25,7 @@ Created by Maxime (2014-10-24)
 
 					<p class="lead">
 						Réunissez-vous où que vous soyez et à tout moment avec MeetSpace, l'espace de réunion en ligne.
-						<br/>
+						<br/> <br/>
 						Créez votre réseau et profitez des services offerts par MeetSpace pour gérer votre projet.
 					</p>
 			
@@ -38,10 +38,6 @@ Created by Maxime (2014-10-24)
 				</div>
 
 				<div class="col-xs-12 col-sm-5 col-md-2 col-md-offset-2 ">		<!-- Colonne de droite (formulaires de connexion et d'inscription) -->
-
-					<h3>
-						Connexion
-					</h3>	
 					<form class="form-horizontal" action="#" method="POST">
 						<!-- PSEUDO INPUT -->
 							<input id="nickname_login_input" name="nickname_login_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
@@ -53,9 +49,6 @@ Created by Maxime (2014-10-24)
 							<button id="submit" name="login" class="btn btn-primary btn-lg" value="login">Connexion</button>
 					</form>
 
-					<h3>
-						Inscription
-					</h3>
 					<form class="form-horizontal" action="#" method="POST">
 						<!-- PSEUDO INPUT -->
 							<input id="pseudoinput" name="nickname_signin_input" type="text" placeholder="Pseudo" class="form-control input-md" required="">
@@ -79,5 +72,5 @@ Created by Maxime (2014-10-24)
 		</div>
 	
 	</body>
-	<?php include_once("INCLUDE/footer.php"); ?>
+
 </html>
