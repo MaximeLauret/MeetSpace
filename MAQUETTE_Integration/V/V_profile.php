@@ -62,7 +62,7 @@ Created by Maxime (2015-07-01)
 											<img src="./IMG/default_project_picture.png" class=\'profile_viewProject_img\'>
 											<div class="profile_viewProject_description">
 												<p class="profile_viewProject_name">'.$project->get('NAME').'</p>
-												<p class="profile_viewProject_description">'.$project->get('NAME').'@meetspace.itinet.fr</p>
+												<p class="profile_viewProject_description">'.$project->get('NAME').'@meetspace</p>
 											</div>
 										</div>
 									</a>

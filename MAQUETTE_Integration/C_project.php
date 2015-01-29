@@ -9,7 +9,9 @@ Created by Maxime (2015-01-14)
 
 	if (isset($_GET['ID'])) // ET SI ON A DES PARMS DANS L'URL
 		{
-			$project= new Project($_GET['ID']); // Projet non initialiser. 	
+			$project= new Project($_GET['ID']); // Projet non initialiser.
+			$projects_users=$project->get_subscribed_users();	
+			var_dump($projects_users);
 		}
 		else
 		{			

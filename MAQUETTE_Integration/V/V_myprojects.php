@@ -17,12 +17,10 @@ Created by Max (2014-12-23)
 			<!--<div class="container"> -->
 				<?php include ("./V/INCLUDE/topbar.php"); ?>
 				<!-- <div class="row"> -->
-
-
 						<div class="col-xs-12 col-md-12 col-md-offset">
 							<?php								
 								echo '<h3>Bonjour '.$user->get('NICKNAME').'</h3>';
-
+									$i=0;
 									foreach ($user_projects as $value) {
 											if ($value['ID']==NULL){}// Si l'ID du projet est NULL alors on n'affiche rien
 											else{
@@ -37,7 +35,6 @@ Created by Max (2014-12-23)
 												echo '</div></div>';
 												$i++;
 											}
-
 										}
 							
 							?>

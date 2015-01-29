@@ -53,7 +53,6 @@ class Project  extends DB {
     		$this->RMQ = $this->resultat['RMQ'];
 			
 			$this->request -> closeCursor();
-    		//print_r($this);
 
     	}
     	/*else{// sinon il contient une chaine de caractère
@@ -181,111 +180,55 @@ class Project  extends DB {
 		return $tab;
 	}
 
-	///!\A supprimer
-	/*protected function get_project_id ($project_name_input) {		// Récupère l'ID du projet afin d'ajouter l'auteur par la suite.
-		$this->request = $this->meetspace_database -> prepare ("SELECT ID FROM PROJECTS WHERE NAME LIKE :project_name_input");
-		$this->request -> execute (array ("project_name_input" => $project_name_input));
-		$line = $this->request -> fetch ();
-		$project_id = $line["ID"];
-		$this->request -> closeCursor();
-		return $project_id;
-	}
+	
 
-	protected function add_author ($project_id, $user_id) {		// Ajoute l'auteur du projet.
-		$this->request = $this->meetspace_database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS, AUTHOR) VALUES (:user_id, :project_id, 'MANAGER', 1)");
-		$this->request -> execute (array (
-		"user_id" => $user_id,
-		"project_id" => $project_id));
-		$this->request -> closeCursor();
-	}*/
-	///!\ Fin à supprimer
-
-	/*
-	public function leave_project ($project_id_to_leave_exe) {		// Désabonne du projet précédemment sélectionné.
-		$this->request = $this->meetspace_database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user_id AND PROJECT LIKE :project_id");
-		$this->request -> execute (array (
-		"user_id" => $_SESSION["ID"],
-		"project_id" => $project_id_to_leave_exe));
-		$this->request -> closeCursor();
-	}*/ 
-
-/*
-	public function get_project_name ($database, $current_project) {		// Récupère le nom du projet pour l'affichage
-		$request = $database -> prepare ("SELECT NAME FROM PROJECTS WHERE ID LIKE :project_query");
-		$request -> execute (array ("project_query" => $current_project));
-		$line = $request -> fetch ();
-		$project_name = $line["NAME"];
-		$request -> closeCursor();
-		return $project_name;
-	}
-
-	public function get_project_description ($database, $current_project) {		// Récupère la description du projet pour l'affichage
-		$request = $database -> prepare ("SELECT PROJECT_DESCRIPTION FROM PROJECTS WHERE ID LIKE :project_query");
-		$request -> execute (array ("project_query" => $current_project));
-		$line = $request -> fetch ();
-		$project_description = $line["PROJECT_DESCRIPTION"];
-		$request -> closeCursor();
-		return $project_description;
-	}
-
-	public function get_subscribed_users ($database, $current_project) {		// Récupère la liste des utilisateurs abonnés au projet.
-		$tab = array ();
-		$request = $database -> prepare ("SELECT USER FROM SUBSCRIBE WHERE PROJECT LIKE :project_id");
-		$request -> execute (array ("project_id" => $current_project));
-		while ($line = $request -> fetch ()) {
+	public function get_subscribed_users () {		// Récupère la liste des utilisateurs abonnés au projet.
+		$subscribed_users = array ();
+		$this->request = $this->meetspace_database->prepare("SELECT USER FROM SUBSCRIBE WHERE PROJECT LIKE :id");
+		$this->request->execute(array ('id' => $this->ID));
+		while ($line = $this->request-> fetch ()) {
 			$subscribed_users = $line["USER"];
-			array_push ($tab, array ("USER" => $subscribed_users));
+			array_push ($tab, array ('ID' => $subscribed_users));
 		}
-		$request -> closeCursor();
+			var_dump($tab);
+
+		$this->request-> closeCursor();
 		return $tab;
 	}
 
-	public function get_subscribed_users_names ($database, $users_ids) {		// Récupère le nom des utilisateurs abonnés à partir de leur id
-		$tab = array ();
-		$request = $database -> prepare ("SELECT NICKNAME FROM USERS WHERE ID LIKE :users_ids");
-		$request -> execute (array ("users_ids" => $users_ids));
-		while ($line = $request -> fetch ()) {
-			$users_names = $line["NICKNAME"];
-			array_push ($tab, array ("NICKNAME" => $users_names));
-		}
-		$request -> closeCursor();
-		return $tab;
-	}
 
-	public function get_manager_list ($database, $project_name) {
+	public function get_manager_list () {
 		$tab = array ();
-		$request = $database -> prepare ("SELECT SUBSCRIBE.USER FROM SUBSCRIBE LEFT JOIN SUBSCRIBE.PROJECTS ON PROJECTS.ID WHERE WHERE PROJECTS.NAME LIKE :project_name AND SUBSCRIBE.STATUS = 'MANAGER'");
-		$request -> execute (array ("project_name" => $project_name));
-		while ($line = $request -> fetch ()) {
+		$this->request = $this->meetspace_database -> prepare ("SELECT SUBSCRIBE.USER FROM SUBSCRIBE LEFT JOIN SUBSCRIBE.PROJECTS ON PROJECTS.ID WHERE WHERE PROJECTS.NAME LIKE :project_name AND SUBSCRIBE.STATUS = 'MANAGER'");
+		$this->request -> execute (array ("project_name" => $project_name));
+		while ($line = $this->request -> fetch ()) {
 			$project_manager_list = $line["USER"];
 			array_push ($tab, array ("USER" => $project_manager_list));
 		}
-		$request -> closeCursor();
+		$this->request -> closeCursor();
 		return $tab;
 	}
 
-	public function join_project ($database, $current_project) {		// Add the user as a contributor to the project
-		$request = $database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS) VALUES (:user, :project, 'CONTRIBUTOR')");
-		$request -> execute (array (
-		"user" => $_SESSION["ID"],
+	public function join_project ($userID) {		// Add the user as a contributor to the project
+		$this->request = $this->meetspace_database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS) VALUES (:user, :project, 'CONTRIBUTOR')");
+		$this->request -> execute (array (
+		"user" => $userID,
 		"project" => $current_project));
-		$request -> closeCursor();
+		$this->request -> closeCursor();
 	}
 
-	public function leave_project ($database, $current_project) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_myprojects.php
-		$request = $database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");
-		$request -> execute (array (
-		"user" => $_SESSION["ID"],
+	public function leave_project ($userID) {		// Delete the user as a contributor to the project		/!\ Fonction également présente dans M_myprojects.php
+		$this->request = $this->meetspace_database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");
+		$this->request -> execute (array (
+		"user" => $userID,
 		"project" => $current_project));
-		$request -> closeCursor();
+		$this->request -> closeCursor();
 	}
 
-	public function delete_project ($database, $current_project) {		// Delete the project and the contributors
-		$request = $database -> prepare ("DELETE * FROM PROJECTS WHERE NAME LIKE :project_name");		// AJOUTER ICI LE DEL DE SUBSCRIBE
-		$request -> execute (array ("project_name" => $current_project));
-		$request -> closeCursor();
+	public function delete_project () {		// Delete the project and the contributors
+		$this->request = $this->meetspace_database -> prepare ("DELETE * FROM PROJECTS WHERE NAME LIKE :project_name");		// AJOUTER ICI LE DEL DE SUBSCRIBE
+		$this->request -> execute (array ("project_name" => $current_project));
+		$this->request -> closeCursor();
 	}
-
-*/
 }
 
