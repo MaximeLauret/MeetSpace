@@ -24,16 +24,20 @@ Created by Max (2014-12-23)
 								echo '<h3>Bonjour '.$user->get('NICKNAME').'</h3>';
 
 									foreach ($user_projects as $value) {
-										echo"<div class=\"col-xs-12 col-md-3 col-md-offset\">
-										<div  class=\"project\" >";
-										$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
-										echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">';
-										echo '<h3>'.$project->get('NAME').'</h3>';
-										echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';
-										echo '</a>';
+											if ($value['ID']==NULL){}// Si l'ID du projet est NULL alors on n'affiche rien
+											else{
+												echo"<div class=\"col-xs-12 col-md-3 col-md-offset\">
+												<div  class=\"project\" >";
+												$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
+												echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">';
+												echo '<h3>'.$project->get('NAME').'</h3>';
+												echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';
+												echo '</a>';
 
-										echo '</div></div>';
-										$i++;
+												echo '</div></div>';
+												$i++;
+											}
+
 										}
 							
 							?>

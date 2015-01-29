@@ -49,23 +49,28 @@ Created by Maxime (2015-07-01)
 						<div id="profile_viewAllProject">
 						<ul class="profile_viewProjectList"> 
 					';
-					foreach ($user_projects as $value) {	
-						$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
-						echo '
-							<li class="profile_viewProject">
-								<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">
-									<div class="profile_viewProject">
-										<img src="./IMG/default_project_picture.png" class=\'profile_viewProject_img\'>
-										<div class="profile_viewProject_description">
-											<p class="profile_viewProject_name">'.$project->get('NAME').'</p>
-											<p class="profile_viewProject_description">'.$project->get('NAME').'@meetspace.itinet.fr</p>
+					foreach ($user_projects as $value) 
+					{
+						if ($value['ID']==NULL){}// Si l'ID du projet est NULL alors on n'affiche rien
+						else
+						{	
+							$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
+							echo '
+								<li class="profile_viewProject">
+									<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">
+										<div class="profile_viewProject">
+											<img src="./IMG/default_project_picture.png" class=\'profile_viewProject_img\'>
+											<div class="profile_viewProject_description">
+												<p class="profile_viewProject_name">'.$project->get('NAME').'</p>
+												<p class="profile_viewProject_description">'.$project->get('NAME').'@meetspace.itinet.fr</p>
+											</div>
 										</div>
-									</div>
-								</a>
-							</li>
-							';
-						$i++;
+									</a>
+								</li>
+								';
+							$i++;
 						}
+					}
 
 						echo '
 							</ul>
