@@ -14,23 +14,34 @@ Created by Max (2014-12-23)
 
 	<body>
 		<section>
-			<div class="container">
+			<!--<div class="container"> -->
 				<?php include ("./V/INCLUDE/topbar.php"); ?>
-				<div class="row">
+				<!-- <div class="row"> -->
 
 
 						<div class="col-xs-12 col-md-12 col-md-offset">
 							<?php								
 								echo '<h3>Bonjour '.$user->get('NICKNAME').'</h3>';
+<<<<<<< HEAD
+
+=======
 								//var_dump($user_projects);
+>>>>>>> 141b45e68982fe0c5ec37d3a35923171ddf8c9a3
 								/*if ($user_projects["ID"]==NULL) { // L'utilisateur n'aas de projet
 										echo ("Vous ne collaborez à aucun projet.
 										<br/>
 										Rejoignez-en un ou créez le votre dès maintenant !");
+<<<<<<< HEAD
+									}
+								else{// L'utilisateur a des projet
+										echo "<h4>Voici vos projets : </h4>";
+										$i=0;*/
+=======
 									}*/
 								//else{// L'utilisateur a des projet
 										//echo "<h4>Voici vos projets : </h4>";
 										$i=0;
+>>>>>>> 141b45e68982fe0c5ec37d3a35923171ddf8c9a3
 									foreach ($user_projects as $value) {	
 
 										echo"<div class=\"col-xs-12 col-md-3 col-md-offset\">

@@ -2,32 +2,29 @@
 
 body {
 	background-image: url(../IMG/background_public.png);
-	background-attachment: fixed;
-}
-
-/*body{
-    background-color: #d9d8d8;
-    background-attachment:fixed;
-
-}
-
-.row{
-    background-color: white;
-}
-
-.topbar{
-  background-color: #222;
-  border-color: #080808;
-}*/
-
-img{
-  text-align: center;
+	background-size: cover;
+	background-attachment:fixed;
+	margin-top: 10%;
 }
 
 h1{
+	margin-top: 20%;
 	text-align: center;
 	min-height: 100px;
 	color: black;
+}
+
+p {
+	text-align: center;
+}
+
+form {
+	text-align: center;
+	margin-top: 25%;
+}
+
+footer {
+	text-align: center;
 }
 
 .searchResult{
@@ -42,18 +39,14 @@ h1{
   min-height: 100px;*/
 }
 
-h3 {
+/*footer p {
 	color: black;
-}
-
-footer p {
-	color: black;
+	text-align: center;
 }
 
 footer a {
 	color: black;
-	text-decoration: underline;
-}
+}*/
 
 .searchResult:hover{
   background-color:white;

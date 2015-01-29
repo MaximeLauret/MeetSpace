@@ -16,13 +16,13 @@ header.php
 if (isset($_SESSION['ID']))
 	{
 	// SI CONNECTER
-		echo ("<link href = 'http://getbootstrap.com/examples/starter-template/starter-template.css' rel='stylesheet'>");
+		//echo ("<link href = 'http://getbootstrap.com/examples/starter-template/starter-template.css' rel='stylesheet'>");
 		echo ("<link href = './V/INCLUDE/CSS/meetspace_private.css' rel='stylesheet'>");
 	}
 	else
 	{
 	// SI DECONNECTER
-		echo ("<link href = 'http://getbootstrap.com/examples/cover/cover.css' rel='stylesheet'>");
+		//echo ("<link href = 'http://getbootstrap.com/examples/cover/cover.css' rel='stylesheet'>");
 		echo ("<link href = './V/INCLUDE/CSS/meetspace_public.css' rel='stylesheet'>");
 	}
 ?>

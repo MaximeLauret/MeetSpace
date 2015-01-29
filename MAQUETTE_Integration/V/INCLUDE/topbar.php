@@ -5,48 +5,45 @@ Created by Pierrick
 Edited by Max (2015-01-07)
 -->
 
-<div class="topbar">
-	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-		<div class = "topbar-color">
-		<div class="container">
-
-			<div class="navbar-header">
-
-				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-
-				<a href = "./index.php"> <img src = "./V/INCLUDE/IMG/logo.png"> </a>				
-			</div>
-
-			<div id="navbar" class="collapse navbar-collapse">
-
-				<ul class="nav navbar-nav navbar-right">		<!-- Menu de droite -->
-
-					<li class="active">							<!-- Search bar -->
-						<form action = "./index.php?section=search" method = "POST" class = "navbar-form navbar-right" role = "form">
-							<div class="form-group">
-								<input type="text" placeholder="Personne, projet,.." name = "keyWord" class="form-control">
-							</div>
-							<button type="submit" class="btn btn-success" name="search" value=""> Search </button>
-						</form>
-					</li>
-
-					<!-- Cloud -->
-					<li><a href="http://share.meetspace.itinet.fr"> <i class="fa fa-cloud fa-x"></i> Cloud </a></li>
-
-					<!-- Mail -->
-					<li><a href="http://mail.meetspace.itinet.fr"><i class="fa fa-envelope fa-x"></i> Mail </a></li>
+		
+<div class = "topbar-meetspace">		<!-- Barre de menu -->
 			
-					<!-- Profil -->
-					<li><a href="./index.php?section=user&amp;part=profil"><i class="fa fa-user fa-x"></i> Profil </a></li>
-				
-					<!-- Deconnexion -->
-					<li><a href="./C_logout.php"><i class="fa fa-user fa-x"></i> Déconnexion </a></li>
-
+	<a href = "./index.php">			<!-- Logo MeetSpace -->
+		<img src = "./V/INCLUDE/IMG/logo.png">
+	</a>
+			
+	<ul class="nav navbar-nav navbar-right">		<!-- Menu de droite -->
+		<li class="active">							<!-- Search bar -->
+			<form action = "./index.php?section=search" method = "POST" class = "navbar-form navbar-right" role = "form">
+				<div class = "form-group">
+					<input type = "text" placeholder = "Rechercher" name = "keyWord" class = "form-control">
+				</div>
+				<button type = "submit" class = "btn btn-success" name = "search" value="">
+					<i class = "fa fa-search fa-2x">
+					</i>
+				</button>
+					</form>
+					</li>
+					<li>		<!-- Cloud -->
+						<a href="http://share.meetspace.itinet.fr">
+							<i class="fa fa-cloud fa-3x"> </i>
+						</a>
+					</li>
+					<li>		<!-- Mail -->
+						<a href="http://mail.meetspace.itinet.fr">
+							<i class="fa fa-envelope fa-3x"> </i>
+						</a>
+					</li>
+					<li>		<!-- Profil -->
+						<a href="./index.php?section=user&amp;part=profil">
+							<i class="fa fa-user fa-3x"> </i>
+						</a>
+					</li>	
+					<li>		<!-- Deconnexion -->
+						<a href="./C_logout.php">
+							<i class="fa fa-sign-out fa-3x"> </i>
+						</a>
+					</li>
 				</ul>
 		
 			</div>	<!-- Navbar collapse -->
@@ -54,5 +51,4 @@ Edited by Max (2015-01-07)
 		</div>		<!-- Container -->
 		</div>
 	</nav>
-</div>	
 
