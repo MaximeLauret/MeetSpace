@@ -24,7 +24,18 @@ Created by Maxime (2015-07-01)
 				<?php //PARTIE DE GAUCHE - AFFICHAGE DU PROFIL
 					echo '<h3>' .$user_profile_name. '</h3>';
 					echo '<p>'.$user_profile_mail.'</p>';
-					echo '<p>'.$user_profile_description.'</p>';
+					if (!isset($_GET['ID'])) // ET SI ON A DES PARMS DANS L'URL
+					{
+						echo'
+					<form method="post" action="./index.php?section=user&amp;part=profil">
+					<p>
+					<label>Editer votre description:</label><br>
+					<textarea name="PROFILE_DESCRIPTION" rows = 6 cols = "50">'.$user_profile_description.'</textarea>
+					</p>
+					<!-- SUBMIT BUTTON -->
+					<button id="submit" name="login" class="btn btn-primary btn-md" value="set_description">Changer ma description</button>
+					</form>';
+					}
 				?>
 			</div>
 

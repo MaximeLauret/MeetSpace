@@ -23,6 +23,12 @@ Created by Maxime (2015-07-01)
 			$user_profile_picture='./V/INCLUDE/IMG/default_profile_picture.png';
 		}
 
+		if (isset($_POST['PROFILE_DESCRIPTION'])) // ET SI ON A DES PARMS DANS L'URL
+			{
+				var_dump($_POST['PROFILE_DESCRIPTION']);
+				$user->setDESCRIPTION($_POST['PROFILE_DESCRIPTION']);
+				//header("Location: ./index.php?section=user&part=profil");
+			}
 		/*if (!isset($user->get('DESCRIPTION'))) { echo'<p> Vous n\'avez pas encore complété votre profil</p>';}
 		}*/
 
