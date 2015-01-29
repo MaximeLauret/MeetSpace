@@ -20,55 +20,33 @@ Created by Max (2014-12-23)
 
 
 						<div class="col-xs-12 col-md-12 col-md-offset">
-							<?php
-								
+							<?php								
 								echo '<h3>Bonjour '.$user->get('NICKNAME').'</h3>';
 
-								if ($user_projects==NULL) { // Si l'utilisateur n'a pas de projet
-									echo ("Vous ne collaborez à aucun projet.
-									<br/>
-									Rejoignez-en un ou créez le votre dès maintenant !");
-								}
-								else{// L'utilisateur a des projets
-									echo "<h4>Voici vos projets : </h4>";
-									foreach ($user_projects as $key => $value) {
-									//$project= new Project(false);
-									echo 'key' .$key. 'value' .$value;
-									var_dump($key);
-									echo $project[$key]->getName;
-									echo $project[$key]->getDescription;
-
-									# code...
-								}				
-
+								if ($user_projects==NULL) { // L'utilisateur n'aas de projet
+										echo ("Vous ne collaborez à aucun projet.
+										<br/>
+										Rejoignez-en un ou créez le votre dès maintenant !");
 									}
+								else{// L'utilisateur a des projet
+										echo "<h4>Voici vos projets : </h4>";
+										$i=0;
+									$user_projects=$project->find_USER_PROJECTS($user->get('ID'));
+									foreach ($user_projects as $value) {	
 
-								//if ($projects_list == NULL || isset ($projects_list)){
-								//	echo ("Vous ne collaborez à aucun projet.<br/>
-								//	Rejoignez-en un ou créez le votre dès maintenant !");
-								//}
-								//else{
-									/*echo "<h4>Voici vos projets : </h4>";
+										echo"<div class=\"col-xs-12 col-md-3 col-md-offset\">
+										<div  class=\"project\" >";
+										$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
+										echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">';
+										echo '<h3>'.$project->get('NAME').'</h3>';
+										echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';
+										echo '</a>';
 
-									foreach ($projects_list as $element) {
-										echo '<div class="col-xs-12 col-md-4 col-md-offset">';
-
-											// Affiche le nom du projet et fait le lien vers la page de celui-ci.								
-										echo ('<h4>'.$element['NAME'].' : <a href = \'./index.php\''.$element['ID'].'</a> </h4>');	
-										echo ("<h5>Description : </h5>".$element["PROJECT_DESCRIPTION"]);		// Affiche la description s'il y a.
-
-										echo '</div>';
-									}*/
-								//}
-
-								/*if ($i == 0) {
-									echo ("Vous ne collaborez à aucun projet.
-									<br/>
-									Rejoignez-en un ou créez le votre dès maintenant !");
-								} else {
-									// Nothing
-								}*/
-								
+										echo '</div></div>';
+										$i++;
+										}
+									}
+							
 							?>
 						</div>
 						<div class="col-xs-12 col-md-3 col-md-offset">
@@ -90,9 +68,5 @@ Created by Max (2014-12-23)
 			 	</div>  
 			</div>
 	</body>
-		<?php
-			include("INCLUDE/footer.php");
-		?>
-
-
+	<?php include("INCLUDE/footer.php"); ?>
 </html>

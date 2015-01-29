@@ -32,6 +32,16 @@ Created by Maxime (2015-07-01)
 				<div class="profil_project">
 				<?php //PARTIE DE GAUCHE - AFFICHAGE DES PROJETS
 					echo '<h4>Vous êtes abonné au projet suivant:</h4>';
+					$i=0;
+					foreach ($user_projects as $value) {	
+						$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
+						echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">';
+						echo '<h3>'.$project->get('NAME').'</h3>';
+						echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';
+						echo '</a>';
+						$i++;
+						}
+									
 				?>
 				</div>
 			</div>

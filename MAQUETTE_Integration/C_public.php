@@ -1,6 +1,6 @@
 	<?php
 
-		var_dump($_POST);
+		//var_dump($_POST);
 		// SIGNIN
 		if (isset ($_POST['signin'])
 		 	AND isset($_POST['nickname_signin_input'])
@@ -13,7 +13,7 @@
 									$_POST['mail_signin_input'],
 									$_POST['password_signin_input'],
 									$_POST['password_confirmation_input']);	
-			var_dump($_POST);
+			//var_dump($_POST);
 			header("Location: ./index.php");
 		} else {
 			// Nothing

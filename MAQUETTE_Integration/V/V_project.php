@@ -16,42 +16,23 @@ Created by Maxime (2015-01-14)
 	</head>
 	
 	<body>
-			<?php
-				include ("INCLUDE/topbar.php");
-			?>
-			
 		<section>
+			<div class="container">
+			<?php include ("./V/INCLUDE/topbar.php"); ?>
+				<div class="row">
+					<div class="col-xs-12 col-md-5 col-md-offset-1">
+						<?php
+						echo '<h3>'.$project->get('NAME').'</h3>';
+						echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';	
+						?>
+					</div>
+					<div class="col-xs-12 col-md-4 col-md-offset-1">
+	                  <?php echo '<a class="btn btn-md btn-success" href="http://pad.meetspace.itinet.fr/p/'.$project->get('NAME').'">   <i class="fa fa-file fa-4x"></i> Blocknote</a>'?>
+	                  <?php echo '<a class="btn btn-md btn-warning" href="http://'.$project->get('NAME').'.meetspace.itinet.fr">   <i class="fa  fa-desktop fa-4x"></i> Site</a>'?>
+					</div>
 
-		<?php
-			echo ("<h3>");
-				echo $project_name;
-			echo ("</h3>");
-			echo ("<p>");
-				echo $project_description;
-			echo ("</p>");
-			echo ("<br/><br/>");
-
-			foreach ($projects_users_names as $element2) {
-				echo $element2["NICKNAME"];
-			}
-		?>
-		
-			<form class = "form-horizontal" action = "#" method = "POST">
-				<button id = "submit" name = "join_project" value = "join_project"> Rejoindre le projet </button>
-				<button id = "submit" name = "leave_project" value = "leave_project"> Quitter </button>
-			</form>
-
-			<!--<?php
-
-				if ($status == "MANAGER") {
-					echo ("<form class = 'form-horizontal' action = '#' method = 'POST'>
-						<button id = 'submit' name = 'delete_project' value = 'delete_project'> Supprimer le projet </button>
-					</form>");
-				} else {
-					// Nothing
-				}
-
-			?> -->
+				</div>
+			</div>
 		</section>
 	</body>		
 	<?php

@@ -30,7 +30,7 @@ class User extends  DB{
 		//LOG DATABASE
 		$this->log_meetspace_database ();
 		$this->log_prosody_database ();
-    	 $memberID = (int)$memberID;
+    	$memberID = (int)$memberID;
 
     	 //var_dump($memberID);
 
@@ -131,17 +131,17 @@ class User extends  DB{
 			// AJOUT DE L'UTILISATEUR SUR LE SERVEUR
 				// EN TANT QU'UTILISATEUR UNIX
 			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userUnix.sh $nickname_signin_input $password_signin_input", $out);
-			var_dump ($out);
-			echo $output;
+			//var_dump ($out);
+			//echo $output;
 			
 				// EN TANT QU'UTILISATEUR MAIL
 			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userMail.sh $nickname_signin_input $password_signin_input", $out);
-			var_dump ($out);
-			echo $output;
+			//var_dump ($out);
+			//echo $output;
 				// EN TANT QU'UTILISATEUR CHAT
 			$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userChat.sh $nickname_signin_input $password_signin_input", $out);
-			var_dump ($out);
-			echo $output;
+			//var_dump ($out);
+			//echo $output;
 
 			echo ("Votre compte a bien été créé");
 			//L'INSCRIPTION A FONCTIONNER: ON CONNECTE L'UTILISATEUR

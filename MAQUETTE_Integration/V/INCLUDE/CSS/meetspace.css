@@ -42,7 +42,6 @@ margin-top: 40px;
 .searchResult:hover{
   background-color:white;
   opacity: 1;
-  border: 1px solid black;
 }
 
 .searchResult > h3{
@@ -65,10 +64,9 @@ margin-top: 40px;
 }
 
 .project:hover {
-  /*Jolie bleu - background-color:#8AA3C8;*/ 
-  background-color:#BEBEBE;
+  background-color:white;
   opacity: 1;
-  border: 1px solid black;
+  border: 1px solid #e1e1e1;
 }
 
 .project form{

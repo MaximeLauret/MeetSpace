@@ -26,7 +26,8 @@ Created by Maxime (2015-01-07)
 								if (isset($projects_results)) // SI IL Y A DES RESULTATS
 								{
 									foreach ($projects_results as $key => $value) {
-									echo $value['result'] . '<br />';
+									echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$value['id'].'">';
+									echo $value['result'] . '<br /></a>';
 									}
 								}
 								else
@@ -45,6 +46,7 @@ Created by Maxime (2015-01-07)
 								if (isset($users_results)) // SI IL Y A DES RESULTATS
 								{
 									foreach ($users_results as $key => $value) {
+									echo '<a href="./index.php?section=user&amp;part=profil&amp;ID='.$value['id'].'">';
 									echo $value['result'] . '<br />';
 									}
 								}
