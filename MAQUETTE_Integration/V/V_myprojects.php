@@ -23,7 +23,7 @@ Created by Max (2014-12-23)
 							<?php								
 								echo '<h3>Bonjour '.$user->get('NICKNAME').'</h3>';
 
-								if ($user_projects==NULL) { // L'utilisateur n'aas de projet
+								if ($user_projects["ID"]==NULL) { // L'utilisateur n'aas de projet
 										echo ("Vous ne collaborez à aucun projet.
 										<br/>
 										Rejoignez-en un ou créez le votre dès maintenant !");
@@ -31,7 +31,6 @@ Created by Max (2014-12-23)
 								else{// L'utilisateur a des projet
 										echo "<h4>Voici vos projets : </h4>";
 										$i=0;
-									$user_projects=$project->find_USER_PROJECTS($user->get('ID'));
 									foreach ($user_projects as $value) {	
 
 										echo"<div class=\"col-xs-12 col-md-3 col-md-offset\">
