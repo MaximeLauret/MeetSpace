@@ -6,7 +6,7 @@
 name=$1
 
 #Script
-/usr/bin/mysql -u root -padmin -Bse "CREATE DATABASE $name;CREATE USER
+/usr/bin/mysql -u local_root -p local_root -Bse "CREATE DATABASE $name;CREATE USER
 $name@localhost;SET PASSWORD FOR $name@localhost = PASSWORD('$name');GRANT ALL
 PRIVILEGES ON $name.* TO $name@localhost IDENTIFIED BY '$name';"
 /bin/cp -R /var/sftp/dotclear_install/dotclear/* /var/sftp/$name/www/
