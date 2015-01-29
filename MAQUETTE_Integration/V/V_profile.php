@@ -44,14 +44,34 @@ Created by Maxime (2015-07-01)
 				<?php //PARTIE DE GAUCHE - AFFICHAGE DES PROJETS
 					echo '<h4>Vous êtes abonné au projet suivant:</h4>';
 					$i=0;
+
+					echo '
+						<div id="profile_viewAllProject">
+						<ul class="profile_viewProjectList"> 
+					';
 					foreach ($user_projects as $value) {	
 						$tab[$i]=$project= new Project($value['ID']); // Projet non initialiser. 
-						echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">';
-						echo '<h3>'.$project->get('NAME').'</h3>';
-						echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';
-						echo '</a>';
+						echo '
+							<li class="profile_viewProject">
+								<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">
+									<div class="profile_viewProject">
+										<img src="./IMG/default_project_picture.png" class=\'profile_viewProject_img\'>
+										<div class="profile_viewProject_description">
+											<p class="profile_viewProject_name">'.$project->get('NAME').'</p>
+											<p class="profile_viewProject_description">'.$project->get('NAME').'@meetspace.itinet.fr</p>
+										</div>
+									</div>
+								</a>
+							</li>
+							';
 						$i++;
 						}
+
+						echo '
+							</ul>
+							</div>
+
+						';
 									
 				?>
 				</div>
