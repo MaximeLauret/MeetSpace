@@ -140,14 +140,14 @@ class Project  extends DB {
 
 		//PHP - EXEC
 		//Partie site internet:
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_vhost.sh $this->resultat['NAME']", $out);		
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/enable_vhost.sh $this->resultat['NAME']", $out);
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_dns.sh $this->resultat['NAME']", $out);
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_blog.sh $this->resultat['NAME']", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_vhost.sh $this->NAME", $out);		
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/enable_vhost.sh $this->NAME", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_dns.sh $this->NAME", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_blog.sh $this->NAME", $out);
 
 		//Partie mail:
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_projectAlias.sh $this->resultat['NAME']", $out);
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->resultat['NAME'], $user_name", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_projectAlias.sh $this->NAME", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->NAME, $user_name", $out);
 			
 		$this->request -> closeCursor();
 	}
