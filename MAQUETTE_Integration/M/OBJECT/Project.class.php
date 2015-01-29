@@ -142,7 +142,7 @@ class Project  extends DB {
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_vhost.sh $this->NAME", $out);		
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/enable_vhost.sh $this->NAME", $out);
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_dns.sh $this->NAME", $out);
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_blog.sh $this->NAME", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_blog.sh $this->NAME $this->NAME", $out);
 
 		//Partie mail:
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_projectAlias.sh $this->NAME", $out);
