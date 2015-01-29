@@ -7,6 +7,7 @@ Edited by Max (2015-01-07)
 
 <div class="topbar">
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+		<div class = "topbar-color">
 		<div class="container">
 
 			<div class="navbar-header">
@@ -17,9 +18,8 @@ Edited by Max (2015-01-07)
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				
-				<a class="navbar-brand" href="./index.php">Meetspace</a>
-				
+
+				<a href = "./index.php"> <img src = "./V/INCLUDE/IMG/logo.png"> </a>				
 			</div>
 
 			<div id="navbar" class="collapse navbar-collapse">
@@ -52,6 +52,7 @@ Edited by Max (2015-01-07)
 			</div>	<!-- Navbar collapse -->
 
 		</div>		<!-- Container -->
+		</div>
 	</nav>
 </div>	
 

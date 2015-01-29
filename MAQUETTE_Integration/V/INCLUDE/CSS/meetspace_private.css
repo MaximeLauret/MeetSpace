@@ -1,0 +1,109 @@
+/* Mise en page du site de MeetSpace */
+
+html {
+	background-image: url(../IMG/background_private.png);
+	background-attachment: fixed;
+}
+
+/*body{
+    background-color: #d9d8d8;
+    background-attachment:fixed;
+
+}
+
+.row{
+    background-color: white;
+}
+
+.topbar{
+  background-color: #222;
+  border-color: #080808;
+}*/
+
+img{
+  text-align: center;
+}
+
+h1{
+	text-align: center;
+	min-height: 100px;
+	color: black;
+}
+
+.searchResult{
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+
+  border-radius:10px;
+  /*background-color: #e1e1e1;
+  opacity: 0.80;
+  min-height: 100px;*/
+}
+
+h3 {
+	color: black;
+}
+
+footer p {
+	color: black;
+}
+
+footer a {
+	color: black;
+	text-decoration: underline;
+}
+
+.searchResult:hover{
+  background-color:white;
+  opacity: 1;
+}
+
+.searchResult > h3{
+  text-align: center;
+}
+.profil_project{
+    border: 1px solid black;
+    padding: 2px;
+}
+
+.project {
+
+  border-radius:10px;
+  text-align: center;
+  background-color: #e1e1e1;
+  min-height: 225px;
+  opacity: 0.80;
+  width: 225px;
+  margin-top: 10px;
+}
+
+.project:hover {
+  background-color:white;
+  opacity: 1;
+  border: 1px solid #e1e1e1;
+}
+
+.project form{
+  padding:10px;
+}
+.project input{
+  margin-bottom: 10px;
+}
+
+.topbar-color {
+	background-color: white;
+}
+
+/*
+html, body, .container {
+  height: 100%;
+}
+textarea.form-control {
+  height: 100%;
+}*/
+
+.lead {
+	color: black;
+}
