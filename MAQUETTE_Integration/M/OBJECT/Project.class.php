@@ -200,8 +200,9 @@ class Project  extends DB {
 	public function get_manager_list () {
 		$tab = array ();
 		$this->request = $this->meetspace_database -> prepare ("SELECT SUBSCRIBE.USER FROM SUBSCRIBE LEFT JOIN SUBSCRIBE.PROJECTS ON PROJECTS.ID WHERE WHERE PROJECTS.NAME LIKE :project_name AND SUBSCRIBE.STATUS = 'MANAGER'");
-		$this->request -> execute (array ("project_name" => $project_name));
+		$this->request->execute(array ('project_name' => $this->NAME));
 		while ($line = $this->request -> fetch ()) {
+			var_dump($line);
 			$project_manager_list = $line["USER"];
 			array_push ($tab, array ("ID" => $project_manager_list));
 		}

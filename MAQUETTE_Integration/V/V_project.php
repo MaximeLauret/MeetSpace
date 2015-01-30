@@ -20,6 +20,32 @@ Created by Maxime (2015-01-14)
 			<div class="container">
 			<?php include ("./V/INCLUDE/topbar.php"); ?>
 				<div class="row">
+
+
+							<?php 
+
+							foreach ($projects_users as $value) 
+							{
+
+								if ($value ["ID"]==NULL){
+									}// Si l'ID du projet est NULL alors on n'affiche rien
+								else{
+									if($value ["ID"]==$_SESSION["ID"]){
+										echo "l'utilisateur est membre du projet !";
+									}
+									else{
+										echo "L'utilisateur n'est pas membre du projet";
+									}
+								}	
+							}
+
+							?>
+
+
+
+
+
+
 					<div class="col-xs-12 col-md-5 col-md-offset-3">
 						<?php
 						echo '<h3>'.$project->get('NAME').'</h3>';
