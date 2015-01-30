@@ -19,7 +19,7 @@ Created by Maxime (2015-01-14)
 		{			
 			header("Location: ./index.php"); // SI MAUVAIS PARAM OU PAS DE PARAM
 		}
-		var_dump($_POST);
+		//var_dump($_POST);
 		if (isset($_POST['PROJECT_DESCRIPTION'])) // ET SI ON A DES PARMS DANS L'URL
 			{
 				//var_dump($_POST['PROFILE_DESCRIPTION']);

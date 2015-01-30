@@ -224,7 +224,7 @@ class Project  extends DB {
 		$this->request = $this->meetspace_database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS) VALUES (:user, :project, 'CONTRIBUTOR')");
 		$this->request -> execute (array (
 		"user" => $userID,
-		"project" => $current_project));
+		"project" => $this->ID));
 		$this->request -> closeCursor();
 	}
 
@@ -232,7 +232,7 @@ class Project  extends DB {
 		$this->request = $this->meetspace_database -> prepare ("DELETE FROM SUBSCRIBE WHERE USER LIKE :user AND PROJECT LIKE :project");
 		$this->request -> execute (array (
 		"user" => $userID,
-		"project" => $current_project));
+		"project" => $this->ID));
 		$this->request -> closeCursor();
 	}
 
