@@ -112,7 +112,7 @@ Created by Maxime (2015-01-14)
 											if ($value["ID"]==$_SESSION["ID"]) {
 												//L'utilisateur est chef de projet. On lui affiche les outils d'administration
 												echo '<h3>'.$project->get('NAME').'</h3>';
-												echo '<p>contact@'.$project->get('NAME').'.meetspace.itinet.fr</p>';
+												echo '<p>contact@'.$project->get('NAME').'</p>';
 												//Modifier la description du projet
 												echo'
 												<form method="post" action="./index.php?section=project&part=project&ID='.$project->get('ID').'"">
@@ -127,7 +127,7 @@ Created by Maxime (2015-01-14)
 											else{
 												//Affichage des infos sur le projet
 												echo '<h3>'.$project->get('NAME').'</h3>';
-												echo '<h4>Adresse mail du projet: contact@'.$project->get('NAME').'.meetspace.itinet.fr</h4>';
+												echo '<h4>Adresse mail du projet: contact@'.$project->get('NAME').'</h4>';
 												echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>	';
 											}
 										}

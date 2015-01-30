@@ -146,7 +146,7 @@ class Project  extends DB {
 
 		//Partie mail:
 		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_projectAlias.sh $this->NAME", $out);
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->NAME, $user_name", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->NAME $user_name", $out);
 		
 		$this->request -> closeCursor();
 	}
@@ -226,7 +226,7 @@ class Project  extends DB {
 		"user" => $userID,
 		"project" => $this->ID));
 
-		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->NAME, $user_name", $out);
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->NAME $user_name", $out);
 		$this->request -> closeCursor();
 	}
 
