@@ -65,7 +65,9 @@ margin-top: 40px;
 .topbar{
 margin-bottom: 60px;
 }
-
+.listBouton{
+  margin-bottom: 10px;
+}
 /* Propriété des projets affiché à droite dans le profil*/
 .profile_viewProjectList{
   list-style-type: none;
