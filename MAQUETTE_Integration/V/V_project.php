@@ -20,63 +20,87 @@ Created by Maxime (2015-01-14)
 		<section>
 			<div class="container">
 				<div class="row">
-
-
-							<?php 
-
-							foreach ($projects_users as $value) 
-							{
-
-								if ($value ["ID"]==NULL){
-									}// Si l'ID du projet est NULL alors on n'affiche rien
-								else{
-									if($value ["ID"]==$_SESSION["ID"]){
-										echo "l'utilisateur est membre du projet !";
-									}
-									else{
-										echo "L'utilisateur n'est pas membre du projet";
-									}
-								}	
-							}
-
-							?>
-
-
-
-
-
-
-					<div class="col-xs-12 col-md-5 col-md-offset-3">
-						<?php
-						echo '<h3>'.$project->get('NAME').'</h3>';
-						echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';	
-						?>
-					</div>
 					<div class="col-xs-12 col-md-2 col-md-offset2">
-	                  <?php echo '<div class="listBouton"><a class="btn btn-md btn-success" href="http://pad.meetspace.itinet.fr/p/'.$project->get('NAME').'">   <i class="fa fa-file fa-4x"></i> Blocknote</a></div>'?>
-	                  <?php echo '<div class="listBouton"><a class="btn btn-md btn-warning" href="http://'.$project->get('NAME').'.meetspace.itinet.fr">   <i class="fa  fa-desktop fa-4x"></i> Site</a></div>'?>
-                      <?php echo '<div class="listBouton"><a class="btn btn-md btn-info" href="http://'.$project->get('NAME').'.meetspace.itinet.fr//auth.php" >   <i class="fa  fa-desktop fa-4x"></i> Blog - Admin</a></div>'?>
-                      <?php echo '<div class="listBouton"><a class="btn btn-md btn-danger" href="http://phpmyadmin.meetspace.itinet.fr">   <i class="fa  fa-database fa-4x"></i> Base de données</a></div>'?>
-                   
-					</div>
-					<div class="col-xs-12 col-md-4 col-md-offset-8">
-						<?php 
-							echo' <p> Membre du projet:</p>';
-							foreach ($projects_users as $value) 
-							{
+						<?php
 
-								if ($value ["ID"]==NULL){
-									}// Si l'ID du projet est NULL alors on n'affiche rien
+						foreach ($projects_users as $value) 
+						{
+
+							if ($value ["ID"]==NULL){}// Si l'ID du projet est NULL alors on n'affiche rien
+							else{
+								if($value ["ID"]==$_SESSION["ID"]){
+	              					
+										echo '<div class="listBouton"><a class="btn btn-md btn-success" href="http://pad.meetspace.itinet.fr/p/'.$project->get('NAME').'">   <i class="fa fa-file fa-4x"></i> Blocknote</a></div>';
+										foreach ($projects_manager as $value) 
+										{
+											if ($value["ID"]==$_SESSION["ID"]) {
+												//L'utilisateur est chef de projet. On lui affiche les outils d'administration
+												echo '<div class="listBouton"><a class="btn btn-md btn-info" href="http://'.$project->get('NAME').'.meetspace.itinet.fr//auth.php" >   <i class="fa  fa-desktop fa-4x"></i> Blog - Admin</a></div>';
+	             								echo '<div class="listBouton"><a class="btn btn-md btn-danger" href="http://phpmyadmin.meetspace.itinet.fr">   <i class="fa  fa-database fa-4x"></i> Base de données</a></div>';
+											}
+										}
+								//Inscrit: Bouton quitter
+									echo'<button id = "leave_project" name = "leave_project" class = "btn btn-danger btn-lg" value = "leave_project"> Quitter le projet </button>';
+								}
 								else{
-									$user3 = new User($value ["ID"]);
-									echo '<p>'.$user3->get('NICKNAME').'</p>';
-									echo '<p>'.$user3->get('DESCRIPTION').'</p>';
-								}	
-							}
-						 ?>
-					 </div>
+									//Pas inscrit: Bouton rejoindre
+	              					echo '<div class="listBouton"><a class="btn btn-md btn-warning" href="http://'.$project->get('NAME').'.meetspace.itinet.fr">   <i class="fa  fa-desktop fa-4x"></i> Site</a></div>';
+									
+									//Pas inscrit: Bouton voir le site internet
+									echo '<button id = "join_project" name = "join_project" class = "btn btn-success btn-lg" value = "join_project"> Rejoindre le projet </button>';
+							
+								}																			
+							}	
+						}
 
+						?>
 				</div>
+					
+					<div class="col-xs-12 col-md-5 col-md-offset-3">
+					<?php 
+						foreach ($projects_manager as $value) 
+										{
+											if ($value["ID"]==$_SESSION["ID"]) {
+												//L'utilisateur est chef de projet. On lui affiche les outils d'administration
+												echo '<h3>'.$project->get('NAME').'</h3>';
+												echo '<p>contact@'.$project->get('NAME').'.meetspace.itinet.fr</p>';
+												echo'
+												<form method="post" action="./index.php?section=project&part=project&ID='.$project->get('ID').'"">
+												<p>
+												<label>Editer la description de votre projet:</label><br>
+												<textarea name="PROJECT_DESCRIPTION" rows = 6 cols = "50">'.$project->get('PROJECT_DESCRIPTION').'</textarea>
+												</p>
+												<!-- SUBMIT BUTTON -->
+												<button id="submit" name="login" class="btn btn-primary btn-md" value="set_description">Valider</button>
+												</form>';
+											}
+											else{
+												//Affichage des infos sur le projet
+												echo '<h3>'.$project->get('NAME').'</h3>';
+												echo '<h4>Adresse mail du projet: contact@'.$project->get('NAME').'.meetspace.itinet.fr</h4>';
+												echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>	';
+											}
+										}
+											
+						?>
+					</div>	
+					<div class="col-xs-12 col-md-7 col-md-offset-5">
+					<?php 
+
+						// Fonction pour afficher la liste des membre du projet
+						echo' <h4> Membre du projet:</h4>';
+						foreach ($projects_users as $value) 
+						{
+							if ($value ["ID"]==NULL){}// Si l'ID du projet est NULL alors on n'affiche rien
+							else{
+								$user3 = new User($value ["ID"]);
+								echo '<p>'.$user3->get('NICKNAME').'</p>';
+								echo '<p>'.$user3->get('DESCRIPTION').'</p>';
+							}	
+						}								
+						?>
+					</div>	
+				</div>	
 			</div>
 		</section>
 	</body>		

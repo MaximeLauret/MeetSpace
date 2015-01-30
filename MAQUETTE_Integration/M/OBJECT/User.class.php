@@ -102,7 +102,7 @@ class User extends  DB{
 	}*/
 		
 	public function setDESCRIPTION($description){
-		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`USERS` SET `PROFILE_DESCRIPTION` = :description WHERE `USERS`.`ID`:id;");
+		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`USERS` SET `PROFILE_DESCRIPTION` = :description WHERE `USERS`.`ID`=:id;");
 		$this->request -> execute (array (
 		'description' => $description,
 		'id' => $this->ID));

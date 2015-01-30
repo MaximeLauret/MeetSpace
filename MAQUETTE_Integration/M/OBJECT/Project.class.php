@@ -159,6 +159,16 @@ class Project  extends DB {
 		$this->request -> closeCursor();
 	}
 
+	public function setDESCRIPTION($description){
+		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`PROJECTS` SET `PROJECT_DESCRIPTION` = :description WHERE `PROJECTS`.`ID`=:id;");
+		$this->request -> execute (array (
+		'description' => $description,
+		'id' => $this->ID));
+		//var_dump($description);
+		$this->request -> closeCursor();
+
+	}
+
 	// Cette fonction, permet de trouver les ID des projet au quel colabore un utilisateur
 	public function find_USER_PROJECTS ($userID) {		// Get the user's projects
 		$tab = array ();
@@ -199,10 +209,10 @@ class Project  extends DB {
 
 	public function get_manager_list () {
 		$tab = array ();
-		$this->request = $this->meetspace_database -> prepare ("SELECT SUBSCRIBE.USER FROM SUBSCRIBE LEFT JOIN SUBSCRIBE.PROJECTS ON PROJECTS.ID WHERE WHERE PROJECTS.NAME LIKE :project_name AND SUBSCRIBE.STATUS = 'MANAGER'");
-		$this->request->execute(array ('project_name' => $this->NAME));
+		$this->request = $this->meetspace_database -> prepare ("SELECT USER FROM SUBSCRIBE WHERE STATUS LIKE 'MANAGER' AND PROJECT LIKE :id");
+		$this->request->execute(array ('id' => $this->ID));
 		while ($line = $this->request -> fetch ()) {
-			var_dump($line);
+			//var_dump($line);
 			$project_manager_list = $line["USER"];
 			array_push ($tab, array ("ID" => $project_manager_list));
 		}
