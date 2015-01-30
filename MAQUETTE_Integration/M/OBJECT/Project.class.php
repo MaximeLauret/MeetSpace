@@ -183,7 +183,7 @@ class Project  extends DB {
 	
 
 	public function get_subscribed_users () {		// Récupère la liste des utilisateurs abonnés au projet.
-		$subscribed_users = array ();
+		$tab = array ();
 		$this->request = $this->meetspace_database->prepare("SELECT USER FROM SUBSCRIBE WHERE PROJECT LIKE :id");
 		$this->request->execute(array ('id' => $this->ID));
 		while ($line = $this->request-> fetch ()) {
@@ -203,7 +203,7 @@ class Project  extends DB {
 		$this->request -> execute (array ("project_name" => $project_name));
 		while ($line = $this->request -> fetch ()) {
 			$project_manager_list = $line["USER"];
-			array_push ($tab, array ("USER" => $project_manager_list));
+			array_push ($tab, array ("ID" => $project_manager_list));
 		}
 		$this->request -> closeCursor();
 		return $tab;

@@ -33,6 +33,22 @@ Created by Maxime (2015-01-14)
                       <?php echo '<div class="listBouton"><a class="btn btn-md btn-danger" href="http://phpmyadmin.meetspace.itinet.fr">   <i class="fa  fa-database fa-4x"></i> Base de données</a></div>'?>
                    
 					</div>
+					<div class="col-xs-12 col-md-4 col-md-offset-8">
+						<?php 
+							echo' <p> Membre du projet:</p>';
+							foreach ($projects_users as $value) 
+							{
+
+								if ($value ["ID"]==NULL){
+									}// Si l'ID du projet est NULL alors on n'affiche rien
+								else{
+									$user3 = new User($value ["ID"]);
+									echo '<p>'.$user3->get('NICKNAME').'</p>';
+									echo '<p>'.$user3->get('DESCRIPTION').'</p>';
+								}	
+							}
+						 ?>
+					 </div>
 
 				</div>
 			</div>

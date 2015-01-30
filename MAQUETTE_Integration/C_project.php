@@ -11,7 +11,7 @@ Created by Maxime (2015-01-14)
 		{
 			$project= new Project($_GET['ID']); // Projet non initialiser.
 			$projects_users=$project->get_subscribed_users();	
-			//var_dump($projects_users);
+			//var_dump($projects_users);	
 		}
 		else
 		{			
