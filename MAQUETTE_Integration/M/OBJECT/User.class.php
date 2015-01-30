@@ -102,7 +102,7 @@ class User extends  DB{
 	}*/
 		
 	public function setDESCRIPTION($description){
-		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`USERS` SET `PROFILE_DESCRIPTION` = :description WHERE `USERS`.`ID`=:id;");
+		$this->request = $this->meetspace_database->prepare ("UPDATE `meetspace`.`USERS` SET `PROFILE_DESCRIPTION` = :description WHERE `USERS`.`ID`:id;");
 		$this->request -> execute (array (
 		'description' => $description,
 		'id' => $this->ID));
@@ -154,7 +154,20 @@ class User extends  DB{
 
 			mail($destinataire,
 			     "Bienvenue sur Meetspace",
-			     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
+			     "<html>
+					<head>
+						<title>Bienvenue sur Meetspace</title>
+					</head>
+						<body>
+							<h3>Bonjour $nickname_signin_input,</h3>
+							<p>Bienvenue sur MeetSpace, l'espace de réunion en ligne.<br>
+							Rejoignez un projet ou créez le votre dès à présent.<br>
+							Vous disposez dès à présent d'une adresse mail et d'un espace<br> de
+							stockage personnel.
+							L'équipe de MeetSpace vous souhaite la bienvenue et vous souhaite<br> bon
+							courage pour vos projets.</p>
+						</body>
+					</html>",
 			     "From: $expediteur\r\nReply-To: $reponse");
 					
 			echo ("Votre compte a bien été créé");
