@@ -190,7 +190,7 @@ class Project  extends DB {
 			$subscribed_users = $line["USER"];
 			array_push ($tab, array ('ID' => $subscribed_users));
 		}
-			var_dump($tab);
+			//var_dump($tab);
 
 		$this->request-> closeCursor();
 		return $tab;
