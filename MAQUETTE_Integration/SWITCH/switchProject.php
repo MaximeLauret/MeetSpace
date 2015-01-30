@@ -19,6 +19,9 @@ Created by Max (2014-12-22)
 			case 'quitproject':
 				include_once ("./C_quitproject.php"); // PAR DEFAULT IL TOMBE SUR LA PAGE DU PROJET
 				break;
+			case 'delproject':
+				include_once ("./C_delProject.php"); // PAR DEFAULT IL TOMBE SUR LA PAGE DU PROJET
+				break;
 
 			default:
 				include_once ("./C_project.php"); // PAR DEFAULT IL TOMBE SUR LA PAGE DU PROJET

@@ -54,12 +54,6 @@ margin-top: 40px;
   margin-left: -16px;
 }
 
-.project:hover {
-  background-color:white;
-  opacity: 1;
-  border: 1px solid #e1e1e1;
-}
-
 .project form{
   padding:10px;
 }

@@ -20,6 +20,11 @@ h1{
 	color: black;
 }
 
+.container{
+
+background-color: transparent;
+}
+
 .searchResult{
   padding-top: 5px;
   padding-left: 20px;
@@ -66,15 +71,13 @@ footer a {
   text-align: center;
   background-color: #e1e1e1;
   min-height: 225px;
-  opacity: 0.80;
+  opacity: 1;
   width: 225px;
   margin-top: 10px;
 }
 
 .project:hover {
-  background-color:white;
-  opacity: 1;
-  border: 1px solid #e1e1e1;
+  border: 1px solid black;
 }
 
 .project form{
