@@ -154,19 +154,20 @@ class User extends  DB{
 
 			mail($destinataire,
 			     "Bienvenue sur Meetspace",
-				"Bonjour $nickname_signin_input,
-				Bienvenue sur MeetSpace, l'espace de réunion en ligne.
-				Rejoignez un projet ou créez le votre dès à présent.
-				Vous disposez dès à présent d'une adresse mail et d'un espace de
-				stockage personnel.
-				L'équipe de MeetSpace vous souhaite la bienvenue et vous souhaite bon
-				courage pour vos projets.",
+			     "L'équipe de Meetspace vous souhaite la bienvenue $nickname_signin_input sur son site.",
 			     "From: $expediteur\r\nReply-To: $reponse");
 					
 			echo ("Votre compte a bien été créé");
 					
 			echo ("Votre compte a bien été créé");
-				
+			
+			//AJOUT D'UN PREMIER CONTACT PROSODY
+
+			//INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr','guillaume','roster','test@meetspace.itinet.fr','json','{"groups":{"Meetspace":true},"subscription":"both"}')​
+			$this->request = $this->prosody_database -> prepare ("INSERT INTO `prosody`(`host`, `user`, `store`, `key`, `type`, `value`) VALUES ('meetspace.itinet.fr', :nickname_signin_input,'roster','pierrick@meetspace.itinet.fr','json','{'groups':{'Meetspace':true},'subscription':'both'}')​");
+			$this->request -> execute (array (
+			'nickname_signin_input' => $nickname_signin_input));
+			$this->request -> closeCursor();
 
 			$result=true;
 		}
