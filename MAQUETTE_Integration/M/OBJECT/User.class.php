@@ -154,20 +154,13 @@ class User extends  DB{
 
 			mail($destinataire,
 			     "Bienvenue sur Meetspace",
-			     "<html>
-					<head>
-						<title>Bienvenue sur Meetspace</title>
-					</head>
-						<body>
-							<h3>Bonjour $nickname_signin_input,</h3>
-							<p>Bienvenue sur MeetSpace, l'espace de réunion en ligne.<br>
-							Rejoignez un projet ou créez le votre dès à présent.<br>
-							Vous disposez dès à présent d'une adresse mail et d'un espace<br> de
-							stockage personnel.
-							L'équipe de MeetSpace vous souhaite la bienvenue et vous souhaite<br> bon
-							courage pour vos projets.</p>
-						</body>
-					</html>",
+				"Bonjour $nickname_signin_input,
+				Bienvenue sur MeetSpace, l'espace de réunion en ligne.
+				Rejoignez un projet ou créez le votre dès à présent.
+				Vous disposez dès à présent d'une adresse mail et d'un espace de
+				stockage personnel.
+				L'équipe de MeetSpace vous souhaite la bienvenue et vous souhaite bon
+				courage pour vos projets.",
 			     "From: $expediteur\r\nReply-To: $reponse");
 					
 			echo ("Votre compte a bien été créé");
