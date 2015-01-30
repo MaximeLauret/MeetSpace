@@ -19,7 +19,7 @@ Created by Max (2014-12-23)
 
 			<?php include ("./V/INCLUDE/topbar.php"); ?>
 
-			<div class="col-xs-12 col-md-12 col-md-offset">
+			
 
 				<?php
 					echo ('
@@ -35,12 +35,14 @@ Created by Max (2014-12-23)
 						if ($value['ID'] == NULL) {
 							// Nothing
 						} else {
-							echo "<div class=\"col-xs-12 col-md-3 col-md-offset\">
+							echo "<div class=\"col-xs-12 col-md-3 col-md-offset-1\">
 							<div  class=\"project\" >";
 							$tab[$i] = $project= new Project($value['ID']); // Projet non initialiser. 
 							echo '<a href="./index.php?section=project&amp;part=project&amp;ID='.$project->get('ID').'">';
+
 							echo '<h3>'.$project->get('NAME').'</h3>';
 							echo '<p>'.$project->get('PROJECT_DESCRIPTION').'<p>';
+							echo '<img src="'.$project_picture.'">';
 							echo '</a>';
 							echo '</div></div>';
 							$i++;
@@ -48,9 +50,8 @@ Created by Max (2014-12-23)
 					}			
 				?>
 
-			</div>
 
-			<div class="col-xs-12 col-md-3 col-md-offset">		<!-- NOUVEAU PROJET -->
+			<div class="col-xs-12 col-md-3 col-md-offset-1">		<!-- NOUVEAU PROJET -->
 				<div  class="project" >
 					<form class = "form-horizontal" action = "#" method = "POST">
 						<legend>Lancez votre propre projet</legend>

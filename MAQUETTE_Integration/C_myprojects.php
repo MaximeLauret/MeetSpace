@@ -12,6 +12,7 @@ if (!isset($_SESSION)) { session_start(); }
 
 <?php
 	$project= new Project(false); // Projet non initialiser. 
+	$project_picture='./V/INCLUDE/IMG/default_project_picture.png';
 
 	$user_name=$user->get('NICKNAME');
 	$user_projects=$project->find_USER_PROJECTS($user->get('ID'));
