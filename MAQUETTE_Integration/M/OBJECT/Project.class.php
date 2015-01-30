@@ -220,11 +220,13 @@ class Project  extends DB {
 		return $tab;
 	}
 
-	public function join_project ($userID) {		// Add the user as a contributor to the project
+	public function join_project ($userID, $user_name) {		// Add the user as a contributor to the project
 		$this->request = $this->meetspace_database -> prepare ("INSERT INTO SUBSCRIBE (USER, PROJECT, STATUS) VALUES (:user, :project, 'CONTRIBUTOR')");
 		$this->request -> execute (array (
 		"user" => $userID,
 		"project" => $this->ID));
+
+		$output = exec("sudo /home/GIT_REPOSITORY/SCRIPT/fonctionnel/add_userAlias.sh $this->NAME, $user_name", $out);
 		$this->request -> closeCursor();
 	}
 
