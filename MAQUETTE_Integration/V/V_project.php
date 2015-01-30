@@ -8,17 +8,17 @@ Created by Maxime (2015-01-14)
 <!DOCTYPE html>
 
 <html>
-
-	<head>
-		<?php
-			include("INCLUDE/header.php");
-		?>
-	</head>
+	
+	<?php
+		include("INCLUDE/header.php");
+	?>
 	
 	<body>
+
+		<?php include ("./V/INCLUDE/topbar.php"); ?>
+
 		<section>
 			<div class="container">
-			<?php include ("./V/INCLUDE/topbar.php"); ?>
 				<div class="row">
 
 

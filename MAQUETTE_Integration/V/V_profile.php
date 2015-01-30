@@ -10,7 +10,9 @@ Created by Maxime (2015-07-01)
 <html>
 
 	<?php include ("./V/INCLUDE/header.php");?>	
+
 	<body>
+
 		<?php include ("./V/INCLUDE/topbar.php"); ?>
 
 		<section>
